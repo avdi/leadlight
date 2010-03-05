@@ -10,6 +10,7 @@ begin
     gem.email = "avdi@avdi.org"
     gem.homepage = "http://github.com/avdi/leadlight"
     gem.authors = ["Avdi Grimm"]
+    gem.add_dependency "dm-core", "~> 0.10.2"
     gem.add_development_dependency "rspec", ">= 1.2.9"
     # gem is a Gem::Specification... see http://www.rubygems.org/read/chapter/20 for additional settings
   end
