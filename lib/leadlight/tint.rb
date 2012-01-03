@@ -2,8 +2,9 @@ require 'leadlight/tint_helper'
 
 module Leadlight
   class Tint < Module
+    attr_reader :name
     def initialize(name, &block)
-      @tint_name  = name
+      @name = @tint_name  = name
       tint = self
       super(){
         define_method(:__apply_tint__) do

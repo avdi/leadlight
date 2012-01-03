@@ -9,7 +9,8 @@ module Leadlight
     let(:representation) { stub(:representation) }
     let(:response) { stub(:response, env: env) }
     let(:env) { {leadlight_representation: representation} }
-    let(:options) { {}  }
+    let(:options) { {codec: codec}  }
+    let(:codec) { stub(:codec) }
 
     before do
       subject.stub(connection: connection, url: nil)
@@ -49,5 +50,26 @@ module Leadlight
       end
     end
 
+    describe '#encode' do
+      it 'delegates to the codec' do
+        entity = stub
+        codec.should_receive(:encode).
+          with('CONTENT_TYPE', representation, {foo: 'bar'}).
+          and_return(entity)
+        subject.encode('CONTENT_TYPE', representation, {foo: 'bar'}).
+          should equal(entity)
+      end
+    end
+
+    describe '#decode' do
+      it 'delegates to the codec' do
+        entity = stub
+        codec.should_receive(:decode).
+          with('CONTENT_TYPE', entity, {foo: 'bar'}).
+          and_return(representation)
+        subject.decode('CONTENT_TYPE', entity, {foo: 'bar'}).
+          should equal(representation)
+      end
+    end
   end
 end

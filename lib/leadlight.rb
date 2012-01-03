@@ -70,6 +70,10 @@ module Leadlight
       self.tints << Tint.new(name, &block)
     end
 
+    def type(mame, &block)
+      self.types << Type.new(name, self, &block)
+    end
+
     def build_connection(&block)
       @connection_stack = block
     end

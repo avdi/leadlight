@@ -45,6 +45,7 @@ Gem::Specification.new do |s|
   s.add_dependency 'fattr'
   s.add_dependency 'link_header'
   s.add_dependency 'multi_json'
+  s.add_dependency 'mime-types'
 
   ## List your development dependencies here. Development dependencies are
   ## those that are only needed during development

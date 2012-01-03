@@ -5,6 +5,7 @@ PATH
       faraday
       fattr
       link_header
+      mime-types
       multi_json
 
 GEM
@@ -15,9 +16,10 @@ GEM
     faraday (0.7.5)
       addressable (~> 2.2.6)
       multipart-post (~> 1.1.3)
-      rack (>= 1.1.0, < 2)
+      rack (< 2, >= 1.1.0)
     fattr (2.2.0)
     link_header (0.0.5)
+    mime-types (1.17.2)
     multi_json (1.0.4)
     multipart-post (1.1.4)
     rack (1.4.0)

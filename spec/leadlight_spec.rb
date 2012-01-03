@@ -10,7 +10,11 @@ describe Leadlight, vcr: true do
     Addressable::Template.new(pattern)
   end
 
-  let(:logger)  { Logger.new(File.expand_path('../../log/test.log', __FILE__)) }
+  let(:logger)  { 
+    logfile = Pathname('../../log/test.log').expand_path(__FILE__)
+    logfile.dirname.mkpath
+    Logger.new(logfile) 
+  }
 
   describe 'basic GitHub example' do
     class BasicGithubService

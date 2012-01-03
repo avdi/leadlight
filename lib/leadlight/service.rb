@@ -1,10 +1,16 @@
 require 'fattr'
+require 'forwardable'
 
 module Leadlight
   module Service
+    extend Forwardable
+
     attr_reader :options
-    fattr(:logger) { options.fetch(:logger) { ::Logger.new($stderr) } }
-    fattr(:tints)  { self.class.tints }
+    fattr(:logger)  { options.fetch(:logger) { ::Logger.new($stderr) } }
+    fattr(:tints)   { self.class.tints }
+    fattr(:codec) { options.fetch(:codec) { Codec.new } }
+
+    def_delegators :codec, :encode, :decode
 
     def initialize(options={})
       @options = options
