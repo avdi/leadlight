@@ -46,12 +46,16 @@ Gem::Specification.new do |s|
   s.add_dependency 'link_header'
   s.add_dependency 'multi_json'
   s.add_dependency 'mime-types'
+  s.add_dependency 'hookr'
 
   ## List your development dependencies here. Development dependencies are
   ## those that are only needed during development
   ## s.add_development_dependency('DEVDEPNAME', [">= 1.1.0", "< 2.0.0"])
   s.add_development_dependency 'rspec'
   s.add_development_dependency 'vcr', '~> 2.0.0.rc1'
+  s.add_development_dependency 'guard'
+  s.add_development_dependency 'guard-rspec'
+  s.add_development_dependency 'guard-bundler'
 
   ## Leave this section as-is. It will be automatically generated from the
   ## contents of your Git repository via the gemspec task. DO NOT REMOVE
