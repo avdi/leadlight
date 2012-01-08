@@ -146,13 +146,13 @@ describe Leadlight, vcr: true do
       end
 
       def prepare_request(request)
-        request.headers['Authorization'] = "Bearer #{options[:oauth2_token]}"
+        request.headers['Authorization'] = "Bearer #{service_options[:oauth2_token]}"
       end
     end
 
     subject { session }
-    let(:session) { AuthorizedGithubService.session(options) }
-    let(:options) { {logger: logger, oauth2_token: test_user_token} }
+    let(:session) { AuthorizedGithubService.session(service_options) }
+    let(:service_options) { {logger: logger, oauth2_token: test_user_token} }
     let(:test_user_token) { credentials[:github_test_user_token] }
 
     describe '#user' do

@@ -6,15 +6,15 @@ module Leadlight
   module Service
     extend Forwardable
 
-    attr_reader :options
-    fattr(:logger)  { options.fetch(:logger) { ::Logger.new($stderr) } }
+    attr_reader :service_options
+    fattr(:logger)  { service_options.fetch(:logger) { ::Logger.new($stderr) } }
     fattr(:tints)   { self.class.tints }
-    fattr(:codec) { options.fetch(:codec) { Codec.new } }
+    fattr(:codec) { service_options.fetch(:codec) { Codec.new } }
 
     def_delegators :codec, :encode, :decode
 
-    def initialize(options={})
-      @options = options
+    def initialize(service_options={})
+      @service_options = service_options
     end
 
     def root
@@ -36,7 +36,7 @@ module Leadlight
       end
     end
 
-    [:head, :get, :post, :put, :delete, :patch].each do |name|
+    [:options, :head, :get, :post, :put, :delete, :patch].each do |name|
       define_method(name) do |url, *args, &block|
         perform_request(url, name, *args, &block)
       end
