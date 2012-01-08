@@ -14,9 +14,7 @@ module Leadlight
       loop do
         page.each(true, &block)
         if (next_link = page.link('next'))
-          next_link.follow do |next_page|
-            page = next_page
-          end
+          page = next_link.follow
         else
           break
         end

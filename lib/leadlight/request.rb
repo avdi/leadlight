@@ -11,15 +11,17 @@ module Leadlight
     fattr(:url)
     fattr(:connection)
     fattr(:body)
+    fattr(:params)
 
     define_hook :on_prepare_request, :request
     define_hook :on_complete,        :response
 
-    def initialize(connection, url, method, body=nil)
+    def initialize(connection, url, method, params={}, body=nil)
       self.connection  = connection
       self.url         = url
       self.http_method = method
       self.body        = body
+      self.params      = params
       @completed       = new_cond
       @state           = :initialized
       @env             = nil

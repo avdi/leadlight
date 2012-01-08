@@ -14,15 +14,16 @@ module Leadlight
       @rev   = options[:rev]
     end
 
-    def follow(&block)
-      result = get(href, &block)
+    [:options, :head, :get, :post, :put, :delete, :patch].each do |name|
+      define_method(name) do |*args, &block|
+        service.public_send(name, href, *args, &block)
+      end
     end
 
-    private
-
-    def get(path, &block)
-      result = service.get(path, &block)
-      nil
+    def follow(*args)
+      get(*args) do |representation|
+        return representation
+      end
     end
   end
 end

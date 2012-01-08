@@ -8,11 +8,14 @@ module Leadlight
       @href_template ||= Addressable::Template.new(href.to_s)
     end
 
-    def follow(*args, &block)
-      get(expand(*args), &block)
+    [:options, :head, :get, :post, :put, :delete, :patch].each do |name|
+      define_method(name) do |*args, &block|
+        expanded_href = expand(args)
+        service.public_send(name, expanded_href, *args, &block)
+      end
     end
 
-    def expand(*args)
+    def expand(args)
       mapping = args.last.is_a?(Hash) ? args.pop : {}
       mapping = href_template.variables.inject(mapping) do |mapping, var|
         break mapping if args.empty?

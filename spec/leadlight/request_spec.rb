@@ -34,11 +34,12 @@ module Leadlight
       end
     end
 
-    subject { Request.new(connection, url, http_method, body) }
+    subject { Request.new(connection, url, http_method, params, body) }
     let(:connection) { stub(:connection, :run_request => faraday_response) }
     let(:url)        { stub(:url)        }
     let(:http_method){ :get              }
     let(:body)       { stub(:body)       }
+    let(:params)     { {}                }
     let(:faraday_request) {stub(:faraday_request)}
     let(:on_complete_handlers) { [] }
     let(:faraday_response) { FakeFaradayResponse.new(faraday_env) }

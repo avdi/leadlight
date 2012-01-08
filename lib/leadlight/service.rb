@@ -1,5 +1,6 @@
 require 'fattr'
 require 'forwardable'
+require 'leadlight/request'
 
 module Leadlight
   module Service
@@ -35,15 +36,24 @@ module Leadlight
       end
     end
 
-    def get(path)
-      result = connection.get(path) do |req|
-        prepare_request(req)
+    [:head, :get, :post, :put, :delete, :patch].each do |name|
+      define_method(name) do |url, *args, &block|
+        perform_request(url, name, *args, &block)
       end
-      yield result.env[:leadlight_representation] if block_given?
-      nil
     end
 
     private
+
+    def perform_request(url, http_method, params={}, body=nil, &representation_handler)
+      req = Request.new(connection, url, http_method, params, body)
+      req.on_prepare_request do |faraday_request|
+        prepare_request(faraday_request)
+      end
+      if representation_handler
+        req.submit_and_wait(&representation_handler)
+      end
+      req
+    end
 
     def prepare_request(request)
       # Override in subclasses

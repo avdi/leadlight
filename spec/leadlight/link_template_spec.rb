@@ -23,14 +23,13 @@ module Leadlight
         subject.follow(:n => 'AA', 'm' => 'BB')
       end
 
-      it 'yields the result of the get' do
+      it 'returns the result of the get' do
+        request = stub
         result = stub
-        yielded_result = nil
-        service.should_receive(:get).and_yield(result)
-        subject.follow(*values) do |r|
-          yielded_result = r
-        end
-        yielded_result.should equal(result)
+        service.should_receive(:get).
+          and_yield(result).
+          and_return(request)
+        subject.follow(23,42).should equal(result)
       end
 
       it 'returns nothing' do

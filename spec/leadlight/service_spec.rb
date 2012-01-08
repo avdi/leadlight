@@ -11,37 +11,88 @@ module Leadlight
     let(:env)            { {leadlight_representation: representation} }
     let(:options)        { {codec: codec}                             }
     let(:codec)          { stub(:codec)                               }
+    let(:request)        { stub(:request).as_null_object              }
 
     before do
       subject.stub(connection: connection, url: nil)
     end
 
-    describe '#get' do
-      it 'yields the representation from connection.get' do
-        connection.should_receive(:get).and_return(response)
-        yielded = nil
-        subject.get('/') do |r|
-          yielded = r
+    shared_examples_for "an HTTP client" do |http_method|
+      describe "##{http_method}" do
+        before do
+          Request.stub(:new).and_return(request)
         end
-        yielded.should equal(representation)
-      end
 
-      it 'returns nothing' do
-        subject.get('/').should be_nil
-      end
+        it 'returns a new request object' do
+          Request.should_receive(:new).and_return(request)
+          subject.public_send(http_method, '/').should equal(request)
+        end
 
-      it 'passes the path to the connection' do
-        connection.should_receive(:get).with('/somepath')
-        subject.get('/somepath')
-      end
+        it 'passes the connection to the request' do
+          Request.should_receive(:new).
+            with(connection, anything, anything, anything, anything).
+            and_return(request)
+          subject.public_send(http_method, '/somepath')
+        end
 
-      it 'calls the #prepare_request callback' do
-        request = stub
-        connection.should_receive(:get).and_yield(request)
-        subject.should_receive(:prepare_request).with(request)
-        subject.get('/')
+        it 'passes the path to the request' do
+          Request.should_receive(:new).
+            with(anything, '/somepath', anything, anything, anything).
+            and_return(request)
+          subject.public_send(http_method, '/somepath')
+        end
+
+        it 'passes the method to the request' do
+          Request.should_receive(:new).
+            with(anything, anything, http_method, anything, anything).
+            and_return(request)
+          subject.public_send(http_method, '/somepath')
+        end
+
+        it 'passes the params to the request' do
+          params = stub
+          Request.should_receive(:new).
+            with(anything, anything, anything, params, anything).
+            and_return(request)
+          subject.public_send(http_method, '/somepath', params)
+        end
+
+        it 'passes the body to the request' do
+          body = stub
+          Request.should_receive(:new).
+            with(anything, anything, anything, anything, body).
+            and_return(request)
+          subject.public_send(http_method, '/somepath', {}, body)
+        end
+
+        it 'adds a prepare_request callback' do
+          faraday_request = stub(:faraday_request)
+          request.stub(:on_prepare_request).and_yield(faraday_request)
+          subject.should_receive(:prepare_request).with(faraday_request)
+          subject.public_send(http_method, '/')
+        end
+
+        context 'given a block' do
+          define_method(:do_it) do
+            subject.public_send(http_method, '/') do |yielded|
+              return yielded
+            end
+          end
+
+          it 'submits and waits for completion' do
+            request.should_receive(:submit_and_wait).and_yield(representation)
+            do_it
+          end
+        end
       end
     end
+
+    it_behaves_like "an HTTP client", :head
+    it_behaves_like "an HTTP client", :get
+    it_behaves_like "an HTTP client", :post
+    it_behaves_like "an HTTP client", :put
+    it_behaves_like "an HTTP client", :delete
+    it_behaves_like "an HTTP client", :patch
 
     describe '#options' do
       it 'returns option values passed to the initializer' do
