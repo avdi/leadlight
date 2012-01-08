@@ -17,11 +17,18 @@ module Leadlight
 
     def expand(args)
       mapping = args.last.is_a?(Hash) ? args.pop : {}
+      mapping = mapping.inject({}) { |result, (k,v)| result.merge!(k.to_s => v) }
       mapping = href_template.variables.inject(mapping) do |mapping, var|
-        break mapping if args.empty?
-        mapping.merge!(var => args.shift)
+        mapping.merge!(var => args.shift) unless args.empty?
+        mapping
+      end
+      extra_keys = (mapping.keys.map(&:to_s) - href_template.variables)
+      extra_params = extra_keys.inject({}) do |params, key|
+        params[key] = mapping.delete(key)
+        params
       end
       assert_all_variables_mapped(href_template, mapping)
+      args.push extra_params unless extra_params.empty?
       href_template.expand(mapping).to_s
     end
 

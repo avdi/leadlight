@@ -14,7 +14,7 @@ module Leadlight
       @name         = name
       @service      = service      
       @builder      = Object.method(:new)
-      @enctype = 'application/json'
+      @enctype      = 'application/json'
       super() do
         instance_exec &preamble
         instance_exec &body

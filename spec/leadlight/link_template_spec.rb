@@ -23,6 +23,11 @@ module Leadlight
         subject.follow(:n => 'AA', 'm' => 'BB')
       end
 
+      it 'leaves unrecognized params in the params hash alone' do
+        service.should_receive(:get).with('/TEST_PATH/AA/BB/', {'other' => 'XX'})
+        subject.follow(:n => 'AA', 'm' => 'BB', :other => 'XX')
+      end
+
       it 'returns the result of the get' do
         request = stub
         result = stub
