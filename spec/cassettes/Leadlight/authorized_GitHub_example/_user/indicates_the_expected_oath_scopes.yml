@@ -1,147 +1,75 @@
----
-http_interactions:
-- request:
+--- 
+http_interactions: 
+- request: 
     method: get
     uri: https://api.github.com/
-    body: ''
-    headers:
-      Authorization:
+    body: ""
+    headers: 
+      Authorization: 
       - <AUTH FILTERED>
-      Accept:
-      - application/json, text/x-yaml, application/xml, application/xhtml+xml, text/html,
-        text/plain
-  response:
-    status:
+      Accept: 
+      - application/json, text/x-yaml, application/xml, application/xhtml+xml, text/html, text/plain
+  response: 
+    status: 
       code: 204
       message: 
-    headers:
-      server:
+    headers: 
+      server: 
       - nginx/1.0.4
-      date:
-      - Wed, 28 Dec 2011 06:18:51 GMT
-      connection:
+      date: 
+      - Mon, 09 Jan 2012 02:31:56 GMT
+      connection: 
       - close
-      status:
+      status: 
       - 204 No Content
-      x-ratelimit-limit:
-      - '5000'
-      etag:
-      - ! '"d41d8cd98f00b204e9800998ecf8427e"'
-      x-oauth-scopes:
+      x-ratelimit-limit: 
+      - "5000"
+      etag: 
+      - "\"d41d8cd98f00b204e9800998ecf8427e\""
+      x-oauth-scopes: 
       - repo
-      x-ratelimit-remaining:
-      - '4987'
-    body: ''
+      x-ratelimit-remaining: 
+      - "4997"
+    body: ""
     http_version: 
-  recorded_at: Wed, 28 Dec 2011 06:18:51 GMT
-- request:
+  recorded_at: Mon, 09 Jan 2012 02:31:54 GMT
+- request: 
     method: get
     uri: https://api.github.com/users/avdi
-    body: ''
-    headers:
-      Authorization:
+    body: ""
+    headers: 
+      Authorization: 
       - <AUTH FILTERED>
-      Accept:
-      - application/json, text/x-yaml, application/xml, application/xhtml+xml, text/html,
-        text/plain
-  response:
-    status:
+      Accept: 
+      - application/json, text/x-yaml, application/xml, application/xhtml+xml, text/html, text/plain
+  response: 
+    status: 
       code: 200
       message: 
-    headers:
-      server:
+    headers: 
+      server: 
       - nginx/1.0.4
-      date:
-      - Wed, 28 Dec 2011 06:18:51 GMT
-      content-type:
+      date: 
+      - Mon, 09 Jan 2012 02:31:56 GMT
+      content-type: 
       - application/json; charset=utf-8
-      transfer-encoding:
+      transfer-encoding: 
       - chunked
-      connection:
+      connection: 
       - close
-      status:
+      status: 
       - 200 OK
-      x-ratelimit-limit:
-      - '5000'
-      etag:
-      - ! '"e9f8613cdc1b62f213c8fedbb226510c"'
-      x-oauth-scopes:
+      x-ratelimit-limit: 
+      - "5000"
+      etag: 
+      - "\"1c5ce32320a58cc20b20e43775836557\""
+      x-oauth-scopes: 
       - repo
-      x-ratelimit-remaining:
-      - '4986'
-      x-accepted-oauth-scopes:
+      x-ratelimit-remaining: 
+      - "4996"
+      x-accepted-oauth-scopes: 
       - user
-    body: ! '{"followers":171,"type":"User","public_repos":61,"location":"Pennsylvania,
-      USA","hireable":false,"company":"ShipRise","email":"avdi@avdi.org","avatar_url":"https://secure.gravatar.com/avatar/4dea430d31b993abaf41cd9b54f8128d?d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-140.png","bio":null,"created_at":"2008-02-26T19:54:34Z","gravatar_id":"4dea430d31b993abaf41cd9b54f8128d","html_url":"https://github.com/avdi","blog":"http://avdi.org/devblog/","public_gists":68,"name":"Avdi
-      Grimm","url":"https://api.github.com/users/avdi","id":982,"following":34,"login":"avdi"}'
+    body: "{\"type\":\"User\",\"location\":\"Pennsylvania, USA\",\"company\":\"ShipRise\",\"email\":\"avdi@avdi.org\",\"bio\":null,\"followers\":178,\"blog\":\"http://avdi.org/devblog/\",\"avatar_url\":\"https://secure.gravatar.com/avatar/4dea430d31b993abaf41cd9b54f8128d?d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-140.png\",\"created_at\":\"2008-02-26T19:54:34Z\",\"login\":\"avdi\",\"gravatar_id\":\"4dea430d31b993abaf41cd9b54f8128d\",\"following\":34,\"html_url\":\"https://github.com/avdi\",\"public_repos\":61,\"name\":\"Avdi Grimm\",\"public_gists\":68,\"url\":\"https://api.github.com/users/avdi\",\"id\":982,\"hireable\":false}"
     http_version: 
-  recorded_at: Wed, 28 Dec 2011 06:18:51 GMT
-- request:
-    method: get
-    uri: https://api.github.com/
-    body: ''
-    headers:
-      Authorization:
-      - <AUTH FILTERED>
-      Accept:
-      - application/json, text/x-yaml, application/xml, application/xhtml+xml, text/html,
-        text/plain
-  response:
-    status:
-      code: 401
-      message: 
-    headers:
-      server:
-      - nginx/1.0.4
-      date:
-      - Tue, 03 Jan 2012 02:16:24 GMT
-      content-type:
-      - application/json; charset=utf-8
-      connection:
-      - close
-      status:
-      - 401 Unauthorized
-      www-authenticate:
-      - Basic realm="GitHub"
-      etag:
-      - ! '"ca6a3702f840b6bff0bb1bca6be0337c"'
-      content-length:
-      - '29'
-    body: ! '{"message":"Bad credentials"}'
-    http_version: 
-  recorded_at: Tue, 03 Jan 2012 02:16:24 GMT
-- request:
-    method: get
-    uri: https://api.github.com/users/avdi
-    body: ''
-    headers:
-      Authorization:
-      - <AUTH FILTERED>
-      Accept:
-      - application/json, text/x-yaml, application/xml, application/xhtml+xml, text/html,
-        text/plain
-  response:
-    status:
-      code: 401
-      message: 
-    headers:
-      server:
-      - nginx/1.0.4
-      date:
-      - Tue, 03 Jan 2012 02:16:24 GMT
-      content-type:
-      - application/json; charset=utf-8
-      connection:
-      - close
-      status:
-      - 401 Unauthorized
-      www-authenticate:
-      - Basic realm="GitHub"
-      etag:
-      - ! '"ca6a3702f840b6bff0bb1bca6be0337c"'
-      content-length:
-      - '29'
-    body: ! '{"message":"Bad credentials"}'
-    http_version: 
-  recorded_at: Tue, 03 Jan 2012 02:16:24 GMT
+  recorded_at: Mon, 09 Jan 2012 02:31:55 GMT
 recorded_with: VCR 2.0.0.rc1

@@ -15,7 +15,7 @@ http_interactions:
       server: 
       - nginx/1.0.4
       date: 
-      - Wed, 28 Dec 2011 06:18:46 GMT
+      - Mon, 09 Jan 2012 02:31:43 GMT
       connection: 
       - close
       status: 
@@ -25,8 +25,8 @@ http_interactions:
       etag: 
       - "\"d41d8cd98f00b204e9800998ecf8427e\""
       x-ratelimit-remaining: 
-      - "4979"
+      - "4998"
     body: ""
     http_version: 
-  recorded_at: Wed, 28 Dec 2011 06:18:46 GMT
+  recorded_at: Mon, 09 Jan 2012 02:31:41 GMT
 recorded_with: VCR 2.0.0.rc1

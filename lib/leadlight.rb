@@ -7,6 +7,7 @@ require 'leadlight/hyperlinkable'
 require 'leadlight/service_middleware'
 require 'leadlight/representation'
 require 'leadlight/tint'
+require 'leadlight/type'
 require 'leadlight/service'
 require 'leadlight/enumerable_representation'
 
@@ -35,6 +36,7 @@ module Leadlight
 
   module ServiceClassMethods
     fattr(:tints) { default_tints }
+    fattr(:types) { []            }
 
     def url(new_url=:none)
       if new_url == :none
@@ -70,8 +72,15 @@ module Leadlight
       self.tints << Tint.new(name, &block)
     end
 
-    def type(mame, &block)
+    def type(name, &block)
       self.types << Type.new(name, self, &block)
+    end
+
+    def type_for_name(name)
+      raise_on_missing = -> do
+        raise KeyError, "Type not found: #{name}"
+      end
+      types.detect(raise_on_missing){|type| type.name.to_s == name.to_s}
     end
 
     def build_connection(&block)

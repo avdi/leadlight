@@ -12,6 +12,7 @@ module Leadlight
     fattr(:codec) { service_options.fetch(:codec) { Codec.new } }
 
     def_delegators :codec, :encode, :decode
+    def_delegators 'self.class', :types, :type_for_name
 
     def initialize(service_options={})
       @service_options = service_options

@@ -116,7 +116,7 @@ describe Leadlight, vcr: true do
         subject.each do |f|
           followers << f
         end
-        followers.should have(171).items
+        followers.should have(178).items
       end
 
       it 'should be enumerable over page boundaries' do
@@ -134,6 +134,7 @@ describe Leadlight, vcr: true do
         tint 'root' do
           match_path('/')
           add_link_template '/users/{login}', 'user', 'Find user by login'
+          add_link_template '/orgs/{name}',   'organization'
         end
 
         tint 'auth_scopes' do
@@ -142,6 +143,24 @@ describe Leadlight, vcr: true do
               __response__.headers['X-OAuth-Scopes'].to_s.strip.split(/\W+/)
             end
           end
+        end
+
+        tint 'organization' do
+          match_template('/orgs/{name}')
+          type :organization
+          add_link "#{__location__}/teams", 'teams'
+
+          extend do
+            def team_for_name(name)
+              teams.detect{|t| t["name"] == name}
+            end
+          end
+        end
+
+        type :organization do
+        end
+
+        type :team do
         end
       end
 
@@ -167,6 +186,12 @@ describe Leadlight, vcr: true do
       it 'indicates the expected oath scopes' do
         subject.root.user('avdi').oauth_scopes.should eq(['repo'])
       end
+    end
+
+    describe 'test team' do
+      subject { session.root.organization('shiprise').team_for_name('Leadlight Test Team') }
+      
+      it { should be }
     end
   end
 end

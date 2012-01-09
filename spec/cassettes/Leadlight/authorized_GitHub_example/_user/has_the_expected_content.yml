@@ -17,7 +17,7 @@ http_interactions:
       server: 
       - nginx/1.0.4
       date: 
-      - Wed, 28 Dec 2011 06:18:50 GMT
+      - Mon, 09 Jan 2012 02:31:55 GMT
       connection: 
       - close
       status: 
@@ -29,10 +29,10 @@ http_interactions:
       x-oauth-scopes: 
       - repo
       x-ratelimit-remaining: 
-      - "4989"
+      - "4999"
     body: ""
     http_version: 
-  recorded_at: Wed, 28 Dec 2011 06:18:50 GMT
+  recorded_at: Mon, 09 Jan 2012 02:31:54 GMT
 - request: 
     method: get
     uri: https://api.github.com/users/avdi
@@ -50,7 +50,7 @@ http_interactions:
       server: 
       - nginx/1.0.4
       date: 
-      - Wed, 28 Dec 2011 06:18:50 GMT
+      - Mon, 09 Jan 2012 02:31:55 GMT
       content-type: 
       - application/json; charset=utf-8
       transfer-encoding: 
@@ -62,14 +62,14 @@ http_interactions:
       x-ratelimit-limit: 
       - "5000"
       etag: 
-      - "\"e9f8613cdc1b62f213c8fedbb226510c\""
+      - "\"16b8c1c449e332c8cdb94888facbedfd\""
       x-oauth-scopes: 
       - repo
       x-ratelimit-remaining: 
-      - "4988"
+      - "4998"
       x-accepted-oauth-scopes: 
       - user
-    body: "{\"followers\":171,\"type\":\"User\",\"public_repos\":61,\"location\":\"Pennsylvania, USA\",\"hireable\":false,\"company\":\"ShipRise\",\"email\":\"avdi@avdi.org\",\"avatar_url\":\"https://secure.gravatar.com/avatar/4dea430d31b993abaf41cd9b54f8128d?d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-140.png\",\"bio\":null,\"created_at\":\"2008-02-26T19:54:34Z\",\"gravatar_id\":\"4dea430d31b993abaf41cd9b54f8128d\",\"html_url\":\"https://github.com/avdi\",\"blog\":\"http://avdi.org/devblog/\",\"public_gists\":68,\"name\":\"Avdi Grimm\",\"url\":\"https://api.github.com/users/avdi\",\"id\":982,\"following\":34,\"login\":\"avdi\"}"
+    body: "{\"type\":\"User\",\"location\":\"Pennsylvania, USA\",\"company\":\"ShipRise\",\"email\":\"avdi@avdi.org\",\"followers\":178,\"blog\":\"http://avdi.org/devblog/\",\"created_at\":\"2008-02-26T19:54:34Z\",\"login\":\"avdi\",\"avatar_url\":\"https://secure.gravatar.com/avatar/4dea430d31b993abaf41cd9b54f8128d?d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-140.png\",\"gravatar_id\":\"4dea430d31b993abaf41cd9b54f8128d\",\"public_repos\":61,\"following\":34,\"html_url\":\"https://github.com/avdi\",\"hireable\":false,\"public_gists\":68,\"name\":\"Avdi Grimm\",\"bio\":null,\"url\":\"https://api.github.com/users/avdi\",\"id\":982}"
     http_version: 
-  recorded_at: Wed, 28 Dec 2011 06:18:50 GMT
+  recorded_at: Mon, 09 Jan 2012 02:31:54 GMT
 recorded_with: VCR 2.0.0.rc1
