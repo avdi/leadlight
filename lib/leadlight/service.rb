@@ -43,6 +43,12 @@ module Leadlight
       end
     end
 
+    # Convenience method for a quick GET which submits, waits, raises
+    # on error, and yields the representation.
+    def get_representation!(*args, &block)
+      get(*args).raise_on_error.submit_and_wait(&block)
+    end
+
     private
 
     def perform_request(url, http_method, params={}, body=nil, &representation_handler)

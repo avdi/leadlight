@@ -13,7 +13,7 @@ module Leadlight
       page = self
       loop do
         page.each(true, &block)
-        if (next_link = page.link('next'))
+        if (next_link = page.link('next'){nil})
           page = next_link.follow
         else
           break

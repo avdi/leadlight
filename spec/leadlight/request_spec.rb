@@ -207,5 +207,30 @@ module Leadlight
         yielded.should equal(faraday_response)
       end
     end
+
+
+    describe "#raise_on_error" do
+      def submit_and_complete
+        t = Thread.new do
+          subject.submit
+          subject.wait
+        end
+        run_completion_handlers
+        t.join
+        subject
+      end
+
+      it "raises an error when the response is a client error" do
+        faraday_env[:status] = 404
+        expect { submit_and_complete.raise_on_error }.to raise_error(ResourceNotFound)
+      end
+
+      it "raises after completion when called before completion" do
+        faraday_env[:status] = 500
+        subject.raise_on_error
+        expect { submit_and_complete }.to raise_error(ServerError)
+      end
+      
+    end
   end
 end

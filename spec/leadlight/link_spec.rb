@@ -12,14 +12,14 @@ module Leadlight
 
     describe '#follow' do
       it 'calls service.get with the href' do
-        service.should_receive(:get).with(Addressable::URI.parse(href))
+        service.should_receive(:get_representation!).with(Addressable::URI.parse(href))
         subject.follow
       end
 
       it 'returns the result of the get' do
         request = stub
         result = stub
-        service.should_receive(:get).
+        service.should_receive(:get_representation!).
           and_yield(result).
           and_return(request)
         subject.follow.should equal(result)

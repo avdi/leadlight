@@ -78,11 +78,11 @@ describe Leadlight, vcr: true do
 
     describe 'user link' do
       it 'exists' do
-        subject.root.links['user'].should be_a(Leadlight::Link)
+        subject.root.link('user').should be_a(Leadlight::Link)
       end
 
       it 'links to the expected URL' do
-        subject.root.links['user'].href.should eq(uri('/users/{login}'))
+        subject.root.link('user').href.should eq(uri('/users/{login}'))
       end
     end
 
@@ -102,13 +102,13 @@ describe Leadlight, vcr: true do
       it { should_not be_empty }
 
       it 'should have "next" and "last" links' do
-        subject.links['next'].should be_a(Leadlight::Link)
-        subject.links['last'].should be_a(Leadlight::Link)
+        subject.link('next').should be_a(Leadlight::Link)
+        subject.link('last').should be_a(Leadlight::Link)
       end
 
       it 'should be able to follow "next" link' do
         page2 = subject.next
-        page2.links['prev'].href.path.should eq(subject.__location__.path)
+        page2.link('prev').href.path.should eq(subject.__location__.path)
       end
 
       it 'should be enumerable' do
@@ -146,13 +146,41 @@ describe Leadlight, vcr: true do
         end
 
         tint 'organization' do
-          match_template('/orgs/{name}')
+          match_path(%r{^/orgs/\w+$})
           type :organization
           add_link "#{__location__}/teams", 'teams'
 
           extend do
             def team_for_name(name)
-              teams.detect{|t| t["name"] == name}
+              teams.get(name)
+            end
+          end
+        end
+
+        tint 'teamlist' do
+          match_path(%r{^/orgs/\w+/teams$})
+
+          add_link_set('child', :get) do
+            map{|team|
+              {href: team['url'], title: team['name']}
+            }
+          end
+        end
+
+        tint 'team' do
+          match_template('/teams/{id}')
+          type :team
+          
+          add_link "#{__location__}/members", 'members'
+          add_link_template "#{__location__}/members/{id}", 'member'
+
+          extend do
+            def add_member(member_name)
+              link('member').put(member_name).submit_and_wait.raise_on_error
+            end
+
+            def remove_member(member_name)
+              link('member').delete(member_name).submit_and_wait.raise_on_error
             end
           end
         end
@@ -192,6 +220,18 @@ describe Leadlight, vcr: true do
       subject { session.root.organization('shiprise').team_for_name('Leadlight Test Team') }
       
       it { should be }
+    end
+
+    specify "adding and removing team members" do
+      user = session.root.user("leadlight-test")
+      user.should_not be_empty
+      team = session.root.organization('shiprise').
+        teams.get('Leadlight Test Team')
+      team.should_not be_empty
+      team.add_member('leadlight-test')
+        team.members.map{|m| m['login']}.should include('leadlight-test')
+      team.remove_member('leadlight-test')
+      team.members.map{|m| m['login']}.should_not include('leadlight-test')
     end
   end
 end

@@ -3,8 +3,12 @@ require 'leadlight/link_template'
 
 module Leadlight
   describe LinkTemplate do
+
+    # TODO: This setup is loony. Refactor.
     subject { LinkTemplate.new(service, href, rel, title, options) }
-    let(:service) { stub(:service, get: nil) }
+    let(:service) { stub(:service) }
+    let(:request) { stub(:request)               }
+    let(:result)  { stub(:result)                }
     let(:href)    { '/TEST_PATH/{n}/{m}/'   }
     let(:rel)     { 'TEST_REL'     }
     let(:title)   { 'TEST_TITLE'   }
@@ -12,33 +16,29 @@ module Leadlight
     let(:mapping) { {'n' => 'N_VALUE', 'm' => 'M_VALUE'} }
     let(:values)  { mapping.values }
 
+    before do
+      request.stub(raise_on_error: request)
+      service.stub(:get_representation!).and_yield(result).and_return(request)
+    end
+
     describe '#follow' do
       it 'calls service.get with the expanded href' do
-        service.should_receive(:get).with('/TEST_PATH/23/42/')
+        service.should_receive(:get_representation!).with('/TEST_PATH/23/42/')
         subject.follow(23,42)
       end
 
       it 'can accept a hash for template parameters' do
-        service.should_receive(:get).with('/TEST_PATH/AA/BB/')
+        service.should_receive(:get_representation!).with('/TEST_PATH/AA/BB/')
         subject.follow(:n => 'AA', 'm' => 'BB')
       end
 
       it 'leaves unrecognized params in the params hash alone' do
-        service.should_receive(:get).with('/TEST_PATH/AA/BB/', {'other' => 'XX'})
+        service.should_receive(:get_representation!).with('/TEST_PATH/AA/BB/', {'other' => 'XX'})
         subject.follow(:n => 'AA', 'm' => 'BB', :other => 'XX')
       end
 
       it 'returns the result of the get' do
-        request = stub
-        result = stub
-        service.should_receive(:get).
-          and_yield(result).
-          and_return(request)
         subject.follow(23,42).should equal(result)
-      end
-
-      it 'returns nothing' do
-        subject.follow(*values).should be_nil
       end
     end
   end

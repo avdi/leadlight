@@ -8,7 +8,7 @@ module Leadlight
       @href_template ||= Addressable::Template.new(href.to_s)
     end
 
-    [:options, :head, :get, :post, :put, :delete, :patch].each do |name|
+    HTTP_METHODS.each do |name|
       define_method(name) do |*args, &block|
         expanded_href = expand(args)
         service.public_send(name, expanded_href, *args, &block)
