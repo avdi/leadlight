@@ -1,5 +1,4 @@
 require 'fattr'
-require 'leadlight/entity'
 require 'addressable/template'
 require 'leadlight/tint'
 
