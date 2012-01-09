@@ -14,7 +14,7 @@ require 'leadlight/enumerable_representation'
 
 module Leadlight
 
-  VERSION = '0.0.1'
+  VERSION = '0.0.2'
 
   def self.build_service(target, &block)
     target.module_eval do
