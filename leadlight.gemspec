@@ -14,7 +14,7 @@ Gem::Specification.new do |s|
   ## the sub! line in the Rakefile
   s.name              = 'leadlight'
   s.version           = '0.0.1'
-  s.date              = '2012-01-02'
+  s.date              = '2012-01-09'
   s.rubyforge_project = 'leadlight'
 
   ## Make sure your summary is short. The description may be as long
@@ -65,22 +65,29 @@ Gem::Specification.new do |s|
   s.files = %w[
     Gemfile
     Gemfile.lock
+    Guardfile
     Rakefile
     leadlight.gemspec
     lib/leadlight.rb
     lib/leadlight/blank.rb
+    lib/leadlight/codec.rb
     lib/leadlight/enumerable_representation.rb
     lib/leadlight/errors.rb
     lib/leadlight/hyperlinkable.rb
     lib/leadlight/link.rb
     lib/leadlight/link_template.rb
     lib/leadlight/representation.rb
+    lib/leadlight/request.rb
     lib/leadlight/service.rb
     lib/leadlight/service_middleware.rb
     lib/leadlight/tint.rb
     lib/leadlight/tint_helper.rb
+    lib/leadlight/type.rb
     spec/cassettes/Leadlight/authorized_GitHub_example/_user/has_the_expected_content.yml
     spec/cassettes/Leadlight/authorized_GitHub_example/_user/indicates_the_expected_oath_scopes.yml
+    spec/cassettes/Leadlight/authorized_GitHub_example/adding_and_removing_team_members.yml
+    spec/cassettes/Leadlight/authorized_GitHub_example/adding_and_removing_team_members/.yml
+    spec/cassettes/Leadlight/authorized_GitHub_example/test_team/.yml
     spec/cassettes/Leadlight/basic_GitHub_example/_root/.yml
     spec/cassettes/Leadlight/basic_GitHub_example/_root/__location__/.yml
     spec/cassettes/Leadlight/basic_GitHub_example/_root/should_be_a_204_no_content.yml
@@ -95,13 +102,16 @@ Gem::Specification.new do |s|
     spec/cassettes/Leadlight/tinted_GitHub_example/user_followers/should_have_next_and_last_links.yml
     spec/cassettes/Leadlight/tinted_GitHub_example/user_link/exists.yml
     spec/cassettes/Leadlight/tinted_GitHub_example/user_link/links_to_the_expected_URL.yml
+    spec/leadlight/codec_spec.rb
     spec/leadlight/hyperlinkable_spec.rb
     spec/leadlight/link_spec.rb
     spec/leadlight/link_template_spec.rb
     spec/leadlight/representation_spec.rb
+    spec/leadlight/request_spec.rb
     spec/leadlight/service_middleware_spec.rb
     spec/leadlight/service_spec.rb
     spec/leadlight/tint_helper_spec.rb
+    spec/leadlight/type_spec.rb
     spec/leadlight_spec.rb
     spec/spec_helper_lite.rb
     spec/support/credentials.rb
