@@ -15,8 +15,9 @@ module Leadlight
       self
     end
 
-    def match(&block)
-      matched = instance_eval(&block)
+    def match(*matchers, &block_matcher)
+      matchers << block_matcher if block_matcher
+      matched = matchers.any?{|m| m === __getobj__}
       throw :halt_tint unless matched
     end
 

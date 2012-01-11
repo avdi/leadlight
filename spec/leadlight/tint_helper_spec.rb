@@ -76,10 +76,49 @@ module Leadlight
     end
 
     describe '#match' do
+      let(:successful_matcher) {
+        stub.tap do |matcher|
+          matcher.should_receive(:===).with(object).and_return(true)
+        end
+      }
+      let(:failing_matcher) {
+        stub.tap do |matcher|
+          matcher.should_receive(:===).with(object).and_return(false)
+        end
+      }
+
       it 'allows execution to proceed on true return' do
         object.should_receive(:baz)
         subject.exec_tint do
           match{ (2 + 2) == 4 }
+          baz
+        end
+      end
+
+      it 'can match a given param against the representation' do
+        matcher = successful_matcher
+        object.should_receive(:baz)
+        subject.exec_tint do
+          match matcher
+          baz
+        end
+      end
+
+      it 'can match several params against the representation' do
+        matchers = [ failing_matcher, successful_matcher ]
+        object.should_receive(:baz)
+        subject.exec_tint do
+          match *matchers
+          baz
+        end
+      end
+
+      it 'can match using params and a block' do
+        param_matcher = failing_matcher
+        block_matcher = proc { (2 + 2) == 4 }
+        object.should_receive(:baz)
+        subject.exec_tint do
+          match param_matcher, &block_matcher
           baz
         end
       end
