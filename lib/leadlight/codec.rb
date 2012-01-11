@@ -1,3 +1,5 @@
+require 'multi_json'
+
 module Leadlight
   class Codec
     Strategy ||= Struct.new(:name, :encoder, :decoder, :patterns)
