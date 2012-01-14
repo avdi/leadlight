@@ -16,12 +16,14 @@ module Leadlight
 
   VERSION = '0.0.2'
 
-  def self.build_service(target, &block)
-    target.module_eval do
-      extend ServiceClassMethods
-      include Service
+  def self.build_service(target=Class.new, &block)
+    target.tap do
+      target.module_eval do
+        extend ServiceClassMethods
+        include Service
+      end
+      target.module_eval(&block)
     end
-    target.module_eval(&block)
   end
 
   def self.build_connection_common(&common_connection_stack)

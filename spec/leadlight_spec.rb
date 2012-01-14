@@ -127,69 +127,67 @@ describe Leadlight, vcr: true do
   end
 
   describe 'authorized GitHub example', vcr: { match_requests_on: [:method, :uri]}do
-    class AuthorizedGithubService
-      Leadlight.build_service(self) do
-        url 'https://api.github.com'
+    AuthorizedGithubService ||= Leadlight.build_service do
+      url 'https://api.github.com'
 
-        tint 'root' do
-          match_path('/')
-          add_link_template '/users/{login}', 'user', 'Find user by login'
-          add_link_template '/orgs/{name}',   'organization'
-        end
+      tint 'root' do
+        match_path('/')
+        add_link_template '/users/{login}', 'user', 'Find user by login'
+        add_link_template '/orgs/{name}',   'organization'
+      end
 
-        tint 'auth_scopes' do
-          extend do
-            def oauth_scopes
-              __response__.headers['X-OAuth-Scopes'].to_s.strip.split(/\W+/)
-            end
+      tint 'auth_scopes' do
+        extend do
+          def oauth_scopes
+            __response__.headers['X-OAuth-Scopes'].to_s.strip.split(/\W+/)
           end
         end
+      end
 
-        tint 'organization' do
-          match_path(%r{^/orgs/\w+$})
-          type :organization
-          add_link "#{__location__}/teams", 'teams'
+      tint 'organization' do
+        match_path(%r{^/orgs/\w+$})
+        type :organization
+        add_link "#{__location__}/teams", 'teams'
 
-          extend do
-            def team_for_name(name)
-              teams.get(name)
-            end
+        extend do
+          def team_for_name(name)
+            teams.get(name)
           end
         end
+      end
 
-        tint 'teamlist' do
-          match_path(%r{^/orgs/\w+/teams$})
+      tint 'teamlist' do
+        match_path(%r{^/orgs/\w+/teams$})
 
-          add_link_set('child', :get) do
-            map{|team|
-              {href: team['url'], title: team['name']}
-            }
+        add_link_set('child', :get) do
+          map{|team|
+            {href: team['url'], title: team['name']}
+          }
+        end
+      end
+
+      tint 'team' do
+        match_template('/teams/{id}')
+        type :team
+        
+        add_link "#{__location__}/members", 'members'
+        add_link_template "#{__location__}/members/{id}", 'member'
+
+        extend do
+          def add_member(member_name)
+            link('member').put(member_name).submit_and_wait.raise_on_error
+          end
+
+          def remove_member(member_name)
+            link('member').delete(member_name).submit_and_wait.raise_on_error
           end
         end
+      end
 
-        tint 'team' do
-          match_template('/teams/{id}')
-          type :team
-          
-          add_link "#{__location__}/members", 'members'
-          add_link_template "#{__location__}/members/{id}", 'member'
+      type :organization do
+      end
 
-          extend do
-            def add_member(member_name)
-              link('member').put(member_name).submit_and_wait.raise_on_error
-            end
-
-            def remove_member(member_name)
-              link('member').delete(member_name).submit_and_wait.raise_on_error
-            end
-          end
-        end
-
-        type :organization do
-        end
-
-        type :team do
-        end
+      type :team do
       end
 
       def prepare_request(request)

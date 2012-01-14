@@ -29,7 +29,7 @@ module Leadlight
       @state           = :initialized
       @env             = nil
       @response        = nil
-      super
+      super()
     end
 
     def completed?
