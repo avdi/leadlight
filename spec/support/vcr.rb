@@ -12,7 +12,7 @@ VCR.configure do |c|
   }
   c.default_cassette_options = {
     match_requests_on: [:method, :uri, :headers],
-    record: :new_episodes
+    record: ENV.fetch('VCR_RECORD'){ :new_episodes }.to_sym
   }
 end
 
