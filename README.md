@@ -52,13 +52,21 @@ All abstractions are leaky. Provide ample and convenient access points into the
 guts of the request lifecycle for situations when the defaults are not
 sufficient.
 
+### Quality
 
-[link header]:   http://tools.ietf.org/html/draft-nottingham-http-link-header
-[uri templates]: http://tools.ietf.org/html/draft-gregorio-uritemplate
-[patch]:         http://tools.ietf.org/html/rfc5789
-[etags]:         http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.19
-[json-schema]:   http://tools.ietf.org/html/draft-zyp-json-schema
-[faraday]:       https://github.com/technoweenie/faraday
+Code quality is important. [Code Climate][] keeps a
+[close eye on Leadlight][leadlight_climate] instilling confidence and showing
+how any technical debt can be paid down.
+
+
+[link header]:       http://tools.ietf.org/html/draft-nottingham-http-link-header
+[uri templates]:     http://tools.ietf.org/html/draft-gregorio-uritemplate
+[patch]:             http://tools.ietf.org/html/rfc5789
+[etags]:             http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.19
+[json-schema]:       http://tools.ietf.org/html/draft-zyp-json-schema
+[faraday]:           https://github.com/technoweenie/faraday
+[code climate]:      https://codeclimate.com
+[leadlight_climate]: https://codeclimate.com/github/avdi/leadlight
 
 
 ## Installation
