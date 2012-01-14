@@ -1,2 +1,5 @@
-rvm use --create 1.9.2@leadlight
+rvm use --create @leadlight
+rvm gemset import
+bundle
+
 
