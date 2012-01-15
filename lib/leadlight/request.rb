@@ -6,7 +6,6 @@ require 'leadlight/errors'
 require 'leadlight/blank'
 require 'leadlight/hyperlinkable'
 require 'leadlight/representation'
-require 'leadlight/deadline'
 
 module Leadlight
   class Request
