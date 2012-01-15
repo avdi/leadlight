@@ -4,7 +4,7 @@ require 'leadlight/service'
 module Leadlight
   describe Service do
     subject              { klass.new(service_options)                 }
-    let(:klass)          { Class.new do include Service end           }
+    let(:klass)          { Class.new do include Service; end          }
     let(:connection)     { stub(:connection, get: response)           }
     let(:representation) { stub(:representation)                      }
     let(:response)       { stub(:response, env: env)                  }
@@ -12,64 +12,63 @@ module Leadlight
     let(:service_options)        { {codec: codec}                     }
     let(:codec)          { stub(:codec)                               }
     let(:request)        { stub(:request).as_null_object              }
+    let(:request_class)  { stub(:request_class, new: request)         }
 
     before do
-      subject.stub(connection: connection, url: nil)
+      subject.stub(connection: connection, 
+                   url: nil,
+                   request_class: request_class)
     end
 
     shared_examples_for "an HTTP client" do |http_method|
       describe "##{http_method}" do
-        before do
-          Request.stub(:new).and_return(request)
-        end
-
         it 'returns a new request object' do
-          Request.should_receive(:new).and_return(request)
+          request_class.should_receive(:new).and_return(request)
           subject.public_send(http_method, '/').should equal(request)
         end
 
+        it 'passes self to the request' do
+          request_class.should_receive(:new).
+            with(subject, anything, anything, anything, anything, anything).
+            and_return(request)
+          subject.public_send(http_method, '/somepath')
+        end
+
         it 'passes the connection to the request' do
-          Request.should_receive(:new).
-            with(connection, anything, anything, anything, anything).
+          request_class.should_receive(:new).
+            with(anything, connection, anything, anything, anything, anything).
             and_return(request)
           subject.public_send(http_method, '/somepath')
         end
 
         it 'passes the path to the request' do
-          Request.should_receive(:new).
-            with(anything, '/somepath', anything, anything, anything).
+          request_class.should_receive(:new).
+            with(anything, anything, '/somepath', anything, anything, anything).
             and_return(request)
           subject.public_send(http_method, '/somepath')
         end
 
         it 'passes the method to the request' do
-          Request.should_receive(:new).
-            with(anything, anything, http_method, anything, anything).
+          request_class.should_receive(:new).
+            with(anything, anything, anything, http_method, anything, anything).
             and_return(request)
           subject.public_send(http_method, '/somepath')
         end
 
         it 'passes the params to the request' do
           params = stub
-          Request.should_receive(:new).
-            with(anything, anything, anything, params, anything).
+          request_class.should_receive(:new).
+            with(anything, anything, anything, anything, params, anything).
             and_return(request)
           subject.public_send(http_method, '/somepath', params)
         end
 
         it 'passes the body to the request' do
           body = stub
-          Request.should_receive(:new).
-            with(anything, anything, anything, anything, body).
+          request_class.should_receive(:new).
+            with(anything, anything, anything, anything, anything, body).
             and_return(request)
           subject.public_send(http_method, '/somepath', {}, body)
-        end
-
-        it 'adds a prepare_request callback' do
-          faraday_request = stub(:faraday_request)
-          request.stub(:on_prepare_request).and_yield(faraday_request)
-          subject.should_receive(:prepare_request).with(faraday_request)
-          subject.public_send(http_method, '/')
         end
 
         context 'given a block' do

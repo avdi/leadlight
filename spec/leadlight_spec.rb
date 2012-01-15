@@ -116,7 +116,7 @@ describe Leadlight, vcr: true do
         subject.each do |f|
           followers << f
         end
-        followers.should have(178).items
+        followers.size.should be > 150
       end
 
       it 'should be enumerable over page boundaries' do
@@ -129,6 +129,15 @@ describe Leadlight, vcr: true do
   describe 'authorized GitHub example', vcr: { match_requests_on: [:method, :uri]}do
     AuthorizedGithubService ||= Leadlight.build_service do
       url 'https://api.github.com'
+
+      # Tints will skip error responses by default
+      tint 'errors', :status => :error do
+        extend do
+          def exception_message
+            self['message'] || super
+          end
+        end
+      end
 
       tint 'root' do
         match_path('/')
@@ -146,7 +155,6 @@ describe Leadlight, vcr: true do
 
       tint 'organization' do
         match_path(%r{^/orgs/\w+$})
-        type :organization
         add_link "#{__location__}/teams", 'teams'
 
         extend do
@@ -168,7 +176,6 @@ describe Leadlight, vcr: true do
 
       tint 'team' do
         match_template('/teams/{id}')
-        type :team
         
         add_link "#{__location__}/members", 'members'
         add_link_template "#{__location__}/members/{id}", 'member'
@@ -184,15 +191,15 @@ describe Leadlight, vcr: true do
         end
       end
 
-      type :organization do
+      on_prepare_request do |event, request|
+        # 'request' is the Faraday request being prepared
+        #
+        # 'event.source' is the Leadlight request, which delegates
+        # #service_options to the service
+        request.headers['Authorization'] = 
+          "Bearer #{event.source.service_options[:oauth2_token]}"
       end
 
-      type :team do
-      end
-
-      def prepare_request(request)
-        request.headers['Authorization'] = "Bearer #{service_options[:oauth2_token]}"
-      end
     end
 
     subject { session }
@@ -223,8 +230,9 @@ describe Leadlight, vcr: true do
     specify "adding and removing team members" do
       user = session.root.user("leadlight-test")
       user.should_not be_empty
-      team = session.root.organization('shiprise').
-        teams.get('Leadlight Test Team')
+      org = session.root.organization('shiprise')
+      teams = org.teams
+      team = teams.get('Leadlight Test Team')
       team.should_not be_empty
       team.add_member('leadlight-test')
         team.members.map{|m| m['login']}.should include('leadlight-test')

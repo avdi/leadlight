@@ -1,384 +1,373 @@
----
-http_interactions:
-- request:
+--- 
+http_interactions: 
+- request: 
     method: get
     uri: https://api.github.com/
-    body: ''
-    headers:
-      Authorization:
+    body: ""
+    headers: 
+      Authorization: 
       - <AUTH FILTERED>
-      Accept:
-      - application/json, text/x-yaml, application/xml, application/xhtml+xml, text/html,
-        text/plain
-  response:
-    status:
+      Accept: 
+      - application/json, text/x-yaml, application/xml, application/xhtml+xml, text/html, text/plain
+  response: 
+    status: 
       code: 204
-      message: !!null 
-    headers:
-      server:
+      message: 
+    headers: 
+      server: 
       - nginx/1.0.4
-      date:
-      - Mon, 09 Jan 2012 04:26:53 GMT
-      connection:
+      date: 
+      - Sun, 15 Jan 2012 19:38:43 GMT
+      connection: 
       - close
-      status:
+      status: 
       - 204 No Content
-      x-ratelimit-limit:
-      - '5000'
-      etag:
-      - ! '"d41d8cd98f00b204e9800998ecf8427e"'
-      x-oauth-scopes:
+      x-ratelimit-limit: 
+      - "5000"
+      etag: 
+      - "\"d41d8cd98f00b204e9800998ecf8427e\""
+      x-oauth-scopes: 
       - repo
-      x-ratelimit-remaining:
-      - '4961'
-    body: ''
-    http_version: !!null 
-  recorded_at: Mon, 09 Jan 2012 04:26:51 GMT
-- request:
+      x-ratelimit-remaining: 
+      - "4999"
+    body: ""
+    http_version: 
+  recorded_at: Sun, 15 Jan 2012 19:38:43 GMT
+- request: 
     method: get
     uri: https://api.github.com/users/leadlight-test
-    body: ''
-    headers:
-      Authorization:
+    body: ""
+    headers: 
+      Authorization: 
       - <AUTH FILTERED>
-      Accept:
-      - application/json, text/x-yaml, application/xml, application/xhtml+xml, text/html,
-        text/plain
-  response:
-    status:
+      Accept: 
+      - application/json, text/x-yaml, application/xml, application/xhtml+xml, text/html, text/plain
+  response: 
+    status: 
       code: 200
-      message: !!null 
-    headers:
-      server:
+      message: 
+    headers: 
+      server: 
       - nginx/1.0.4
-      date:
-      - Mon, 09 Jan 2012 04:26:53 GMT
-      content-type:
+      date: 
+      - Sun, 15 Jan 2012 19:38:43 GMT
+      content-type: 
       - application/json; charset=utf-8
-      transfer-encoding:
+      transfer-encoding: 
       - chunked
-      connection:
+      connection: 
       - close
-      status:
+      status: 
       - 200 OK
-      x-ratelimit-limit:
-      - '5000'
-      etag:
-      - ! '"840c0261b10d96847d2cae0bbe7aa71e"'
-      x-oauth-scopes:
+      x-ratelimit-limit: 
+      - "5000"
+      etag: 
+      - "\"9f36bc2e54d4dfe4cce0040c2c1a4594\""
+      x-oauth-scopes: 
       - repo
-      x-ratelimit-remaining:
-      - '4960'
-      x-accepted-oauth-scopes:
+      x-ratelimit-remaining: 
+      - "4998"
+      x-accepted-oauth-scopes: 
       - user
-    body: ! '{"type":"User","followers":0,"html_url":"https://github.com/leadlight-test","created_at":"2012-01-09T02:38:20Z","login":"leadlight-test","gravatar_id":"71a3f4f0d28bcb9c10fe96bbfce8fef8","public_repos":0,"following":0,"public_gists":0,"url":"https://api.github.com/users/leadlight-test","id":1314019,"avatar_url":"https://secure.gravatar.com/avatar/71a3f4f0d28bcb9c10fe96bbfce8fef8?d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-140.png"}'
-    http_version: !!null 
-  recorded_at: Mon, 09 Jan 2012 04:26:51 GMT
-- request:
+    body: "{\"type\":\"User\",\"public_gists\":0,\"created_at\":\"2012-01-09T02:38:20Z\",\"avatar_url\":\"https://secure.gravatar.com/avatar/71a3f4f0d28bcb9c10fe96bbfce8fef8?d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-140.png\",\"url\":\"https://api.github.com/users/leadlight-test\",\"login\":\"leadlight-test\",\"followers\":0,\"following\":0,\"html_url\":\"https://github.com/leadlight-test\",\"id\":1314019,\"public_repos\":0,\"gravatar_id\":\"71a3f4f0d28bcb9c10fe96bbfce8fef8\"}"
+    http_version: 
+  recorded_at: Sun, 15 Jan 2012 19:38:43 GMT
+- request: 
     method: get
     uri: https://api.github.com/
-    body: ''
-    headers:
-      Authorization:
+    body: ""
+    headers: 
+      Authorization: 
       - <AUTH FILTERED>
-      Accept:
-      - application/json, text/x-yaml, application/xml, application/xhtml+xml, text/html,
-        text/plain
-  response:
-    status:
+      Accept: 
+      - application/json, text/x-yaml, application/xml, application/xhtml+xml, text/html, text/plain
+  response: 
+    status: 
       code: 204
-      message: !!null 
-    headers:
-      server:
+      message: 
+    headers: 
+      server: 
       - nginx/1.0.4
-      date:
-      - Mon, 09 Jan 2012 04:26:53 GMT
-      connection:
+      date: 
+      - Sun, 15 Jan 2012 19:38:43 GMT
+      connection: 
       - close
-      status:
+      status: 
       - 204 No Content
-      x-ratelimit-limit:
-      - '5000'
-      etag:
-      - ! '"d41d8cd98f00b204e9800998ecf8427e"'
-      x-oauth-scopes:
+      x-ratelimit-limit: 
+      - "5000"
+      etag: 
+      - "\"d41d8cd98f00b204e9800998ecf8427e\""
+      x-oauth-scopes: 
       - repo
-      x-ratelimit-remaining:
-      - '4959'
-    body: ''
-    http_version: !!null 
-  recorded_at: Mon, 09 Jan 2012 04:26:52 GMT
-- request:
+      x-ratelimit-remaining: 
+      - "4997"
+    body: ""
+    http_version: 
+  recorded_at: Sun, 15 Jan 2012 19:38:43 GMT
+- request: 
     method: get
     uri: https://api.github.com/orgs/shiprise
-    body: ''
-    headers:
-      Authorization:
+    body: ""
+    headers: 
+      Authorization: 
       - <AUTH FILTERED>
-      Accept:
-      - application/json, text/x-yaml, application/xml, application/xhtml+xml, text/html,
-        text/plain
-  response:
-    status:
+      Accept: 
+      - application/json, text/x-yaml, application/xml, application/xhtml+xml, text/html, text/plain
+  response: 
+    status: 
       code: 200
-      message: !!null 
-    headers:
-      server:
+      message: 
+    headers: 
+      server: 
       - nginx/1.0.4
-      date:
-      - Mon, 09 Jan 2012 04:26:54 GMT
-      content-type:
+      date: 
+      - Sun, 15 Jan 2012 19:38:44 GMT
+      content-type: 
       - application/json; charset=utf-8
-      transfer-encoding:
+      transfer-encoding: 
       - chunked
-      connection:
+      connection: 
       - close
-      status:
+      status: 
       - 200 OK
-      x-ratelimit-limit:
-      - '5000'
-      etag:
-      - ! '"c6a60d604b660c4c194cb914dd0da09a"'
-      x-oauth-scopes:
+      x-ratelimit-limit: 
+      - "5000"
+      etag: 
+      - "\"5e3c5fb8b3ef2d076c983277730720d0\""
+      x-oauth-scopes: 
       - repo
-      x-ratelimit-remaining:
-      - '4958'
-      x-accepted-oauth-scopes:
+      x-ratelimit-remaining: 
+      - "4996"
+      x-accepted-oauth-scopes: 
       - repo
-    body: ! '{"type":"Organization","location":null,"plan":{"private_repos":10,"space":2516582,"name":"bronze"},"followers":0,"company":null,"blog":"http://shiprise.net","email":"avdi@shiprise.net","disk_usage":552,"total_private_repos":1,"billing_email":"avdi@shiprise.net","created_at":"2011-10-27T20:49:51Z","login":"ShipRise","avatar_url":"https://secure.gravatar.com/avatar/6dd3c12e97a46ff08c358542cae955e2?d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-orgs.png","owned_private_repos":1,"public_gists":0,"following":0,"private_gists":0,"public_repos":0,"name":"ShipRise","html_url":"https://github.com/ShipRise","url":"https://api.github.com/orgs/ShipRise","id":1156570,"collaborators":0}'
-    http_version: !!null 
-  recorded_at: Mon, 09 Jan 2012 04:26:52 GMT
-- request:
+    body: "{\"type\":\"Organization\",\"collaborators\":0,\"created_at\":\"2011-10-27T20:49:51Z\",\"email\":\"avdi@shiprise.net\",\"total_private_repos\":1,\"public_repos\":0,\"url\":\"https://api.github.com/orgs/ShipRise\",\"login\":\"ShipRise\",\"plan\":{\"private_repos\":10,\"space\":2516582,\"name\":\"bronze\"},\"followers\":0,\"blog\":\"http://shiprise.net\",\"owned_private_repos\":1,\"following\":0,\"billing_email\":\"avdi@shiprise.net\",\"avatar_url\":\"https://secure.gravatar.com/avatar/6dd3c12e97a46ff08c358542cae955e2?d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-orgs.png\",\"disk_usage\":552,\"public_gists\":0,\"html_url\":\"https://github.com/ShipRise\",\"name\":\"ShipRise\",\"location\":null,\"id\":1156570,\"private_gists\":0,\"company\":null}"
+    http_version: 
+  recorded_at: Sun, 15 Jan 2012 19:38:44 GMT
+- request: 
     method: get
     uri: https://api.github.com/orgs/shiprise/teams
-    body: ''
-    headers:
-      Authorization:
+    body: ""
+    headers: 
+      Authorization: 
       - <AUTH FILTERED>
-      Accept:
-      - application/json, text/x-yaml, application/xml, application/xhtml+xml, text/html,
-        text/plain
-  response:
-    status:
+      Accept: 
+      - application/json, text/x-yaml, application/xml, application/xhtml+xml, text/html, text/plain
+  response: 
+    status: 
       code: 200
-      message: !!null 
-    headers:
-      server:
+      message: 
+    headers: 
+      server: 
       - nginx/1.0.4
-      date:
-      - Mon, 09 Jan 2012 04:26:54 GMT
-      content-type:
+      date: 
+      - Sun, 15 Jan 2012 19:38:44 GMT
+      content-type: 
       - application/json; charset=utf-8
-      transfer-encoding:
+      transfer-encoding: 
       - chunked
-      connection:
+      connection: 
       - close
-      status:
+      status: 
       - 200 OK
-      x-ratelimit-limit:
-      - '5000'
-      etag:
-      - ! '"7bacecfddc356d3ba366ba12652db603"'
-      x-oauth-scopes:
+      x-ratelimit-limit: 
+      - "5000"
+      etag: 
+      - "\"00457d8d71ef8c5f77fd729ddcc288b7\""
+      x-oauth-scopes: 
       - repo
-      x-ratelimit-remaining:
-      - '4957'
-      x-accepted-oauth-scopes:
+      x-ratelimit-remaining: 
+      - "4995"
+      x-accepted-oauth-scopes: 
       - repo
-    body: ! '[{"name":"BitBindery Development","url":"https://api.github.com/teams/111894","id":111894},{"name":"Leadlight
-      Test Team","url":"https://api.github.com/teams/127491","id":127491},{"name":"Owners","url":"https://api.github.com/teams/104018","id":104018}]'
-    http_version: !!null 
-  recorded_at: Mon, 09 Jan 2012 04:26:52 GMT
-- request:
+    body: "[{\"url\":\"https://api.github.com/teams/111894\",\"name\":\"BitBindery Development\",\"id\":111894},{\"url\":\"https://api.github.com/teams/127491\",\"name\":\"Leadlight Test Team\",\"id\":127491},{\"url\":\"https://api.github.com/teams/104018\",\"name\":\"Owners\",\"id\":104018}]"
+    http_version: 
+  recorded_at: Sun, 15 Jan 2012 19:38:44 GMT
+- request: 
     method: get
     uri: https://api.github.com/teams/127491
-    body: ''
-    headers:
-      Authorization:
+    body: ""
+    headers: 
+      Authorization: 
       - <AUTH FILTERED>
-      Accept:
-      - application/json, text/x-yaml, application/xml, application/xhtml+xml, text/html,
-        text/plain
-  response:
-    status:
+      Accept: 
+      - application/json, text/x-yaml, application/xml, application/xhtml+xml, text/html, text/plain
+  response: 
+    status: 
       code: 200
-      message: !!null 
-    headers:
-      server:
+      message: 
+    headers: 
+      server: 
       - nginx/1.0.4
-      date:
-      - Mon, 09 Jan 2012 04:26:54 GMT
-      content-type:
+      date: 
+      - Sun, 15 Jan 2012 19:39:51 GMT
+      content-type: 
       - application/json; charset=utf-8
-      transfer-encoding:
+      transfer-encoding: 
       - chunked
-      connection:
+      connection: 
       - close
-      status:
+      status: 
       - 200 OK
-      x-ratelimit-limit:
-      - '5000'
-      etag:
-      - ! '"028df71b90485d72587c23be1161baed"'
-      x-oauth-scopes:
+      x-ratelimit-limit: 
+      - "5000"
+      etag: 
+      - "\"c8fb299f3c9bf7ddfd50e5ce06275345\""
+      x-oauth-scopes: 
       - repo
-      x-ratelimit-remaining:
-      - '4956'
-      x-accepted-oauth-scopes:
+      x-ratelimit-remaining: 
+      - "4986"
+      x-accepted-oauth-scopes: 
       - repo
-    body: ! '{"repos_count":0,"permission":"pull","name":"Leadlight Test Team","members_count":1,"url":"https://api.github.com/teams/127491","id":127491}'
-    http_version: !!null 
-  recorded_at: Mon, 09 Jan 2012 04:26:53 GMT
-- request:
+    body: "{\"members_count\":0,\"repos_count\":0,\"url\":\"https://api.github.com/teams/127491\",\"permission\":\"pull\",\"name\":\"Leadlight Test Team\",\"id\":127491}"
+    http_version: 
+  recorded_at: Sun, 15 Jan 2012 19:39:51 GMT
+- request: 
     method: put
     uri: https://api.github.com/teams/127491/members/leadlight-test
-    body: ''
-    headers:
-      Authorization:
+    body: ""
+    headers: 
+      Authorization: 
       - <AUTH FILTERED>
-      Accept:
-      - application/json, text/x-yaml, application/xml, application/xhtml+xml, text/html,
-        text/plain
-  response:
-    status:
+      Accept: 
+      - application/json, text/x-yaml, application/xml, application/xhtml+xml, text/html, text/plain
+  response: 
+    status: 
       code: 204
-      message: !!null 
-    headers:
-      server:
+      message: 
+    headers: 
+      server: 
       - nginx/1.0.4
-      date:
-      - Mon, 09 Jan 2012 04:26:55 GMT
-      connection:
+      date: 
+      - Sun, 15 Jan 2012 19:39:51 GMT
+      connection: 
       - close
-      status:
+      status: 
       - 204 No Content
-      x-ratelimit-limit:
-      - '5000'
-      etag:
-      - ! '"d41d8cd98f00b204e9800998ecf8427e"'
-      x-oauth-scopes:
+      x-ratelimit-limit: 
+      - "5000"
+      etag: 
+      - "\"d41d8cd98f00b204e9800998ecf8427e\""
+      x-oauth-scopes: 
       - repo
-      x-ratelimit-remaining:
-      - '4955'
-      x-accepted-oauth-scopes:
+      x-ratelimit-remaining: 
+      - "4985"
+      x-accepted-oauth-scopes: 
       - repo
-    body: ''
-    http_version: !!null 
-  recorded_at: Mon, 09 Jan 2012 04:26:53 GMT
-- request:
+    body: ""
+    http_version: 
+  recorded_at: Sun, 15 Jan 2012 19:39:51 GMT
+- request: 
     method: get
     uri: https://api.github.com/teams/127491/members
-    body: ''
-    headers:
-      Authorization:
+    body: ""
+    headers: 
+      Authorization: 
       - <AUTH FILTERED>
-      Accept:
-      - application/json, text/x-yaml, application/xml, application/xhtml+xml, text/html,
-        text/plain
-  response:
-    status:
+      Accept: 
+      - application/json, text/x-yaml, application/xml, application/xhtml+xml, text/html, text/plain
+  response: 
+    status: 
       code: 200
-      message: !!null 
-    headers:
-      server:
+      message: 
+    headers: 
+      server: 
       - nginx/1.0.4
-      date:
-      - Mon, 09 Jan 2012 04:26:55 GMT
-      content-type:
+      date: 
+      - Sun, 15 Jan 2012 19:39:51 GMT
+      content-type: 
       - application/json; charset=utf-8
-      transfer-encoding:
+      transfer-encoding: 
       - chunked
-      connection:
+      connection: 
       - close
-      status:
+      status: 
       - 200 OK
-      x-ratelimit-limit:
-      - '5000'
-      etag:
-      - ! '"584015087edc658ced2457c05965827a"'
-      x-oauth-scopes:
+      x-ratelimit-limit: 
+      - "5000"
+      etag: 
+      - "\"e851f02487ca5c26e7770f526f22e4a1\""
+      x-oauth-scopes: 
       - repo
-      x-ratelimit-remaining:
-      - '4954'
-      x-accepted-oauth-scopes:
+      x-ratelimit-remaining: 
+      - "4984"
+      x-accepted-oauth-scopes: 
       - repo
-    body: ! '[{"gravatar_id":"71a3f4f0d28bcb9c10fe96bbfce8fef8","login":"leadlight-test","avatar_url":"https://secure.gravatar.com/avatar/71a3f4f0d28bcb9c10fe96bbfce8fef8?d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-140.png","url":"https://api.github.com/users/leadlight-test","id":1314019}]'
-    http_version: !!null 
-  recorded_at: Mon, 09 Jan 2012 04:26:53 GMT
-- request:
+    body: "[{\"avatar_url\":\"https://secure.gravatar.com/avatar/71a3f4f0d28bcb9c10fe96bbfce8fef8?d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-140.png\",\"url\":\"https://api.github.com/users/leadlight-test\",\"login\":\"leadlight-test\",\"id\":1314019,\"gravatar_id\":\"71a3f4f0d28bcb9c10fe96bbfce8fef8\"}]"
+    http_version: 
+  recorded_at: Sun, 15 Jan 2012 19:39:51 GMT
+- request: 
     method: delete
     uri: https://api.github.com/teams/127491/members/leadlight-test
-    body: ''
-    headers:
-      Authorization:
+    body: ""
+    headers: 
+      Authorization: 
       - <AUTH FILTERED>
-      Accept:
-      - application/json, text/x-yaml, application/xml, application/xhtml+xml, text/html,
-        text/plain
-  response:
-    status:
+      Accept: 
+      - application/json, text/x-yaml, application/xml, application/xhtml+xml, text/html, text/plain
+  response: 
+    status: 
       code: 204
-      message: !!null 
-    headers:
-      server:
+      message: 
+    headers: 
+      server: 
       - nginx/1.0.4
-      date:
-      - Mon, 09 Jan 2012 04:29:59 GMT
-      connection:
+      date: 
+      - Sun, 15 Jan 2012 19:39:52 GMT
+      connection: 
       - close
-      status:
+      status: 
       - 204 No Content
-      x-ratelimit-limit:
-      - '5000'
-      etag:
-      - ! '"d41d8cd98f00b204e9800998ecf8427e"'
-      x-oauth-scopes:
+      x-ratelimit-limit: 
+      - "5000"
+      etag: 
+      - "\"d41d8cd98f00b204e9800998ecf8427e\""
+      x-oauth-scopes: 
       - repo
-      x-ratelimit-remaining:
-      - '4953'
-      x-accepted-oauth-scopes:
+      x-ratelimit-remaining: 
+      - "4983"
+      x-accepted-oauth-scopes: 
       - repo
-    body: ''
-    http_version: !!null 
-  recorded_at: Mon, 09 Jan 2012 04:29:57 GMT
-- request:
+    body: ""
+    http_version: 
+  recorded_at: Sun, 15 Jan 2012 19:39:52 GMT
+- request: 
     method: get
     uri: https://api.github.com/teams/127491/members
-    body: ''
-    headers:
-      Authorization:
+    body: ""
+    headers: 
+      Authorization: 
       - <AUTH FILTERED>
-      Accept:
-      - application/json, text/x-yaml, application/xml, application/xhtml+xml, text/html,
-        text/plain
-  response:
-    status:
+      Accept: 
+      - application/json, text/x-yaml, application/xml, application/xhtml+xml, text/html, text/plain
+  response: 
+    status: 
       code: 200
-      message: !!null 
-    headers:
-      server:
+      message: 
+    headers: 
+      server: 
       - nginx/1.0.4
-      date:
-      - Mon, 09 Jan 2012 04:29:59 GMT
-      content-type:
+      date: 
+      - Sun, 15 Jan 2012 19:39:52 GMT
+      content-type: 
       - application/json; charset=utf-8
-      connection:
+      connection: 
       - close
-      status:
+      status: 
       - 200 OK
-      x-ratelimit-limit:
-      - '5000'
-      etag:
-      - ! '"d751713988987e9331980363e24189ce"'
-      x-oauth-scopes:
+      x-ratelimit-limit: 
+      - "5000"
+      etag: 
+      - "\"d751713988987e9331980363e24189ce\""
+      x-oauth-scopes: 
       - repo
-      x-ratelimit-remaining:
-      - '4952'
-      content-length:
-      - '2'
-      x-accepted-oauth-scopes:
+      x-ratelimit-remaining: 
+      - "4982"
+      content-length: 
+      - "2"
+      x-accepted-oauth-scopes: 
       - repo
-    body: ! '[]'
-    http_version: !!null 
-  recorded_at: Mon, 09 Jan 2012 04:29:57 GMT
+    body: "[]"
+    http_version: 
+  recorded_at: Sun, 15 Jan 2012 19:39:52 GMT
 recorded_with: VCR 2.0.0.rc1

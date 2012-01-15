@@ -21,6 +21,10 @@ module Leadlight
       target.module_eval do
         extend ServiceClassMethods
         include Service
+        extend SingleForwardable
+        
+        request_events = request_class.hooks.map(&:name)
+        def_delegators :request_class, *request_events
       end
       target.module_eval(&block)
     end
@@ -68,10 +72,14 @@ module Leadlight
       ]
     end
 
+    def request_class
+      @request_class ||= Class.new(Request)
+    end
+
     private
 
-    def tint(name, &block)
-      self.tints << Tint.new(name, &block)
+    def tint(name, options={}, &block)
+      self.tints << Tint.new(name, options, &block)
     end
 
     def type(name, &block)

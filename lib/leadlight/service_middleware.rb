@@ -1,7 +1,4 @@
 require 'multi_json'
-require 'leadlight/blank'
-require 'leadlight/hyperlinkable'
-require 'leadlight/representation'
 
 module Leadlight
 
@@ -15,6 +12,13 @@ module Leadlight
       env[:leadlight_service] = @service
       env[:request_headers]['Accept'] = default_accept_types
       @app.call(env).on_complete do |env|
+        # TODO get a callback in here for stuff that needs to happen 
+        # BEFORE the representation, such as error code checking
+        #
+        # Actually, this should construct an Error representation if
+        # non-200, and then raise_on_error should raise it.
+        #
+        # And tints shouldn't tint error representations.
         env[:leadlight_representation] = represent(env)
       end
     end
@@ -33,17 +37,8 @@ module Leadlight
     end
 
     def represent(env)
-      content_type = env[:response_headers]['Content-Type']
-      representation = if (env[:body] || '').size > 0
-        ::MultiJson.decode(env[:body])
-      else
-        Blank.new
-      end
-      representation.
-        extend(Representation).
-        initialize_representation(env[:leadlight_service], env[:url], env[:response]).
-        extend(Hyperlinkable).
-        apply_all_tints
+      leadlight_request = env[:request].fetch(:leadlight_request)
+      leadlight_request.represent(env)
     end
   end
 

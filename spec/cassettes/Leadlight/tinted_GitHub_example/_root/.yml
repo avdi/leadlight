@@ -15,7 +15,7 @@ http_interactions:
       server: 
       - nginx/1.0.4
       date: 
-      - Mon, 09 Jan 2012 02:31:44 GMT
+      - Sun, 15 Jan 2012 19:38:32 GMT
       connection: 
       - close
       status: 
@@ -28,5 +28,5 @@ http_interactions:
       - "4996"
     body: ""
     http_version: 
-  recorded_at: Mon, 09 Jan 2012 02:31:42 GMT
+  recorded_at: Sun, 15 Jan 2012 19:38:32 GMT
 recorded_with: VCR 2.0.0.rc1

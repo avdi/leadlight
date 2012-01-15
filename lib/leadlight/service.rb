@@ -12,7 +12,7 @@ module Leadlight
     fattr(:codec) { service_options.fetch(:codec) { Codec.new } }
 
     def_delegators :codec, :encode, :decode
-    def_delegators 'self.class', :types, :type_for_name
+    def_delegators 'self.class', :types, :type_for_name, :request_class
 
     def initialize(service_options={})
       @service_options = service_options
@@ -52,18 +52,11 @@ module Leadlight
     private
 
     def perform_request(url, http_method, params={}, body=nil, &representation_handler)
-      req = Request.new(connection, url, http_method, params, body)
-      req.on_prepare_request do |faraday_request|
-        prepare_request(faraday_request)
-      end
+      req = request_class.new(self, connection, url, http_method, params, body)
       if representation_handler
         req.submit_and_wait(&representation_handler)
       end
       req
-    end
-
-    def prepare_request(request)
-      # Override in subclasses
     end
 
     def connection_stack

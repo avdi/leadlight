@@ -3,14 +3,18 @@ require 'leadlight/tint_helper'
 module Leadlight
   class Tint < Module
     attr_reader :name
-    def initialize(name, &block)
+    def initialize(name, options={}, &block)
       @name = @tint_name  = name
+      status_patterns = Array(options.fetch(:status) { :success })
       tint = self
       super(){
         define_method(:__apply_tint__) do
           super()
           helper = TintHelper.new(self, tint)
-          helper.exec_tint(&block)
+          helper.exec_tint do
+            match_status(*status_patterns)
+            instance_eval(&block)
+          end
         end
       }
     end

@@ -10,7 +10,8 @@ module Leadlight
     }
     let(:response) {
       stub(:response,
-           env:          env)
+           env:          env,
+           status:       200)
     }
     let(:env) { {response_headers: headers} }
     let(:headers) {
@@ -70,6 +71,32 @@ module Leadlight
         object.should_not_receive(:baz)
         subject.exec_tint do
           match_content_type('text/plain')
+          baz
+        end
+      end
+    end
+
+    describe '#match_status' do
+      it 'allows execution to proceed on match' do
+        object.should_receive(:baz)
+        subject.exec_tint do
+          match_status(200)
+          baz
+        end
+      end
+
+      it 'can match on a range' do
+        object.should_receive(:baz)
+        subject.exec_tint do
+          match_status(200..299)
+          baz
+        end
+      end
+
+      it 'does not allow execution to proceed on no match' do
+        object.should_not_receive(:baz)
+        subject.exec_tint do
+          match_status(301)
           baz
         end
       end

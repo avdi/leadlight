@@ -6,6 +6,14 @@ module Leadlight
   describe Request do
     include Timeout
 
+    before :all do
+      @old_abort_on_exception = Thread.abort_on_exception
+      Thread.abort_on_exception = true
+    end
+
+    after :all do
+      Thread.abort_on_exception = @old_abort_on_exception
+    end
 
     # The Faraday connection API works like this:
     #
@@ -29,24 +37,35 @@ module Leadlight
 
       def run_completion_handlers(n=1)
         n.times do
-          completion_handlers.pop.call(@env)
+          handler = completion_handlers.pop
+          handler.call(@env)
         end
+      end
+
+      def success?
+        true
       end
     end
 
-    subject { Request.new(connection, url, http_method, params, body) }
+    class MyError < RuntimeError; end
+
+    subject { Request.new(service, connection, url, http_method, params, body) }
+    let(:service)    { stub(:service) }
     let(:connection) { stub(:connection, :run_request => faraday_response) }
     let(:url)        { stub(:url)        }
     let(:http_method){ :get              }
     let(:body)       { stub(:body)       }
     let(:params)     { {}                }
-    let(:faraday_request) {stub(:faraday_request)}
+    let(:faraday_request) {stub(:faraday_request, options: {})}
     let(:on_complete_handlers) { [] }
-    let(:faraday_response) { FakeFaradayResponse.new(faraday_env) }
-    let(:faraday_env)      { {:leadlight_representation => representation} }
+    let(:faraday_env)      { {} }
     let(:representation)   { stub(:representation) }
+    let(:faraday_response) { FakeFaradayResponse.new(faraday_env) }
 
     def run_completion_handlers
+      faraday_env[:status]   ||= 200
+      faraday_env[:response] ||= faraday_response
+      faraday_env[:leadlight_representation] ||= representation
       faraday_response.run_completion_handlers
     end
 
@@ -55,7 +74,11 @@ module Leadlight
         do_it(&block)
       end
       run_completion_handlers
-      t.join.value
+      t.join(1).value
+    end
+
+    before do
+      subject.stub!(:represent => representation)
     end
 
     context "for GET" do
@@ -81,10 +104,10 @@ module Leadlight
 
       it "triggers the on_prepare_request hook in the block passed to #run_request" do
         yielded         = :nothing
-        faraday_request = stub
+        faraday_request = stub(options: {})
         connection.stub(:run_request).
           and_yield(faraday_request).
-          and_return(faraday_response)
+          and_return(stub.as_null_object)
         subject.on_prepare_request do |request|
           yielded = request
         end
@@ -103,8 +126,8 @@ module Leadlight
             trace << "wait finished"
           end
           trace << "completing request"
-          faraday_response.run_completion_handlers
-          thread.join
+          run_completion_handlers
+          thread.join(1)
           trace << "request completed"
           trace.pop.should eq("completing request")
           trace.pop.should eq("wait finished")
@@ -125,8 +148,8 @@ module Leadlight
             trace << "submit"
             subject.submit
             trace << "completing request"
-            faraday_response.run_completion_handlers
-            thread.join
+            run_completion_handlers
+            thread.join(1)
             trace << "request completed"
             trace.pop.should eq("submit")
             trace.pop.should eq("completing request")
@@ -181,7 +204,7 @@ module Leadlight
           subject.wait
         end
         run_completion_handlers
-        t.join
+        t.join(1)
       end
 
       it "queues hooks to be run on completion" do
@@ -197,8 +220,6 @@ module Leadlight
       end
 
       it "calls hooks with the faraday response" do
-        Faraday::Response.should_receive(:new).with(faraday_env).
-          and_return(faraday_response)
         yielded = :nothing
         subject.on_complete do |response|
           yielded = response
@@ -216,19 +237,21 @@ module Leadlight
           subject.wait
         end
         run_completion_handlers
-        t.join
+        t.join(1)
         subject
       end
 
       it "raises an error when the response is a client error" do
-        faraday_env[:status] = 404
-        expect { submit_and_complete.raise_on_error }.to raise_error(ResourceNotFound)
+        faraday_response.should_receive(:success?).and_return(false)
+        subject.should_receive(:raise).with(representation)
+        submit_and_complete.raise_on_error
       end
 
       it "raises after completion when called before completion" do
-        faraday_env[:status] = 500
+        faraday_response.should_receive(:success?).and_return(false)
         subject.raise_on_error
-        expect { submit_and_complete }.to raise_error(ServerError)
+        subject.should_receive(:raise).with(representation)
+        submit_and_complete
       end
       
     end

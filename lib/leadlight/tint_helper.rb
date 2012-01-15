@@ -46,6 +46,11 @@ module Leadlight
       match{ klass === __getobj__}
     end
 
+    def match_status(*patterns)
+      patterns = expand_status_patterns(*patterns)
+      match{ patterns.any?{|p| p === __response__.status} }
+    end
+
     def add_header(name, value)
       __response__.env[:response_headers][name] = value
     end
@@ -63,6 +68,27 @@ module Leadlight
 
     def type(type_name)
       __getobj__.__type__ = __service__.type_for_name(type_name)
+    end
+
+    private
+
+    def expand_status_patterns(*patterns)
+      patterns.inject([]) {|patterns, pattern|
+        case pattern
+        when :any
+          pattern << (100..599)
+        when :user_error
+          patterns << (400..499)
+        when :server_error
+          patterns << (500..599)
+        when :error
+          patterns << (400..499) << (500..599)
+        when :success
+          patterns << (200..299)
+        else
+          patterns << pattern
+        end
+      }
     end
   end
 end
