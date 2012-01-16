@@ -252,6 +252,7 @@ describe Leadlight, vcr: true do
       user.should_not be_empty
       org = session.root.organization('shiprise')
       org.should be_a(GithubRepresentation)
+      org.github_type.should eq("Organization")
       teams = org.teams
       team = teams.get('Leadlight Test Team')
       team.should be_a(GithubRepresentation)
