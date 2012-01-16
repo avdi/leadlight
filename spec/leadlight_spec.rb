@@ -200,7 +200,7 @@ describe Leadlight, vcr: true do
       # Define a type-mapping which will override the default handling
       # of application/json and instantiate GithubRepresentation
       # objects
-      type_mapping "application/json", Object do
+      type_mapping "application/json", GithubRepresentation do
         def encode(object, options={})
           encode_with_type("application/json", object.__getobj__, options)
         end
