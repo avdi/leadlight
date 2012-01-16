@@ -47,8 +47,6 @@ module Leadlight
       end
     end
 
-    class MyError < RuntimeError; end
-
     subject { Request.new(service, connection, url, http_method, params, body) }
     let(:service)    { stub(:service) }
     let(:connection) { stub(:connection, :run_request => faraday_response) }
@@ -255,5 +253,6 @@ module Leadlight
       end
       
     end
+
   end
 end

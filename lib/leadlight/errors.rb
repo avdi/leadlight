@@ -18,4 +18,5 @@ module Leadlight
   class ClientError < HttpError; end
   class ResourceNotFound < ClientError; end
   class ServerError < HttpError; end
+  class TypeError < Error; end
 end

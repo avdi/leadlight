@@ -6,6 +6,7 @@ require 'leadlight/errors'
 require 'leadlight/blank'
 require 'leadlight/hyperlinkable'
 require 'leadlight/representation'
+require 'leadlight/type_map'
 
 module Leadlight
   class Request
@@ -19,6 +20,8 @@ module Leadlight
     fattr(:body)
     fattr(:params)
     fattr(:service)
+    fattr(:codec)
+    fattr(:type_map) { TypeMap.new }
 
     attr_reader :response    
 
@@ -93,13 +96,9 @@ module Leadlight
       end
     end
 
-    def represent(env)
+    def represent(env)      
       content_type = env[:response_headers]['Content-Type']
-      representation = if (env[:body] || '').size > 0
-        ::MultiJson.decode(env[:body])
-      else
-        Blank.new
-      end
+      representation = type_map.to_native(content_type, env[:body])
       representation.
         extend(Representation).
         initialize_representation(env[:leadlight_service], env[:url], env[:response]).
