@@ -78,8 +78,13 @@ module Leadlight
       end
 
       it "decodes empty entity bodies as a Blank object" do
-        subject.to_native("application/json", "", options)
+        subject.to_native("application/json", "", options).should be_a(Blank)
       end
+
+      it "handles missing content type" do
+        subject.to_native(nil, "", options).should be_a(Blank)
+      end
+
     end
 
     describe "with some types defined" do
