@@ -7,7 +7,6 @@ module Leadlight
     end
 
     def decode_with_type(content_type, entity_body, options={})
-      block ||= ->(content_type, object) { object }
       codec.decode(content_type, entity_body, options)
     end
 
