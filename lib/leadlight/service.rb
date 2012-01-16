@@ -10,12 +10,14 @@ module Leadlight
     fattr(:logger)  { service_options.fetch(:logger) { ::Logger.new($stderr) } }
     fattr(:tints)   { self.class.tints }
     fattr(:codec) { service_options.fetch(:codec) { Codec.new } }
+    fattr(:type_map) { TypeMap.new }
 
     def_delegators :codec, :encode, :decode
     def_delegators 'self.class', :types, :type_for_name, :request_class
 
     def initialize(service_options={})
       @service_options = service_options
+      execute_hook(:on_init, self)
     end
 
     def root

@@ -4,7 +4,14 @@ require 'leadlight/service'
 module Leadlight
   describe Service do
     subject              { klass.new(service_options)                 }
-    let(:klass)          { Class.new do include Service; end          }
+    let(:klass)          { 
+      Class.new do 
+        include Service
+        
+        def execute_hook(*)
+        end
+      end          
+    }
     let(:connection)     { stub(:connection, get: response)           }
     let(:representation) { stub(:representation)                      }
     let(:response)       { stub(:response, env: env)                  }

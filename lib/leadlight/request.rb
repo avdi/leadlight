@@ -7,12 +7,14 @@ require 'leadlight/blank'
 require 'leadlight/hyperlinkable'
 require 'leadlight/representation'
 require 'leadlight/type_map'
+require 'leadlight/header_helpers'
 
 module Leadlight
   class Request
     include HookR::Hooks
     include MonitorMixin
     extend Forwardable
+    include HeaderHelpers
 
     fattr(:http_method)
     fattr(:url)
@@ -21,7 +23,7 @@ module Leadlight
     fattr(:params)
     fattr(:service)
     fattr(:codec)
-    fattr(:type_map) { TypeMap.new }
+    fattr(:type_map) { service.type_map || TypeMap.new }
 
     attr_reader :response    
 
@@ -98,6 +100,7 @@ module Leadlight
 
     def represent(env)      
       content_type = env[:response_headers]['Content-Type']
+      content_type = clean_content_type(content_type)
       representation = type_map.to_native(content_type, env[:body])
       representation.
         extend(Representation).

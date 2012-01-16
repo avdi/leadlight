@@ -1,6 +1,7 @@
 require 'faraday'
 require 'fattr'
 require 'logger'
+require 'hookr'
 require 'leadlight/errors'
 require 'leadlight/link'
 require 'leadlight/hyperlinkable'
@@ -10,6 +11,7 @@ require 'leadlight/tint'
 require 'leadlight/service'
 require 'leadlight/service_class_methods'
 require 'leadlight/enumerable_representation'
+require 'leadlight/basic_converter'
 
 
 module Leadlight
@@ -21,10 +23,12 @@ module Leadlight
       target.module_eval do
         extend ServiceClassMethods
         include Service
+        include HookR::Hooks
         extend SingleForwardable
         
         request_events = request_class.hooks.map(&:name)
         def_delegators :request_class, *request_events
+        define_hook :on_init, :service
       end
       target.module_eval(&block)
     end

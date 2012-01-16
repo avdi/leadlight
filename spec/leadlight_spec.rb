@@ -191,6 +191,26 @@ describe Leadlight, vcr: true do
         end
       end
 
+      class GithubRepresentation < SimpleDelegator
+        def github_type
+          self['type']
+        end
+      end
+
+      # Define a type-mapping which will override the default handling
+      # of application/json and instantiate GithubRepresentation
+      # objects
+      type_mapping "application/json", Object do
+        def encode(object, options={})
+          encode_with_type("application/json", object.__getobj__, options)
+        end
+
+        def decode(content_type, entity_body, options={})
+          object = decode_with_type(content_type, entity_body, options)
+          GithubRepresentation.new(object)
+        end
+      end
+
       on_prepare_request do |event, request|
         # 'request' is the Faraday request being prepared
         #
@@ -231,8 +251,10 @@ describe Leadlight, vcr: true do
       user = session.root.user("leadlight-test")
       user.should_not be_empty
       org = session.root.organization('shiprise')
+      org.should be_a(GithubRepresentation)
       teams = org.teams
       team = teams.get('Leadlight Test Team')
+      team.should be_a(GithubRepresentation)
       team.should_not be_empty
       team.add_member('leadlight-test')
         team.members.map{|m| m['login']}.should include('leadlight-test')
