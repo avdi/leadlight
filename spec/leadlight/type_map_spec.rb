@@ -61,6 +61,12 @@ module Leadlight
         result.body.should equal(body)
       end
 
+      it "encodes nils as nil body, nil content type" do
+        result = subject.to_entity_body(nil, options)
+        result.content_type.should be_nil
+        result.body.should be_nil
+      end
+
       it "permits encode type to be overridden" do
         codec.should_receive(:encode).
           with("application/xml", native_object, {}).

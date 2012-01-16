@@ -51,8 +51,12 @@ module Leadlight
     end
 
     def submit
-      connection.run_request(http_method, url, body, {}) do |request|
-        request.options[:leadlight_request] = self
+      entity = type_map.to_entity_body(body)
+      entity_body = entity.body
+      content_type = entity.content_type
+      connection.run_request(http_method, url, entity_body, {}) do |request|
+        request.headers['Content-Type'] = content_type if content_type
+        request.options[:leadlight_request] = self        
         execute_hook(:on_prepare_request, request)
       end.on_complete do |env|
         synchronize do
@@ -102,9 +106,10 @@ module Leadlight
       content_type = env[:response_headers]['Content-Type']
       content_type = clean_content_type(content_type)
       representation = type_map.to_native(content_type, env[:body])
+      location = Addressable::URI.parse(env[:response_headers].fetch('location'){ env[:url] })
       representation.
         extend(Representation).
-        initialize_representation(env[:leadlight_service], env[:url], env[:response]).
+        initialize_representation(env[:leadlight_service], location, env[:response]).
         extend(Hyperlinkable).
         apply_all_tints
     end

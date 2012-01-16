@@ -1,12 +1,13 @@
 require 'spec_helper_lite'
 require 'leadlight/link_template'
+require 'leadlight/type_map'
 
 module Leadlight
   describe LinkTemplate do
 
     # TODO: This setup is loony. Refactor.
     subject { LinkTemplate.new(service, href, rel, title, options) }
-    let(:service) { stub(:service) }
+    let(:service) { stub(:service, type_map: TypeMap.new) }
     let(:request) { stub(:request)               }
     let(:result)  { stub(:result)                }
     let(:href)    { '/TEST_PATH/{n}/{m}/'   }

@@ -82,13 +82,14 @@ module Leadlight
       end
 
       def encode(object, options={})
+        return Entity.new(nil, nil) if object.nil?
         content_type = options.delete(:content_type){"application/json"}
         body = @codec.encode(content_type, object, options)
         Entity.new(content_type, body)
       end
 
       def decode(content_type, entity_body, options={})
-        case entity_body.size
+        case entity_body.to_s.size
         when 0,1 # No valid JSON document is smaller than 2 bytes
           Blank.new
         else

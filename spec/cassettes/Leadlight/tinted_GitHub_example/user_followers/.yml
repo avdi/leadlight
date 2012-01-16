@@ -1,100 +1,213 @@
---- 
-http_interactions: 
-- request: 
+---
+http_interactions:
+- request:
     method: get
     uri: https://api.github.com/
-    body: ""
-    headers: 
-      Accept: 
-      - application/json, text/x-yaml, application/xml, application/xhtml+xml, text/html, text/plain
-  response: 
-    status: 
+    body: ''
+    headers:
+      Accept:
+      - application/json, text/x-yaml, application/xml, application/xhtml+xml, text/html,
+        text/plain
+  response:
+    status:
       code: 204
-      message: 
-    headers: 
-      server: 
+      message: !!null 
+    headers:
+      server:
       - nginx/1.0.4
-      date: 
+      date:
       - Sun, 15 Jan 2012 19:38:35 GMT
-      connection: 
+      connection:
       - close
-      status: 
+      status:
       - 204 No Content
-      x-ratelimit-limit: 
-      - "5000"
-      etag: 
-      - "\"d41d8cd98f00b204e9800998ecf8427e\""
-      x-ratelimit-remaining: 
-      - "4989"
-    body: ""
-    http_version: 
+      x-ratelimit-limit:
+      - '5000'
+      etag:
+      - ! '"d41d8cd98f00b204e9800998ecf8427e"'
+      x-ratelimit-remaining:
+      - '4989'
+    body: ''
+    http_version: !!null 
   recorded_at: Sun, 15 Jan 2012 19:38:35 GMT
-- request: 
+- request:
     method: get
     uri: https://api.github.com/users/avdi
-    body: ""
-    headers: 
-      Accept: 
-      - application/json, text/x-yaml, application/xml, application/xhtml+xml, text/html, text/plain
-  response: 
-    status: 
+    body: ''
+    headers:
+      Accept:
+      - application/json, text/x-yaml, application/xml, application/xhtml+xml, text/html,
+        text/plain
+  response:
+    status:
       code: 200
-      message: 
-    headers: 
-      server: 
+      message: !!null 
+    headers:
+      server:
       - nginx/1.0.4
-      date: 
+      date:
       - Sun, 15 Jan 2012 19:38:35 GMT
-      content-type: 
+      content-type:
       - application/json; charset=utf-8
-      transfer-encoding: 
+      transfer-encoding:
       - chunked
-      connection: 
+      connection:
       - close
-      status: 
+      status:
       - 200 OK
-      x-ratelimit-limit: 
-      - "5000"
-      etag: 
-      - "\"a2535dd794cc837d0bfd7714442a09ff\""
-      x-ratelimit-remaining: 
-      - "4988"
-    body: "{\"public_repos\":61,\"public_gists\":72,\"type\":\"User\",\"created_at\":\"2008-02-26T19:54:34Z\",\"email\":\"avdi@avdi.org\",\"hireable\":false,\"url\":\"https://api.github.com/users/avdi\",\"login\":\"avdi\",\"bio\":null,\"followers\":181,\"following\":33,\"name\":\"Avdi Grimm\",\"blog\":\"http://avdi.org/devblog/\",\"location\":\"Pennsylvania, USA\",\"id\":982,\"html_url\":\"https://github.com/avdi\",\"company\":\"ShipRise\",\"gravatar_id\":\"4dea430d31b993abaf41cd9b54f8128d\",\"avatar_url\":\"https://secure.gravatar.com/avatar/4dea430d31b993abaf41cd9b54f8128d?d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-140.png\"}"
-    http_version: 
+      x-ratelimit-limit:
+      - '5000'
+      etag:
+      - ! '"a2535dd794cc837d0bfd7714442a09ff"'
+      x-ratelimit-remaining:
+      - '4988'
+    body: ! '{"public_repos":61,"public_gists":72,"type":"User","created_at":"2008-02-26T19:54:34Z","email":"avdi@avdi.org","hireable":false,"url":"https://api.github.com/users/avdi","login":"avdi","bio":null,"followers":181,"following":33,"name":"Avdi
+      Grimm","blog":"http://avdi.org/devblog/","location":"Pennsylvania, USA","id":982,"html_url":"https://github.com/avdi","company":"ShipRise","gravatar_id":"4dea430d31b993abaf41cd9b54f8128d","avatar_url":"https://secure.gravatar.com/avatar/4dea430d31b993abaf41cd9b54f8128d?d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-140.png"}'
+    http_version: !!null 
   recorded_at: Sun, 15 Jan 2012 19:38:35 GMT
-- request: 
+- request:
     method: get
     uri: https://api.github.com/users/avdi/followers
-    body: ""
-    headers: 
-      Accept: 
-      - application/json, text/x-yaml, application/xml, application/xhtml+xml, text/html, text/plain
-  response: 
-    status: 
+    body: ''
+    headers:
+      Accept:
+      - application/json, text/x-yaml, application/xml, application/xhtml+xml, text/html,
+        text/plain
+  response:
+    status:
       code: 200
-      message: 
-    headers: 
-      server: 
+      message: !!null 
+    headers:
+      server:
       - nginx/1.0.4
-      date: 
+      date:
       - Sun, 15 Jan 2012 19:38:35 GMT
-      content-type: 
+      content-type:
       - application/json; charset=utf-8
-      transfer-encoding: 
+      transfer-encoding:
       - chunked
-      connection: 
+      connection:
       - close
-      status: 
+      status:
       - 200 OK
-      x-ratelimit-limit: 
-      - "5000"
-      etag: 
-      - "\"aebf5d991fcf8b694bb9cfa44ea663d9\""
-      link: 
-      - <https://api.github.com/users/avdi/followers?page=2>; rel="next", <https://api.github.com/users/avdi/followers?page=7>; rel="last"
-      x-ratelimit-remaining: 
-      - "4987"
-    body: "[{\"url\":\"https://api.github.com/users/cypher\",\"login\":\"cypher\",\"id\":978,\"gravatar_id\":\"0176d9564601b43d75aff59f2cceed88\",\"avatar_url\":\"https://secure.gravatar.com/avatar/0176d9564601b43d75aff59f2cceed88?d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-140.png\"},{\"url\":\"https://api.github.com/users/tim\",\"login\":\"tim\",\"id\":2856,\"gravatar_id\":\"515a6f36db0157b7cf83f3b0368e9941\",\"avatar_url\":\"https://secure.gravatar.com/avatar/515a6f36db0157b7cf83f3b0368e9941?d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-140.png\"},{\"url\":\"https://api.github.com/users/SebastianRose\",\"login\":\"SebastianRose\",\"id\":23090,\"gravatar_id\":\"75bcdfe5499e68879fda2957572170ad\",\"avatar_url\":\"https://secure.gravatar.com/avatar/75bcdfe5499e68879fda2957572170ad?d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-140.png\"},{\"url\":\"https://api.github.com/users/cola-zero\",\"login\":\"cola-zero\",\"id\":9118,\"gravatar_id\":\"e46e70d2689dfa229dac7ba0dc9f34e4\",\"avatar_url\":\"https://secure.gravatar.com/avatar/e46e70d2689dfa229dac7ba0dc9f34e4?d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-140.png\"},{\"url\":\"https://api.github.com/users/janfri\",\"login\":\"janfri\",\"id\":854,\"gravatar_id\":\"4c2cadf461b9c15ebf5726577b51e611\",\"avatar_url\":\"https://secure.gravatar.com/avatar/4c2cadf461b9c15ebf5726577b51e611?d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-140.png\"},{\"url\":\"https://api.github.com/users/nevans\",\"login\":\"nevans\",\"id\":6142,\"gravatar_id\":\"dfaba90dcff3238dc9770e270232b4a1\",\"avatar_url\":\"https://secure.gravatar.com/avatar/dfaba90dcff3238dc9770e270232b4a1?d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-140.png\"},{\"url\":\"https://api.github.com/users/TreyE\",\"login\":\"TreyE\",\"id\":38384,\"gravatar_id\":\"2b405e0fc139db9b768cfab467955e04\",\"avatar_url\":\"https://secure.gravatar.com/avatar/2b405e0fc139db9b768cfab467955e04?d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-140.png\"},{\"url\":\"https://api.github.com/users/aaalex\",\"login\":\"aaalex\",\"id\":11762,\"gravatar_id\":\"aad77082a3f5b51259532217aadf450a\",\"avatar_url\":\"https://secure.gravatar.com/avatar/aad77082a3f5b51259532217aadf450a?d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-140.png\"},{\"url\":\"https://api.github.com/users/beppu\",\"login\":\"beppu\",\"id\":4425,\"gravatar_id\":\"32093c41c663ea62b17d66dab11b789f\",\"avatar_url\":\"https://secure.gravatar.com/avatar/32093c41c663ea62b17d66dab11b789f?d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-140.png\"},{\"url\":\"https://api.github.com/users/jdallien\",\"login\":\"jdallien\",\"id\":17927,\"gravatar_id\":\"490dc3575b1c341a84e89cba6305faf9\",\"avatar_url\":\"https://secure.gravatar.com/avatar/490dc3575b1c341a84e89cba6305faf9?d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-140.png\"},{\"url\":\"https://api.github.com/users/arn\",\"login\":\"arn\",\"id\":6053,\"gravatar_id\":\"17faa52c4ce95a86ac34b4d3010ea56d\",\"avatar_url\":\"https://secure.gravatar.com/avatar/17faa52c4ce95a86ac34b4d3010ea56d?d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-140.png\"},{\"url\":\"https://api.github.com/users/llimllib\",\"login\":\"llimllib\",\"id\":7150,\"gravatar_id\":\"aa7c1350d93036592f58f165318044db\",\"avatar_url\":\"https://secure.gravatar.com/avatar/aa7c1350d93036592f58f165318044db?d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-140.png\"},{\"url\":\"https://api.github.com/users/jtrupiano\",\"login\":\"jtrupiano\",\"id\":12331,\"gravatar_id\":\"63d809dbf4d44297f73caad307972ec5\",\"avatar_url\":\"https://secure.gravatar.com/avatar/63d809dbf4d44297f73caad307972ec5?d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-140.png\"},{\"url\":\"https://api.github.com/users/lmarburger\",\"login\":\"lmarburger\",\"id\":23582,\"gravatar_id\":\"f027637a680a05254c6f721f8ab57392\",\"avatar_url\":\"https://secure.gravatar.com/avatar/f027637a680a05254c6f721f8ab57392?d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-140.png\"},{\"url\":\"https://api.github.com/users/lfaren\",\"login\":\"lfaren\",\"id\":142776,\"gravatar_id\":\"5f76cc23c75e77aa30ff1ac1fbf1ec54\",\"avatar_url\":\"https://secure.gravatar.com/avatar/5f76cc23c75e77aa30ff1ac1fbf1ec54?d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-140.png\"},{\"url\":\"https://api.github.com/users/slaney\",\"login\":\"slaney\",\"id\":5012,\"gravatar_id\":\"3f4de376ba800ba092d9e1e332ede421\",\"avatar_url\":\"https://secure.gravatar.com/avatar/3f4de376ba800ba092d9e1e332ede421?d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-140.png\"},{\"url\":\"https://api.github.com/users/stevenhaddox\",\"login\":\"stevenhaddox\",\"id\":58004,\"gravatar_id\":\"1fdf54b0ccb88bb46f99b6d9352302dc\",\"avatar_url\":\"https://secure.gravatar.com/avatar/1fdf54b0ccb88bb46f99b6d9352302dc?d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-140.png\"},{\"url\":\"https://api.github.com/users/stonegao\",\"login\":\"stonegao\",\"id\":42081,\"gravatar_id\":\"dca772bde69d5a9f39a62ee79b122f0b\",\"avatar_url\":\"https://secure.gravatar.com/avatar/dca772bde69d5a9f39a62ee79b122f0b?d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-140.png\"},{\"url\":\"https://api.github.com/users/riethmayer\",\"login\":\"riethmayer\",\"id\":67637,\"gravatar_id\":\"788dec4942d6108c2cfb3ff2a9fb37ca\",\"avatar_url\":\"https://secure.gravatar.com/avatar/788dec4942d6108c2cfb3ff2a9fb37ca?d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-140.png\"},{\"url\":\"https://api.github.com/users/natebunnyfield\",\"login\":\"natebunnyfield\",\"id\":94285,\"gravatar_id\":\"ed5c8e9a67490816384ff83e9d0e0a42\",\"avatar_url\":\"https://secure.gravatar.com/avatar/ed5c8e9a67490816384ff83e9d0e0a42?d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-140.png\"},{\"url\":\"https://api.github.com/users/nerdEd\",\"login\":\"nerdEd\",\"id\":1726,\"gravatar_id\":\"cf491f57897e7f31122ca6d03d6a49e4\",\"avatar_url\":\"https://secure.gravatar.com/avatar/cf491f57897e7f31122ca6d03d6a49e4?d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-140.png\"},{\"url\":\"https://api.github.com/users/jamesdaniels\",\"login\":\"jamesdaniels\",\"id\":44975,\"gravatar_id\":\"3538353e7f9c08efddaabff15c9c6480\",\"avatar_url\":\"https://secure.gravatar.com/avatar/3538353e7f9c08efddaabff15c9c6480?d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-140.png\"},{\"url\":\"https://api.github.com/users/jkamenik\",\"login\":\"jkamenik\",\"id\":165914,\"gravatar_id\":\"d5cdad8cf459a2f3660d374e72eccf4b\",\"avatar_url\":\"https://secure.gravatar.com/avatar/d5cdad8cf459a2f3660d374e72eccf4b?d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-140.png\"},{\"url\":\"https://api.github.com/users/mnelson\",\"login\":\"mnelson\",\"id\":51276,\"gravatar_id\":\"58dac781cb69c3342f0a73c8936cf48b\",\"avatar_url\":\"https://secure.gravatar.com/avatar/58dac781cb69c3342f0a73c8936cf48b?d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-140.png\"},{\"url\":\"https://api.github.com/users/devreq\",\"login\":\"devreq\",\"id\":230532,\"gravatar_id\":\"7ea1a46afc3c483ef7ae7b6503b41793\",\"avatar_url\":\"https://secure.gravatar.com/avatar/7ea1a46afc3c483ef7ae7b6503b41793?d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-140.png\"},{\"url\":\"https://api.github.com/users/flipsasser\",\"login\":\"flipsasser\",\"id\":8594,\"gravatar_id\":\"ffca7d80230ae1f99914b74853bf06bb\",\"avatar_url\":\"https://secure.gravatar.com/avatar/ffca7d80230ae1f99914b74853bf06bb?d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-140.png\"},{\"url\":\"https://api.github.com/users/abachman\",\"login\":\"abachman\",\"id\":13002,\"gravatar_id\":\"939848268c73b4049f90ee0703df7c68\",\"avatar_url\":\"https://secure.gravatar.com/avatar/939848268c73b4049f90ee0703df7c68?d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-140.png\"},{\"url\":\"https://api.github.com/users/pjb3\",\"login\":\"pjb3\",\"id\":726,\"gravatar_id\":\"6661ef9d747db3af8896cd94959d717d\",\"avatar_url\":\"https://secure.gravatar.com/avatar/6661ef9d747db3af8896cd94959d717d?d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-140.png\"},{\"url\":\"https://api.github.com/users/arcterex\",\"login\":\"arcterex\",\"id\":70160,\"gravatar_id\":\"5bc3ee98b5a5bd0cd936554de2bdc232\",\"avatar_url\":\"https://secure.gravatar.com/avatar/5bc3ee98b5a5bd0cd936554de2bdc232?d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-140.png\"},{\"url\":\"https://api.github.com/users/atmos\",\"login\":\"atmos\",\"id\":38,\"gravatar_id\":\"a86224d72ce21cd9f5bee6784d4b06c7\",\"avatar_url\":\"https://secure.gravatar.com/avatar/a86224d72ce21cd9f5bee6784d4b06c7?d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-140.png\"}]"
-    http_version: 
+      x-ratelimit-limit:
+      - '5000'
+      etag:
+      - ! '"aebf5d991fcf8b694bb9cfa44ea663d9"'
+      link:
+      - <https://api.github.com/users/avdi/followers?page=2>; rel="next", <https://api.github.com/users/avdi/followers?page=7>;
+        rel="last"
+      x-ratelimit-remaining:
+      - '4987'
+    body: ! '[{"url":"https://api.github.com/users/cypher","login":"cypher","id":978,"gravatar_id":"0176d9564601b43d75aff59f2cceed88","avatar_url":"https://secure.gravatar.com/avatar/0176d9564601b43d75aff59f2cceed88?d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-140.png"},{"url":"https://api.github.com/users/tim","login":"tim","id":2856,"gravatar_id":"515a6f36db0157b7cf83f3b0368e9941","avatar_url":"https://secure.gravatar.com/avatar/515a6f36db0157b7cf83f3b0368e9941?d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-140.png"},{"url":"https://api.github.com/users/SebastianRose","login":"SebastianRose","id":23090,"gravatar_id":"75bcdfe5499e68879fda2957572170ad","avatar_url":"https://secure.gravatar.com/avatar/75bcdfe5499e68879fda2957572170ad?d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-140.png"},{"url":"https://api.github.com/users/cola-zero","login":"cola-zero","id":9118,"gravatar_id":"e46e70d2689dfa229dac7ba0dc9f34e4","avatar_url":"https://secure.gravatar.com/avatar/e46e70d2689dfa229dac7ba0dc9f34e4?d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-140.png"},{"url":"https://api.github.com/users/janfri","login":"janfri","id":854,"gravatar_id":"4c2cadf461b9c15ebf5726577b51e611","avatar_url":"https://secure.gravatar.com/avatar/4c2cadf461b9c15ebf5726577b51e611?d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-140.png"},{"url":"https://api.github.com/users/nevans","login":"nevans","id":6142,"gravatar_id":"dfaba90dcff3238dc9770e270232b4a1","avatar_url":"https://secure.gravatar.com/avatar/dfaba90dcff3238dc9770e270232b4a1?d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-140.png"},{"url":"https://api.github.com/users/TreyE","login":"TreyE","id":38384,"gravatar_id":"2b405e0fc139db9b768cfab467955e04","avatar_url":"https://secure.gravatar.com/avatar/2b405e0fc139db9b768cfab467955e04?d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-140.png"},{"url":"https://api.github.com/users/aaalex","login":"aaalex","id":11762,"gravatar_id":"aad77082a3f5b51259532217aadf450a","avatar_url":"https://secure.gravatar.com/avatar/aad77082a3f5b51259532217aadf450a?d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-140.png"},{"url":"https://api.github.com/users/beppu","login":"beppu","id":4425,"gravatar_id":"32093c41c663ea62b17d66dab11b789f","avatar_url":"https://secure.gravatar.com/avatar/32093c41c663ea62b17d66dab11b789f?d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-140.png"},{"url":"https://api.github.com/users/jdallien","login":"jdallien","id":17927,"gravatar_id":"490dc3575b1c341a84e89cba6305faf9","avatar_url":"https://secure.gravatar.com/avatar/490dc3575b1c341a84e89cba6305faf9?d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-140.png"},{"url":"https://api.github.com/users/arn","login":"arn","id":6053,"gravatar_id":"17faa52c4ce95a86ac34b4d3010ea56d","avatar_url":"https://secure.gravatar.com/avatar/17faa52c4ce95a86ac34b4d3010ea56d?d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-140.png"},{"url":"https://api.github.com/users/llimllib","login":"llimllib","id":7150,"gravatar_id":"aa7c1350d93036592f58f165318044db","avatar_url":"https://secure.gravatar.com/avatar/aa7c1350d93036592f58f165318044db?d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-140.png"},{"url":"https://api.github.com/users/jtrupiano","login":"jtrupiano","id":12331,"gravatar_id":"63d809dbf4d44297f73caad307972ec5","avatar_url":"https://secure.gravatar.com/avatar/63d809dbf4d44297f73caad307972ec5?d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-140.png"},{"url":"https://api.github.com/users/lmarburger","login":"lmarburger","id":23582,"gravatar_id":"f027637a680a05254c6f721f8ab57392","avatar_url":"https://secure.gravatar.com/avatar/f027637a680a05254c6f721f8ab57392?d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-140.png"},{"url":"https://api.github.com/users/lfaren","login":"lfaren","id":142776,"gravatar_id":"5f76cc23c75e77aa30ff1ac1fbf1ec54","avatar_url":"https://secure.gravatar.com/avatar/5f76cc23c75e77aa30ff1ac1fbf1ec54?d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-140.png"},{"url":"https://api.github.com/users/slaney","login":"slaney","id":5012,"gravatar_id":"3f4de376ba800ba092d9e1e332ede421","avatar_url":"https://secure.gravatar.com/avatar/3f4de376ba800ba092d9e1e332ede421?d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-140.png"},{"url":"https://api.github.com/users/stevenhaddox","login":"stevenhaddox","id":58004,"gravatar_id":"1fdf54b0ccb88bb46f99b6d9352302dc","avatar_url":"https://secure.gravatar.com/avatar/1fdf54b0ccb88bb46f99b6d9352302dc?d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-140.png"},{"url":"https://api.github.com/users/stonegao","login":"stonegao","id":42081,"gravatar_id":"dca772bde69d5a9f39a62ee79b122f0b","avatar_url":"https://secure.gravatar.com/avatar/dca772bde69d5a9f39a62ee79b122f0b?d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-140.png"},{"url":"https://api.github.com/users/riethmayer","login":"riethmayer","id":67637,"gravatar_id":"788dec4942d6108c2cfb3ff2a9fb37ca","avatar_url":"https://secure.gravatar.com/avatar/788dec4942d6108c2cfb3ff2a9fb37ca?d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-140.png"},{"url":"https://api.github.com/users/natebunnyfield","login":"natebunnyfield","id":94285,"gravatar_id":"ed5c8e9a67490816384ff83e9d0e0a42","avatar_url":"https://secure.gravatar.com/avatar/ed5c8e9a67490816384ff83e9d0e0a42?d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-140.png"},{"url":"https://api.github.com/users/nerdEd","login":"nerdEd","id":1726,"gravatar_id":"cf491f57897e7f31122ca6d03d6a49e4","avatar_url":"https://secure.gravatar.com/avatar/cf491f57897e7f31122ca6d03d6a49e4?d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-140.png"},{"url":"https://api.github.com/users/jamesdaniels","login":"jamesdaniels","id":44975,"gravatar_id":"3538353e7f9c08efddaabff15c9c6480","avatar_url":"https://secure.gravatar.com/avatar/3538353e7f9c08efddaabff15c9c6480?d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-140.png"},{"url":"https://api.github.com/users/jkamenik","login":"jkamenik","id":165914,"gravatar_id":"d5cdad8cf459a2f3660d374e72eccf4b","avatar_url":"https://secure.gravatar.com/avatar/d5cdad8cf459a2f3660d374e72eccf4b?d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-140.png"},{"url":"https://api.github.com/users/mnelson","login":"mnelson","id":51276,"gravatar_id":"58dac781cb69c3342f0a73c8936cf48b","avatar_url":"https://secure.gravatar.com/avatar/58dac781cb69c3342f0a73c8936cf48b?d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-140.png"},{"url":"https://api.github.com/users/devreq","login":"devreq","id":230532,"gravatar_id":"7ea1a46afc3c483ef7ae7b6503b41793","avatar_url":"https://secure.gravatar.com/avatar/7ea1a46afc3c483ef7ae7b6503b41793?d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-140.png"},{"url":"https://api.github.com/users/flipsasser","login":"flipsasser","id":8594,"gravatar_id":"ffca7d80230ae1f99914b74853bf06bb","avatar_url":"https://secure.gravatar.com/avatar/ffca7d80230ae1f99914b74853bf06bb?d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-140.png"},{"url":"https://api.github.com/users/abachman","login":"abachman","id":13002,"gravatar_id":"939848268c73b4049f90ee0703df7c68","avatar_url":"https://secure.gravatar.com/avatar/939848268c73b4049f90ee0703df7c68?d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-140.png"},{"url":"https://api.github.com/users/pjb3","login":"pjb3","id":726,"gravatar_id":"6661ef9d747db3af8896cd94959d717d","avatar_url":"https://secure.gravatar.com/avatar/6661ef9d747db3af8896cd94959d717d?d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-140.png"},{"url":"https://api.github.com/users/arcterex","login":"arcterex","id":70160,"gravatar_id":"5bc3ee98b5a5bd0cd936554de2bdc232","avatar_url":"https://secure.gravatar.com/avatar/5bc3ee98b5a5bd0cd936554de2bdc232?d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-140.png"},{"url":"https://api.github.com/users/atmos","login":"atmos","id":38,"gravatar_id":"a86224d72ce21cd9f5bee6784d4b06c7","avatar_url":"https://secure.gravatar.com/avatar/a86224d72ce21cd9f5bee6784d4b06c7?d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-140.png"}]'
+    http_version: !!null 
   recorded_at: Sun, 15 Jan 2012 19:38:36 GMT
+- request:
+    method: get
+    uri: https://api.github.com/
+    body: 'null'
+    headers:
+      Content-Type:
+      - application/json
+      Accept:
+      - application/json, text/x-yaml, application/xml, application/xhtml+xml, text/html,
+        text/plain
+  response:
+    status:
+      code: 204
+      message: !!null 
+    headers:
+      server:
+      - nginx/1.0.4
+      date:
+      - Mon, 16 Jan 2012 02:45:55 GMT
+      connection:
+      - close
+      status:
+      - 204 No Content
+      x-ratelimit-limit:
+      - '5000'
+      etag:
+      - ! '"d41d8cd98f00b204e9800998ecf8427e"'
+      x-ratelimit-remaining:
+      - '4989'
+    body: ''
+    http_version: !!null 
+  recorded_at: Mon, 16 Jan 2012 02:45:55 GMT
+- request:
+    method: get
+    uri: https://api.github.com/users/avdi
+    body: 'null'
+    headers:
+      Content-Type:
+      - application/json
+      Accept:
+      - application/json, text/x-yaml, application/xml, application/xhtml+xml, text/html,
+        text/plain
+  response:
+    status:
+      code: 200
+      message: !!null 
+    headers:
+      server:
+      - nginx/1.0.4
+      date:
+      - Mon, 16 Jan 2012 02:45:56 GMT
+      content-type:
+      - application/json; charset=utf-8
+      transfer-encoding:
+      - chunked
+      connection:
+      - close
+      status:
+      - 200 OK
+      x-ratelimit-limit:
+      - '5000'
+      etag:
+      - ! '"b41e9c886324035cc80a7954755f186e"'
+      x-ratelimit-remaining:
+      - '4988'
+    body: ! '{"public_repos":61,"type":"User","public_gists":72,"created_at":"2008-02-26T19:54:34Z","email":"avdi@avdi.org","avatar_url":"https://secure.gravatar.com/avatar/4dea430d31b993abaf41cd9b54f8128d?d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-140.png","url":"https://api.github.com/users/avdi","login":"avdi","hireable":false,"followers":182,"following":33,"bio":null,"blog":"http://avdi.org/devblog/","name":"Avdi
+      Grimm","location":"Pennsylvania, USA","id":982,"html_url":"https://github.com/avdi","company":"ShipRise","gravatar_id":"4dea430d31b993abaf41cd9b54f8128d"}'
+    http_version: !!null 
+  recorded_at: Mon, 16 Jan 2012 02:45:56 GMT
+- request:
+    method: get
+    uri: https://api.github.com/users/avdi/followers
+    body: 'null'
+    headers:
+      Content-Type:
+      - application/json
+      Accept:
+      - application/json, text/x-yaml, application/xml, application/xhtml+xml, text/html,
+        text/plain
+  response:
+    status:
+      code: 200
+      message: !!null 
+    headers:
+      server:
+      - nginx/1.0.4
+      date:
+      - Mon, 16 Jan 2012 02:45:56 GMT
+      content-type:
+      - application/json; charset=utf-8
+      transfer-encoding:
+      - chunked
+      connection:
+      - close
+      status:
+      - 200 OK
+      x-ratelimit-limit:
+      - '5000'
+      etag:
+      - ! '"ab1c482b0624d57d2f13a64ed9ea0eb9"'
+      link:
+      - <https://api.github.com/users/avdi/followers?page=2>; rel="next", <https://api.github.com/users/avdi/followers?page=7>;
+        rel="last"
+      x-ratelimit-remaining:
+      - '4987'
+    body: ! '[{"avatar_url":"https://secure.gravatar.com/avatar/0176d9564601b43d75aff59f2cceed88?d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-140.png","url":"https://api.github.com/users/cypher","login":"cypher","gravatar_id":"0176d9564601b43d75aff59f2cceed88","id":978},{"avatar_url":"https://secure.gravatar.com/avatar/515a6f36db0157b7cf83f3b0368e9941?d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-140.png","url":"https://api.github.com/users/tim","login":"tim","gravatar_id":"515a6f36db0157b7cf83f3b0368e9941","id":2856},{"avatar_url":"https://secure.gravatar.com/avatar/75bcdfe5499e68879fda2957572170ad?d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-140.png","url":"https://api.github.com/users/SebastianRose","login":"SebastianRose","gravatar_id":"75bcdfe5499e68879fda2957572170ad","id":23090},{"avatar_url":"https://secure.gravatar.com/avatar/e46e70d2689dfa229dac7ba0dc9f34e4?d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-140.png","url":"https://api.github.com/users/cola-zero","login":"cola-zero","gravatar_id":"e46e70d2689dfa229dac7ba0dc9f34e4","id":9118},{"avatar_url":"https://secure.gravatar.com/avatar/4c2cadf461b9c15ebf5726577b51e611?d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-140.png","url":"https://api.github.com/users/janfri","login":"janfri","gravatar_id":"4c2cadf461b9c15ebf5726577b51e611","id":854},{"avatar_url":"https://secure.gravatar.com/avatar/dfaba90dcff3238dc9770e270232b4a1?d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-140.png","url":"https://api.github.com/users/nevans","login":"nevans","gravatar_id":"dfaba90dcff3238dc9770e270232b4a1","id":6142},{"avatar_url":"https://secure.gravatar.com/avatar/2b405e0fc139db9b768cfab467955e04?d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-140.png","url":"https://api.github.com/users/TreyE","login":"TreyE","gravatar_id":"2b405e0fc139db9b768cfab467955e04","id":38384},{"avatar_url":"https://secure.gravatar.com/avatar/aad77082a3f5b51259532217aadf450a?d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-140.png","url":"https://api.github.com/users/aaalex","login":"aaalex","gravatar_id":"aad77082a3f5b51259532217aadf450a","id":11762},{"avatar_url":"https://secure.gravatar.com/avatar/32093c41c663ea62b17d66dab11b789f?d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-140.png","url":"https://api.github.com/users/beppu","login":"beppu","gravatar_id":"32093c41c663ea62b17d66dab11b789f","id":4425},{"avatar_url":"https://secure.gravatar.com/avatar/490dc3575b1c341a84e89cba6305faf9?d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-140.png","url":"https://api.github.com/users/jdallien","login":"jdallien","gravatar_id":"490dc3575b1c341a84e89cba6305faf9","id":17927},{"avatar_url":"https://secure.gravatar.com/avatar/17faa52c4ce95a86ac34b4d3010ea56d?d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-140.png","url":"https://api.github.com/users/arn","login":"arn","gravatar_id":"17faa52c4ce95a86ac34b4d3010ea56d","id":6053},{"avatar_url":"https://secure.gravatar.com/avatar/aa7c1350d93036592f58f165318044db?d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-140.png","url":"https://api.github.com/users/llimllib","login":"llimllib","gravatar_id":"aa7c1350d93036592f58f165318044db","id":7150},{"avatar_url":"https://secure.gravatar.com/avatar/63d809dbf4d44297f73caad307972ec5?d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-140.png","url":"https://api.github.com/users/jtrupiano","login":"jtrupiano","gravatar_id":"63d809dbf4d44297f73caad307972ec5","id":12331},{"avatar_url":"https://secure.gravatar.com/avatar/f027637a680a05254c6f721f8ab57392?d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-140.png","url":"https://api.github.com/users/lmarburger","login":"lmarburger","gravatar_id":"f027637a680a05254c6f721f8ab57392","id":23582},{"avatar_url":"https://secure.gravatar.com/avatar/5f76cc23c75e77aa30ff1ac1fbf1ec54?d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-140.png","url":"https://api.github.com/users/lfaren","login":"lfaren","gravatar_id":"5f76cc23c75e77aa30ff1ac1fbf1ec54","id":142776},{"avatar_url":"https://secure.gravatar.com/avatar/3f4de376ba800ba092d9e1e332ede421?d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-140.png","url":"https://api.github.com/users/slaney","login":"slaney","gravatar_id":"3f4de376ba800ba092d9e1e332ede421","id":5012},{"avatar_url":"https://secure.gravatar.com/avatar/1fdf54b0ccb88bb46f99b6d9352302dc?d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-140.png","url":"https://api.github.com/users/stevenhaddox","login":"stevenhaddox","gravatar_id":"1fdf54b0ccb88bb46f99b6d9352302dc","id":58004},{"avatar_url":"https://secure.gravatar.com/avatar/dca772bde69d5a9f39a62ee79b122f0b?d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-140.png","url":"https://api.github.com/users/stonegao","login":"stonegao","gravatar_id":"dca772bde69d5a9f39a62ee79b122f0b","id":42081},{"avatar_url":"https://secure.gravatar.com/avatar/788dec4942d6108c2cfb3ff2a9fb37ca?d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-140.png","url":"https://api.github.com/users/riethmayer","login":"riethmayer","gravatar_id":"788dec4942d6108c2cfb3ff2a9fb37ca","id":67637},{"avatar_url":"https://secure.gravatar.com/avatar/ed5c8e9a67490816384ff83e9d0e0a42?d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-140.png","url":"https://api.github.com/users/natebunnyfield","login":"natebunnyfield","gravatar_id":"ed5c8e9a67490816384ff83e9d0e0a42","id":94285},{"avatar_url":"https://secure.gravatar.com/avatar/cf491f57897e7f31122ca6d03d6a49e4?d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-140.png","url":"https://api.github.com/users/nerdEd","login":"nerdEd","gravatar_id":"cf491f57897e7f31122ca6d03d6a49e4","id":1726},{"avatar_url":"https://secure.gravatar.com/avatar/3538353e7f9c08efddaabff15c9c6480?d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-140.png","url":"https://api.github.com/users/jamesdaniels","login":"jamesdaniels","gravatar_id":"3538353e7f9c08efddaabff15c9c6480","id":44975},{"avatar_url":"https://secure.gravatar.com/avatar/d5cdad8cf459a2f3660d374e72eccf4b?d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-140.png","url":"https://api.github.com/users/jkamenik","login":"jkamenik","gravatar_id":"d5cdad8cf459a2f3660d374e72eccf4b","id":165914},{"avatar_url":"https://secure.gravatar.com/avatar/58dac781cb69c3342f0a73c8936cf48b?d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-140.png","url":"https://api.github.com/users/mnelson","login":"mnelson","gravatar_id":"58dac781cb69c3342f0a73c8936cf48b","id":51276},{"avatar_url":"https://secure.gravatar.com/avatar/7ea1a46afc3c483ef7ae7b6503b41793?d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-140.png","url":"https://api.github.com/users/devreq","login":"devreq","gravatar_id":"7ea1a46afc3c483ef7ae7b6503b41793","id":230532},{"avatar_url":"https://secure.gravatar.com/avatar/ffca7d80230ae1f99914b74853bf06bb?d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-140.png","url":"https://api.github.com/users/flipsasser","login":"flipsasser","gravatar_id":"ffca7d80230ae1f99914b74853bf06bb","id":8594},{"avatar_url":"https://secure.gravatar.com/avatar/939848268c73b4049f90ee0703df7c68?d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-140.png","url":"https://api.github.com/users/abachman","login":"abachman","gravatar_id":"939848268c73b4049f90ee0703df7c68","id":13002},{"avatar_url":"https://secure.gravatar.com/avatar/6661ef9d747db3af8896cd94959d717d?d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-140.png","url":"https://api.github.com/users/pjb3","login":"pjb3","gravatar_id":"6661ef9d747db3af8896cd94959d717d","id":726},{"avatar_url":"https://secure.gravatar.com/avatar/5bc3ee98b5a5bd0cd936554de2bdc232?d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-140.png","url":"https://api.github.com/users/arcterex","login":"arcterex","gravatar_id":"5bc3ee98b5a5bd0cd936554de2bdc232","id":70160},{"avatar_url":"https://secure.gravatar.com/avatar/a86224d72ce21cd9f5bee6784d4b06c7?d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-140.png","url":"https://api.github.com/users/atmos","login":"atmos","gravatar_id":"a86224d72ce21cd9f5bee6784d4b06c7","id":38}]'
+    http_version: !!null 
+  recorded_at: Mon, 16 Jan 2012 02:45:56 GMT
 recorded_with: VCR 2.0.0.rc1

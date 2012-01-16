@@ -23,7 +23,9 @@ module Leadlight
     }
 
     before do
-      representation.stub(__response__: response, __service__: service)
+      representation.stub(__response__: response, 
+                          __service__: service,
+                          __location__: '/foo')
     end
 
     describe '.extend' do

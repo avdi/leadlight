@@ -161,6 +161,17 @@ describe Leadlight, vcr: true do
           def team_for_name(name)
             teams.get(name)
           end
+
+          def add_team(name, permission)
+            link('teams').post({}, 
+                               { 'name' => name,
+                                 'permission' => permission}).
+              raise_on_error.
+              submit_and_wait do |new_team|
+                return new_team
+              end
+          end
+
         end
       end
 
@@ -187,6 +198,10 @@ describe Leadlight, vcr: true do
 
           def remove_member(member_name)
             link('member').delete(member_name).submit_and_wait.raise_on_error
+          end
+
+          def destroy
+            link('self').delete.raise_on_error.submit_and_wait
           end
         end
       end
@@ -247,6 +262,13 @@ describe Leadlight, vcr: true do
       it { should be }
     end
 
+    specify "adding and removing teams" do
+      org = session.root.organization('shiprise')
+      team = org.add_team("Leadlight Ephemeral Team", "pull")
+      team["permission"].should eq("pull")
+      team.destroy
+    end
+
     specify "adding and removing team members" do
       user = session.root.user("leadlight-test")
       user.should_not be_empty
@@ -258,7 +280,7 @@ describe Leadlight, vcr: true do
       team.should be_a(GithubRepresentation)
       team.should_not be_empty
       team.add_member('leadlight-test')
-        team.members.map{|m| m['login']}.should include('leadlight-test')
+      team.members.map{|m| m['login']}.should include('leadlight-test')
       team.remove_member('leadlight-test')
       team.members.map{|m| m['login']}.should_not include('leadlight-test')
     end

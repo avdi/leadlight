@@ -48,7 +48,8 @@ module Leadlight
     end
 
     subject { Request.new(service, connection, url, http_method, params, body) }
-    let(:service)    { stub(:service) }
+    let(:service)    { stub(:service, :type_map => type_map) }
+    let(:type_map)   { stub(:type_map).as_null_object }
     let(:connection) { stub(:connection, :run_request => faraday_response) }
     let(:url)        { stub(:url)        }
     let(:http_method){ :get              }
@@ -95,14 +96,14 @@ module Leadlight
     describe "#submit" do
       it "starts a request runnning" do
         connection.should_receive(:run_request).
-          with(http_method, url, body, {}).
+          with(http_method, url, anything, {}).
           and_return(faraday_response)
         subject.submit
       end
 
       it "triggers the on_prepare_request hook in the block passed to #run_request" do
         yielded         = :nothing
-        faraday_request = stub(options: {})
+        faraday_request = stub(options: {}, headers: {})
         connection.stub(:run_request).
           and_yield(faraday_request).
           and_return(stub.as_null_object)

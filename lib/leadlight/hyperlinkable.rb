@@ -10,7 +10,7 @@ module Leadlight
   module Hyperlinkable
     def self.extended(representation)
       super(representation)
-      representation.add_link(representation.__response__.env[:url],
+      representation.add_link(representation.__location__,
                               'self', 'self', rev: 'self')
       representation.add_links_from_headers
     end
