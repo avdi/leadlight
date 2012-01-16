@@ -7,7 +7,6 @@ module Leadlight
     attr_accessor :__service__
     attr_accessor :__location__
     attr_accessor :__response__
-    attr_accessor :__type__
 
     def initialize_representation(service, location, response)
       self.__service__ = service

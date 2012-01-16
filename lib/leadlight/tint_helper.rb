@@ -66,10 +66,6 @@ module Leadlight
       end
     end
 
-    def type(type_name)
-      __getobj__.__type__ = __service__.type_for_name(type_name)
-    end
-
     private
 
     def expand_status_patterns(*patterns)
