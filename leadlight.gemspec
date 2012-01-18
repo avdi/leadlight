@@ -14,7 +14,7 @@ Gem::Specification.new do |s|
   ## the sub! line in the Rakefile
   s.name              = 'leadlight'
   s.version           = '0.0.2'
-  s.date              = '2012-01-09'
+  s.date              = '2012-01-18'
   s.rubyforge_project = 'leadlight'
 
   ## Make sure your summary is short. The description may be as long
@@ -67,27 +67,33 @@ Gem::Specification.new do |s|
     Gemfile
     Gemfile.lock
     Guardfile
+    README.md
     Rakefile
+    default.gems
     leadlight.gemspec
     lib/leadlight.rb
+    lib/leadlight/basic_converter.rb
     lib/leadlight/blank.rb
     lib/leadlight/codec.rb
+    lib/leadlight/entity.rb
     lib/leadlight/enumerable_representation.rb
     lib/leadlight/errors.rb
+    lib/leadlight/header_helpers.rb
     lib/leadlight/hyperlinkable.rb
     lib/leadlight/link.rb
     lib/leadlight/link_template.rb
     lib/leadlight/representation.rb
     lib/leadlight/request.rb
     lib/leadlight/service.rb
+    lib/leadlight/service_class_methods.rb
     lib/leadlight/service_middleware.rb
     lib/leadlight/tint.rb
     lib/leadlight/tint_helper.rb
-    lib/leadlight/type.rb
+    lib/leadlight/type_map.rb
     spec/cassettes/Leadlight/authorized_GitHub_example/_user/has_the_expected_content.yml
     spec/cassettes/Leadlight/authorized_GitHub_example/_user/indicates_the_expected_oath_scopes.yml
     spec/cassettes/Leadlight/authorized_GitHub_example/adding_and_removing_team_members.yml
-    spec/cassettes/Leadlight/authorized_GitHub_example/adding_and_removing_team_members/.yml
+    spec/cassettes/Leadlight/authorized_GitHub_example/adding_and_removing_teams.yml
     spec/cassettes/Leadlight/authorized_GitHub_example/test_team/.yml
     spec/cassettes/Leadlight/basic_GitHub_example/_root/.yml
     spec/cassettes/Leadlight/basic_GitHub_example/_root/__location__/.yml
@@ -112,7 +118,8 @@ Gem::Specification.new do |s|
     spec/leadlight/service_middleware_spec.rb
     spec/leadlight/service_spec.rb
     spec/leadlight/tint_helper_spec.rb
-    spec/leadlight/type_spec.rb
+    spec/leadlight/tint_spec.rb
+    spec/leadlight/type_map_spec.rb
     spec/leadlight_spec.rb
     spec/spec_helper_lite.rb
     spec/support/credentials.rb
