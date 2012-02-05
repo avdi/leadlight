@@ -2,6 +2,7 @@ PATH
   remote: .
   specs:
     leadlight (0.0.2)
+      addressable
       faraday
       fattr
       hookr
@@ -33,7 +34,6 @@ GEM
       guard (>= 0.10.0)
     hookr (1.1.1)
       fail-fast (= 1.0.0)
-    libnotify (0.7.1)
     linecache19 (0.5.12)
       ruby_core_source (>= 0.1.4)
     link_header (0.0.5)
@@ -42,8 +42,6 @@ GEM
     multipart-post (1.1.4)
     rack (1.4.0)
     rake (0.9.2.2)
-    rb-inotify (0.8.8)
-      ffi (>= 0.5.0)
     rspec (2.7.0)
       rspec-core (~> 2.7.0)
       rspec-expectations (~> 2.7.0)
@@ -73,9 +71,7 @@ DEPENDENCIES
   guard-bundler
   guard-rspec
   leadlight!
-  libnotify
   rake
-  rb-inotify
   rspec
   ruby-debug19
   vcr (~> 2.0.0.rc1)
