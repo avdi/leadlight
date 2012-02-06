@@ -83,13 +83,19 @@ module Leadlight
     end
     alias_method :then, :submit_and_wait
 
-    def raise_on_error
+    def on_error
       on_or_after_complete do |response|
         unless response.success?
-          raise response.env.fetch(:leadlight_representation)
+          yield(response.env.fetch(:leadlight_representation))
         end
       end
       self
+    end
+
+    def raise_on_error
+      on_error do |representation|
+        raise representation
+      end
     end
 
     def on_or_after_complete(&block)

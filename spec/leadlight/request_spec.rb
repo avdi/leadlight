@@ -228,6 +228,41 @@ module Leadlight
       end
     end
 
+    describe "#on_error" do
+      def submit_and_complete
+        t = Thread.new do
+          subject.submit
+          subject.wait
+        end
+        run_completion_handlers
+        t.join(1)
+        subject
+      end
+
+      it "yields to the block when response is an error" do
+        called = :not_set
+        block = proc{ called = true }
+        faraday_response.should_receive(:success?).and_return(false)
+        submit_and_complete.on_error(&block)
+        called.should be_true
+      end
+
+      it "does not yield to the block when response is sucess" do
+        called = :not_set
+        block = proc { called = true }
+        faraday_response.should_receive(:success?).and_return(true)
+        submit_and_complete.on_error(&block)
+        called.should eq(:not_set)
+      end
+
+      it "passes the representation to the handler" do
+        passed = :not_set
+        block = ->(arg) { passed = arg }
+        faraday_response.should_receive(:success?).and_return(false)
+        submit_and_complete.on_error(&block)
+        passed.should equal(representation)
+      end
+    end
 
     describe "#raise_on_error" do
       def submit_and_complete

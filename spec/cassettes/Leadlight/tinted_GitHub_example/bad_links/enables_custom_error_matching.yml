@@ -1,0 +1,67 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.github.com/
+    body: ''
+    headers:
+      Accept:
+      - application/json, text/x-yaml, application/xml, application/xhtml+xml, text/html,
+        text/plain
+  response:
+    status:
+      code: 204
+      message: 
+    headers:
+      server:
+      - nginx/1.0.4
+      date:
+      - Mon, 06 Feb 2012 21:16:34 GMT
+      connection:
+      - close
+      status:
+      - 204 No Content
+      x-ratelimit-limit:
+      - '5000'
+      etag:
+      - ! '"d41d8cd98f00b204e9800998ecf8427e"'
+      x-ratelimit-remaining:
+      - '4995'
+    body: ''
+    http_version: 
+  recorded_at: Mon, 06 Feb 2012 21:17:11 GMT
+- request:
+    method: get
+    uri: https://api.github.com/not_exist
+    body: ''
+    headers:
+      Accept:
+      - application/json, text/x-yaml, application/xml, application/xhtml+xml, text/html,
+        text/plain
+  response:
+    status:
+      code: 404
+      message: 
+    headers:
+      server:
+      - nginx/1.0.4
+      date:
+      - Mon, 06 Feb 2012 21:36:01 GMT
+      content-type:
+      - application/json; charset=utf-8
+      transfer-encoding:
+      - chunked
+      connection:
+      - close
+      status:
+      - 404 Not Found
+      x-ratelimit-limit:
+      - '5000'
+      etag:
+      - ! '"e66a7a6c91e2c26803f3f49feb7a883f"'
+      x-ratelimit-remaining:
+      - '4994'
+    body: ! '{"message":"Not Found"}'
+    http_version: 
+  recorded_at: Mon, 06 Feb 2012 21:36:38 GMT
+recorded_with: VCR 2.0.0.rc1

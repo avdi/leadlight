@@ -49,6 +49,7 @@ describe Leadlight, vcr: true do
         tint 'root' do
           match_path('/')
           add_link_template '/users/{login}', 'user', 'Find user by login'
+          add_link '/not_exist', 'bad_link'
         end
 
         tint 'user' do
@@ -122,6 +123,24 @@ describe Leadlight, vcr: true do
       it 'should be enumerable over page boundaries' do
         followers = subject.to_enum.take(61)
         followers.should have(61).items
+      end
+    end
+
+    describe 'bad links' do
+      class MyAwesomeError < StandardError
+      end
+      
+      it 'should raise ResourceNotFound' do
+        expect{
+          session.root.bad_link
+        }.to raise_error(Leadlight::ResourceNotFound)
+      end
+
+      it 'enables custom error matching' do
+        expect{
+          handler = proc { raise MyAwesomeError }
+          session.root.link('bad_link').get.on_error(&handler).submit_and_wait
+        }.to raise_error(MyAwesomeError)
       end
     end
   end
