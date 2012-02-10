@@ -55,6 +55,7 @@ module Leadlight
       entity_body = entity.body
       content_type = entity.content_type
       connection.run_request(http_method, url, entity_body, {}) do |request|
+        request.params.update(params) unless params.empty?
         request.headers['Content-Type'] = content_type if content_type
         request.options[:leadlight_request] = self        
         execute_hook(:on_prepare_request, request)
