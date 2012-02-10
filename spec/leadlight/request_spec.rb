@@ -94,6 +94,17 @@ module Leadlight
     end
 
     describe "#submit" do
+      let(:request_params)  { stub }
+      let(:faraday_request) {
+        stub(options: {}, headers: {}, params: request_params)
+      }
+
+      before do
+        connection.stub(:run_request).
+          and_yield(faraday_request).
+          and_return(stub.as_null_object)
+      end
+
       it "starts a request runnning" do
         connection.should_receive(:run_request).
           with(http_method, url, anything, {}).
@@ -102,11 +113,7 @@ module Leadlight
       end
 
       it "triggers the on_prepare_request hook in the block passed to #run_request" do
-        yielded         = :nothing
-        faraday_request = stub(options: {}, headers: {})
-        connection.stub(:run_request).
-          and_yield(faraday_request).
-          and_return(stub.as_null_object)
+        yielded = :nothing
         subject.on_prepare_request do |request|
           yielded = request
         end
@@ -114,6 +121,21 @@ module Leadlight
         yielded.should equal(faraday_request)
       end
 
+      context "with request params" do
+        let(:params) {{ query: 'value' }}
+
+        it "passes params to request" do
+          request_params.should_receive(:update).with(params)
+          subject.submit
+        end
+      end
+
+      context "with no request params" do
+        it "doesn't alter request params" do
+          request_params.should_not_receive(:update)
+          subject.submit
+        end
+      end
     end
 
     shared_examples_for "synchronous methods" do
