@@ -45,7 +45,7 @@ Gem::Specification.new do |s|
   s.add_dependency 'faraday'
   s.add_dependency 'fattr'
   s.add_dependency 'link_header'
-  s.add_dependency 'multi_json'
+  s.add_dependency 'multi_json', '~> 1.0.4'
   s.add_dependency 'mime-types'
   s.add_dependency 'hookr'
 
