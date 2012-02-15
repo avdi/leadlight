@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    leadlight (0.0.4)
+    leadlight (0.0.5)
       addressable
       faraday
       fattr
