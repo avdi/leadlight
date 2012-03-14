@@ -20,7 +20,7 @@ module Leadlight
       @aliases = Array(options[:aliases])
     end
 
-    [:options, :head, :get, :get_representation!, :post, :put, :delete, :patch].each do |name|
+    HTTP_METHODS.each do |name|
       define_method(name) do |*args, &block|
         service.public_send(name, href, *args, &block)
       end
