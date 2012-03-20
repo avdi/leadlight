@@ -23,7 +23,7 @@ module Leadlight
     }
 
     before do
-      representation.stub(__response__: response, 
+      representation.stub(__response__: response,
                           __service__: service,
                           __location__: '/foo')
     end
@@ -94,7 +94,7 @@ module Leadlight
       it 'adds a link helper' do
         subject.add_link_template('/child/{index}', 'child')
         service.should_receive(:get_representation!).
-          with('/child/23')
+          with(u('/child/23'))
         subject.child(23)
       end
 

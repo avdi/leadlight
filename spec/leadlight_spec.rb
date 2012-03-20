@@ -10,10 +10,10 @@ describe Leadlight, vcr: true do
     Addressable::Template.new(pattern)
   end
 
-  let(:logger)  { 
+  let(:logger)  {
     logfile = Pathname('../../log/test.log').expand_path(__FILE__)
     logfile.dirname.mkpath
-    Logger.new(logfile) 
+    Logger.new(logfile)
   }
 
   describe 'basic GitHub example' do
@@ -129,7 +129,7 @@ describe Leadlight, vcr: true do
     describe 'bad links' do
       class MyAwesomeError < StandardError
       end
-      
+
       it 'should raise ResourceNotFound' do
         expect{
           session.root.bad_link
@@ -182,9 +182,8 @@ describe Leadlight, vcr: true do
           end
 
           def add_team(name, permission)
-            link('teams').post({}, 
-                               { 'name' => name,
-                                 'permission' => permission}).
+            link('teams').post('name'       => name,
+                               'permission' => permission).
               raise_on_error.
               submit_and_wait do |new_team|
                 return new_team
@@ -206,17 +205,17 @@ describe Leadlight, vcr: true do
 
       tint 'team' do
         match_template('/teams/{id}')
-        
+
         add_link "#{__location__}/members", 'members'
         add_link_template "#{__location__}/members/{id}", 'member'
 
         extend do
           def add_member(member_name)
-            link('member').put(member_name).submit_and_wait.raise_on_error
+            link('member', member_name).put.submit_and_wait.raise_on_error
           end
 
           def remove_member(member_name)
-            link('member').delete(member_name).submit_and_wait.raise_on_error
+            link('member', member_name).delete.submit_and_wait.raise_on_error
           end
 
           def destroy
@@ -250,7 +249,7 @@ describe Leadlight, vcr: true do
         #
         # 'event.source' is the Leadlight request, which delegates
         # #service_options to the service
-        request.headers['Authorization'] = 
+        request.headers['Authorization'] =
           "Bearer #{event.source.service_options[:oauth2_token]}"
       end
 
@@ -277,7 +276,7 @@ describe Leadlight, vcr: true do
 
     describe 'test team' do
       subject { session.root.organization('shiprise').team_for_name('Leadlight Test Team') }
-      
+
       it { should be }
     end
 

@@ -4,13 +4,13 @@ require 'leadlight/service'
 module Leadlight
   describe Service do
     subject              { klass.new(service_options)                 }
-    let(:klass)          { 
-      Class.new do 
+    let(:klass)          {
+      Class.new do
         include Service
-        
+
         def execute_hook(*)
         end
-      end          
+      end
     }
     let(:connection)     { stub(:connection, get: response)           }
     let(:representation) { stub(:representation)                      }
@@ -22,7 +22,7 @@ module Leadlight
     let(:request_class)  { stub(:request_class, new: request)         }
 
     before do
-      subject.stub(connection: connection, 
+      subject.stub(connection: connection,
                    url: nil,
                    request_class: request_class)
     end
@@ -36,46 +36,38 @@ module Leadlight
 
         it 'passes self to the request' do
           request_class.should_receive(:new).
-            with(subject, anything, anything, anything, anything, anything).
+            with(subject, anything, anything, anything, anything).
             and_return(request)
           subject.public_send(http_method, '/somepath')
         end
 
         it 'passes the connection to the request' do
           request_class.should_receive(:new).
-            with(anything, connection, anything, anything, anything, anything).
+            with(anything, connection, anything, anything, anything).
             and_return(request)
           subject.public_send(http_method, '/somepath')
         end
 
         it 'passes the path to the request' do
           request_class.should_receive(:new).
-            with(anything, anything, '/somepath', anything, anything, anything).
+            with(anything, anything, '/somepath', anything, anything).
             and_return(request)
           subject.public_send(http_method, '/somepath')
         end
 
         it 'passes the method to the request' do
           request_class.should_receive(:new).
-            with(anything, anything, anything, http_method, anything, anything).
+            with(anything, anything, anything, http_method, anything).
             and_return(request)
           subject.public_send(http_method, '/somepath')
-        end
-
-        it 'passes the params to the request' do
-          params = stub
-          request_class.should_receive(:new).
-            with(anything, anything, anything, anything, params, anything).
-            and_return(request)
-          subject.public_send(http_method, '/somepath', params)
         end
 
         it 'passes the body to the request' do
           body = stub
           request_class.should_receive(:new).
-            with(anything, anything, anything, anything, anything, body).
+            with(anything, anything, anything, anything, body).
             and_return(request)
-          subject.public_send(http_method, '/somepath', {}, body)
+          subject.public_send(http_method, '/somepath', body)
         end
 
         context 'given a block' do

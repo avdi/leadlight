@@ -53,8 +53,8 @@ module Leadlight
 
     private
 
-    def perform_request(url, http_method, params={}, body=nil, &representation_handler)
-      req = request_class.new(self, connection, url, http_method, params, body)
+    def perform_request(url, http_method, body=nil, &representation_handler)
+      req = request_class.new(self, connection, url, http_method, body)
       if representation_handler
         req.submit_and_wait(&representation_handler)
       end

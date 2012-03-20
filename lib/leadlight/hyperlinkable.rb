@@ -23,8 +23,9 @@ module Leadlight
       end
     end
 
-    def link(key, &fallback)
-      result = links.at(key, &fallback)
+    def link(key, *expand_args, &fallback)
+      link = links.at(key, &fallback)
+      link && link.expand(*expand_args)
     end
 
     def add_link(url, rel=nil, title=rel, options={})
@@ -46,10 +47,10 @@ module Leadlight
       yield.each do |link_attributes|
         attributes = default_link_attributes.merge(link_attributes)
         define_link_set_helper(rel, helper_name) if helper_name
-        links << Link.new(__service__, 
-                          attributes[:href], 
-                          attributes[:rel], 
-                          attributes[:title], 
+        links << Link.new(__service__,
+                          attributes[:href],
+                          attributes[:rel],
+                          attributes[:title],
                           attributes)
       end
     end
@@ -69,7 +70,7 @@ module Leadlight
       include Enumerable
       fattr(:links) { Set.new }
 
-      def_delegators :links, :<<, :push, :size, :length, :empty?, :each, 
+      def_delegators :links, :<<, :push, :size, :length, :empty?, :each,
                              :initialize
 
       # Match links on rel or title
@@ -87,7 +88,7 @@ module Leadlight
 
       def link_matcher(key)
         ->(link) {
-          key === link.rel   || 
+          key === link.rel   ||
           key === link.title ||
           link.aliases.any?{|a| key === a}
         }

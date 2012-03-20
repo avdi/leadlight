@@ -47,14 +47,13 @@ module Leadlight
       end
     end
 
-    subject { Request.new(service, connection, url, http_method, params, body) }
+    subject { Request.new(service, connection, url, http_method, body) }
     let(:service)    { stub(:service, :type_map => type_map) }
     let(:type_map)   { stub(:type_map).as_null_object }
     let(:connection) { stub(:connection, :run_request => faraday_response) }
     let(:url)        { stub(:url)        }
     let(:http_method){ :get              }
     let(:body)       { stub(:body)       }
-    let(:params)     { {}                }
     let(:faraday_request) {stub(:faraday_request, options: {})}
     let(:on_complete_handlers) { [] }
     let(:faraday_env)      { {} }
@@ -121,21 +120,6 @@ module Leadlight
         yielded.should equal(faraday_request)
       end
 
-      context "with request params" do
-        let(:params) {{ query: 'value' }}
-
-        it "passes params to request" do
-          request_params.should_receive(:update).with(params)
-          subject.submit
-        end
-      end
-
-      context "with no request params" do
-        it "doesn't alter request params" do
-          request_params.should_not_receive(:update)
-          subject.submit
-        end
-      end
     end
 
     shared_examples_for "synchronous methods" do
@@ -309,7 +293,7 @@ module Leadlight
         subject.should_receive(:raise).with(representation)
         submit_and_complete
       end
-      
+
     end
 
   end

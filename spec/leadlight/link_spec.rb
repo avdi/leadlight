@@ -3,12 +3,30 @@ require 'leadlight/link'
 
 module Leadlight
   describe Link do
+    include LinkMatchers
+
     subject { Link.new(service, href, rel, title, options) }
     let(:service) { stub(:service, get: nil) }
     let(:href)    { '/TEST_PATH'   }
     let(:rel)     { 'TEST_REL'     }
     let(:title)   { 'TEST_TITLE'   }
     let(:options) { {}             }
+
+    it { should expand_to('/TEST_PATH?foo=bar').given(:foo => 'bar') }
+    it {
+      should expand_to('/TEST_PATH?foo=bar&x=42').
+        given(:foo => 'bar', "x" => 42)
+    }
+    it {
+      should expand_to('/TEST_PATH?foo[0]=123&foo[1]=456').
+        given(:foo => [123,456])
+    }
+
+    describe '#expand' do
+      it 'returns self given no arguments' do
+        subject.expand.should equal(subject)
+      end
+    end
 
     describe '#follow' do
       it 'calls service.get with the href' do
@@ -49,5 +67,6 @@ module Leadlight
     delegates_to_service :put
     delegates_to_service :delete
     delegates_to_service :patch
+
   end
 end

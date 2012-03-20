@@ -10,12 +10,13 @@ module Leadlight
 
     HTTP_METHODS.each do |name|
       define_method(name) do |*args, &block|
-        expanded_href = expand(args)
-        service.public_send(name, expanded_href, *args, &block)
+        expanded_href = expand(*args).href
+        service.public_send(name, expanded_href, &block)
       end
     end
 
-    def expand(args)
+    def expand(*args)
+      return self if args.empty?
       mapping = args.last.is_a?(Hash) ? args.pop : {}
       mapping = mapping.inject({}) { |result, (k,v)| result.merge!(k.to_s => v) }
       mapping = href_template.variables.inject(mapping) do |mapping, var|
@@ -28,8 +29,10 @@ module Leadlight
         params
       end
       assert_all_variables_mapped(href_template, mapping)
-      args.push extra_params unless extra_params.empty?
-      href_template.expand(mapping).to_s
+      uri          = href_template.expand(mapping)
+      expanded_uri = expand_uri_with_params(uri, extra_params)
+      Link.new(service, expanded_uri, rel, title,
+               rev: rev, aliases: aliases)
     end
 
     private

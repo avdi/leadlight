@@ -34,6 +34,7 @@ GEM
       guard (>= 0.10.0)
     hookr (1.1.1)
       fail-fast (= 1.0.0)
+    libnotify (0.7.2)
     linecache19 (0.5.12)
       ruby_core_source (>= 0.1.4)
     link_header (0.0.5)
@@ -42,6 +43,8 @@ GEM
     multipart-post (1.1.5)
     rack (1.4.1)
     rake (0.9.2.2)
+    rb-inotify (0.8.8)
+      ffi (>= 0.5.0)
     rspec (2.8.0)
       rspec-core (~> 2.8.0)
       rspec-expectations (~> 2.8.0)
@@ -71,7 +74,9 @@ DEPENDENCIES
   guard-bundler
   guard-rspec
   leadlight!
+  libnotify
   rake
+  rb-inotify
   rspec
   ruby-debug19
   vcr (~> 2.0.0.rc1)
