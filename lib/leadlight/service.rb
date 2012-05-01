@@ -1,6 +1,7 @@
 require 'fattr'
 require 'forwardable'
 require 'leadlight/request'
+require 'leadlight/connection_builder'
 
 module Leadlight
   module Service
@@ -31,12 +32,10 @@ module Leadlight
     end
 
     def connection
-      @connection ||= Faraday.new(url: self.url) do |builder|
-        builder.use Leadlight::ServiceMiddleware, service: self
-        instance_exec(builder, &connection_stack)
-        builder.use Faraday::Response::Logger, logger
-        instance_exec(builder, &Leadlight.common_connection_stack)
-      end
+      @connection ||= ConnectionBuilder.new do |cxn|
+        cxn.url     url
+        cxn.service self
+      end.call
     end
 
     [:options, :head, :get, :post, :put, :delete, :patch].each do |name|
