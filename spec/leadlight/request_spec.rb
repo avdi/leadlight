@@ -51,7 +51,7 @@ module Leadlight
     let(:service)    { stub(:service, :type_map => type_map) }
     let(:type_map)   { stub(:type_map).as_null_object }
     let(:connection) { stub(:connection, :run_request => faraday_response) }
-    let(:url)        { stub(:url)        }
+    let(:url)        { stub(:url, :to_s => "STRINGIFIED_URL") }
     let(:http_method){ :get              }
     let(:body)       { stub(:body)       }
     let(:faraday_request) {stub(:faraday_request, options: {})}
@@ -106,7 +106,7 @@ module Leadlight
 
       it "starts a request runnning" do
         connection.should_receive(:run_request).
-          with(http_method, url, anything, {}).
+          with(http_method, "STRINGIFIED_URL", anything, {}).
           and_return(faraday_response)
         subject.submit
       end

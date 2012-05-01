@@ -52,7 +52,9 @@ module Leadlight
       entity = type_map.to_entity_body(body)
       entity_body = entity.body
       content_type = entity.content_type
-      connection.run_request(http_method, url, entity_body, {}) do |request|
+      connection.run_request(http_method, url.to_s, entity_body, {}) do
+        |request|
+
         request.headers['Content-Type'] = content_type if content_type
         request.options[:leadlight_request] = self
         execute_hook(:on_prepare_request, request)
