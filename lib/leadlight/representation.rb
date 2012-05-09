@@ -21,7 +21,7 @@ module Leadlight
       self
     end
 
-    def exception(message=exception_message)
+    def exception
       return super if defined?(super)
       case __response__.status.to_i
       when 404 then ResourceNotFound
