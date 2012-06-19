@@ -42,7 +42,7 @@ Gem::Specification.new do |s|
   ## that are needed for an end user to actually USE your code.
   ## s.add_dependency('DEPNAME', [">= 1.1.0", "< 2.0.0"])
   s.add_dependency 'addressable'
-  s.add_dependency 'faraday'
+  s.add_dependency 'faraday', '~> 0.8.1'
   s.add_dependency 'fattr'
   s.add_dependency 'link_header'
   s.add_dependency 'multi_json', '~> 1.0.4'

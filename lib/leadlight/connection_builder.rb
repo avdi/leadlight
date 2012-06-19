@@ -15,7 +15,8 @@ module Leadlight
     end
 
     def call
-      Faraday.new(url: url.to_s) do |builder|
+      Faraday.new(url: url.to_s) do |connection|
+        builder = connection.builder
         builder.use Leadlight::ServiceMiddleware, service: service
         builder.use Faraday::Response::Logger, logger
         service.instance_exec(builder, &connection_stack)

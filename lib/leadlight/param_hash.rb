@@ -1,3 +1,5 @@
+require 'delegate'
+
 module Leadlight
   def ParamHash(hash)
     case hash
