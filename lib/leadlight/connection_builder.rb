@@ -17,9 +17,11 @@ module Leadlight
     def call
       Faraday.new(url: url.to_s) do |builder|
         builder.use Leadlight::ServiceMiddleware, service: service
-        service.instance_exec(builder, &connection_stack)
         builder.use Faraday::Response::Logger, logger
-        service.instance_exec(builder, &Leadlight.common_connection_stack)
+        service.instance_exec(builder, &connection_stack)
+        unless builder.handlers.any?{|h| h.is_a?(Faraday::Adapter)}
+          service.instance_exec(builder, &Leadlight.common_connection_stack)
+        end
       end
     end
   end

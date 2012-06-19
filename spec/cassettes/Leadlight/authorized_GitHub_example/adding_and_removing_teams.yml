@@ -16,9 +16,9 @@ http_interactions:
       message: 
     headers:
       server:
-      - nginx/1.0.4
+      - nginx/1.0.13
       date:
-      - Mon, 16 Jan 2012 04:50:22 GMT
+      - Tue, 19 Jun 2012 02:34:27 GMT
       connection:
       - close
       status:
@@ -30,10 +30,10 @@ http_interactions:
       x-oauth-scopes:
       - repo
       x-ratelimit-remaining:
-      - '4985'
+      - '4999'
     body: ''
     http_version: 
-  recorded_at: Mon, 16 Jan 2012 04:50:22 GMT
+  recorded_at: Tue, 19 Jun 2012 02:34:26 GMT
 - request:
     method: get
     uri: https://api.github.com/orgs/shiprise
@@ -50,9 +50,9 @@ http_interactions:
       message: 
     headers:
       server:
-      - nginx/1.0.4
+      - nginx/1.0.13
       date:
-      - Mon, 16 Jan 2012 04:50:22 GMT
+      - Tue, 19 Jun 2012 02:34:27 GMT
       content-type:
       - application/json; charset=utf-8
       transfer-encoding:
@@ -63,18 +63,24 @@ http_interactions:
       - 200 OK
       x-ratelimit-limit:
       - '5000'
+      vary:
+      - Accept, Authorization, Cookie
       etag:
-      - ! '"08a3c9cddbbd6fe2819b345e19634c09"'
+      - ! '"6f850a5c45f73a503f5ad4295b4aa793"'
+      last-modified:
+      - Sun, 20 May 2012 18:37:54 GMT
       x-oauth-scopes:
       - repo
       x-ratelimit-remaining:
-      - '4984'
+      - '4998'
       x-accepted-oauth-scopes:
       - repo
-    body: ! '{"type":"Organization","collaborators":0,"created_at":"2011-10-27T20:49:51Z","email":"avdi@shiprise.net","url":"https://api.github.com/orgs/ShipRise","login":"ShipRise","plan":{"space":2516582,"private_repos":10,"name":"bronze"},"followers":0,"blog":"http://shiprise.net","total_private_repos":1,"public_repos":0,"following":0,"billing_email":"avdi@shiprise.net","owned_private_repos":1,"disk_usage":552,"public_gists":0,"html_url":"https://github.com/ShipRise","name":"Leadlight
-      Ephemeral Team","avatar_url":"https://secure.gravatar.com/avatar/6dd3c12e97a46ff08c358542cae955e2?d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-orgs.png","location":null,"id":1156570,"private_gists":0,"company":null}'
+      cache-control:
+      - private, max-age=60
+    body: ! '{"plan":{"space":2516582,"name":"bronze","private_repos":10},"type":"Organization","login":"ShipRise","private_gists":0,"email":"avdi@shiprise.net","followers":0,"following":0,"public_repos":0,"created_at":"2011-10-27T20:49:51Z","blog":"http://shiprise.net","location":null,"total_private_repos":5,"collaborators":0,"company":null,"url":"https://api.github.com/orgs/ShipRise","owned_private_repos":5,"billing_email":"avdi@shiprise.net","name":"Leadlight
+      Ephemeral Team","avatar_url":"https://secure.gravatar.com/avatar/6dd3c12e97a46ff08c358542cae955e2?d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-orgs.png","id":1156570,"disk_usage":22480,"public_gists":0,"html_url":"https://github.com/ShipRise"}'
     http_version: 
-  recorded_at: Mon, 16 Jan 2012 04:50:22 GMT
+  recorded_at: Tue, 19 Jun 2012 02:34:27 GMT
 - request:
     method: post
     uri: https://api.github.com/orgs/shiprise/teams
@@ -93,9 +99,9 @@ http_interactions:
       message: 
     headers:
       server:
-      - nginx/1.0.4
+      - nginx/1.0.13
       date:
-      - Mon, 16 Jan 2012 04:50:23 GMT
+      - Tue, 19 Jun 2012 02:34:28 GMT
       content-type:
       - application/json; charset=utf-8
       connection:
@@ -105,107 +111,24 @@ http_interactions:
       x-ratelimit-limit:
       - '5000'
       etag:
-      - ! '"054dbeddef24cd45b014dc0fcdb45654"'
+      - ! '"1e9ee248e134002b77a70a447099343a"'
       location:
-      - https://api.github.com/teams/130176
+      - https://api.github.com/teams/200367
       x-oauth-scopes:
       - repo
       x-ratelimit-remaining:
-      - '4983'
+      - '4997'
       x-accepted-oauth-scopes:
       - repo
       content-length:
       - '145'
-    body: ! '{"url":"https://api.github.com/teams/130176","name":"Leadlight Ephemeral
-      Team","permission":"pull","members_count":0,"repos_count":0,"id":130176}'
+    body: ! '{"members_count":0,"url":"https://api.github.com/teams/200367","permission":"pull","repos_count":0,"name":"Leadlight
+      Ephemeral Team","id":200367}'
     http_version: 
-  recorded_at: Mon, 16 Jan 2012 04:50:22 GMT
-- request:
-    method: get
-    uri: https://api.github.com/orgs/shiprise/teams
-    body: ''
-    headers:
-      Authorization:
-      - <AUTH FILTERED>
-      Accept:
-      - application/json, text/x-yaml, application/xml, application/xhtml+xml, text/html,
-        text/plain
-  response:
-    status:
-      code: 200
-      message: 
-    headers:
-      server:
-      - nginx/1.0.4
-      date:
-      - Mon, 16 Jan 2012 04:50:23 GMT
-      content-type:
-      - application/json; charset=utf-8
-      transfer-encoding:
-      - chunked
-      connection:
-      - close
-      status:
-      - 200 OK
-      x-ratelimit-limit:
-      - '5000'
-      etag:
-      - ! '"8dd1b70061636cf5ebaaca6448460331"'
-      x-oauth-scopes:
-      - repo
-      x-ratelimit-remaining:
-      - '4982'
-      x-accepted-oauth-scopes:
-      - repo
-    body: ! '[{"url":"https://api.github.com/teams/111894","name":"BitBindery Development","id":111894},{"url":"https://api.github.com/teams/130176","name":"Leadlight
-      Ephemeral Team","id":130176},{"url":"https://api.github.com/teams/127491","name":"Leadlight
-      Test Team","id":127491},{"url":"https://api.github.com/teams/104018","name":"Owners","id":104018}]'
-    http_version: 
-  recorded_at: Mon, 16 Jan 2012 04:50:23 GMT
-- request:
-    method: get
-    uri: https://api.github.com/teams/130176
-    body: ''
-    headers:
-      Authorization:
-      - <AUTH FILTERED>
-      Accept:
-      - application/json, text/x-yaml, application/xml, application/xhtml+xml, text/html,
-        text/plain
-  response:
-    status:
-      code: 200
-      message: 
-    headers:
-      server:
-      - nginx/1.0.4
-      date:
-      - Mon, 16 Jan 2012 04:50:23 GMT
-      content-type:
-      - application/json; charset=utf-8
-      transfer-encoding:
-      - chunked
-      connection:
-      - close
-      status:
-      - 200 OK
-      x-ratelimit-limit:
-      - '5000'
-      etag:
-      - ! '"ceecc29b7574f9776b0e76cc4946fd42"'
-      x-oauth-scopes:
-      - repo
-      x-ratelimit-remaining:
-      - '4981'
-      x-accepted-oauth-scopes:
-      - repo
-    body: ! '{"members_count":0,"repos_count":0,"url":"https://api.github.com/teams/130176","permission":"pull","name":"Leadlight
-      Ephemeral Team","id":130176}'
-    http_version: 
-  recorded_at: Mon, 16 Jan 2012 04:50:23 GMT
+  recorded_at: Tue, 19 Jun 2012 02:34:27 GMT
 - request:
     method: delete
-    uri: https://api.github.com/teams/130176
+    uri: https://api.github.com/teams/200367
     body: ''
     headers:
       Authorization:
@@ -219,9 +142,9 @@ http_interactions:
       message: 
     headers:
       server:
-      - nginx/1.0.4
+      - nginx/1.0.13
       date:
-      - Mon, 16 Jan 2012 04:50:41 GMT
+      - Tue, 19 Jun 2012 02:34:28 GMT
       connection:
       - close
       status:
@@ -233,90 +156,10 @@ http_interactions:
       x-oauth-scopes:
       - repo
       x-ratelimit-remaining:
-      - '4980'
+      - '4996'
       x-accepted-oauth-scopes:
       - repo
     body: ''
     http_version: 
-  recorded_at: Mon, 16 Jan 2012 04:50:41 GMT
-- request:
-    method: delete
-    uri: https://api.github.com/orgs/shiprise/teams
-    body: ''
-    headers:
-      Authorization:
-      - <AUTH FILTERED>
-      Accept:
-      - application/json, text/x-yaml, application/xml, application/xhtml+xml, text/html,
-        text/plain
-  response:
-    status:
-      code: 404
-      message: 
-    headers:
-      server:
-      - nginx/1.0.4
-      date:
-      - Mon, 16 Jan 2012 04:52:55 GMT
-      content-type:
-      - application/json; charset=utf-8
-      connection:
-      - close
-      status:
-      - 404 Not Found
-      x-ratelimit-limit:
-      - '5000'
-      etag:
-      - ! '"e66a7a6c91e2c26803f3f49feb7a883f"'
-      x-oauth-scopes:
-      - repo
-      x-ratelimit-remaining:
-      - '4979'
-      x-accepted-oauth-scopes:
-      - repo
-      content-length:
-      - '23'
-    body: ! '{"message":"Not Found"}'
-    http_version: 
-  recorded_at: Mon, 16 Jan 2012 04:52:55 GMT
-- request:
-    method: post
-    uri: https://api.github.com/orgs/shiprise/teams?name=Leadlight%20Ephemeral%20Team&permission=pull
-    body: ''
-    headers:
-      Authorization:
-      - <AUTH FILTERED>
-      Accept:
-      - application/json, text/x-yaml, application/xml, application/xhtml+xml, text/html,
-        text/plain
-  response:
-    status:
-      code: 400
-      message: 
-    headers:
-      server:
-      - nginx/1.0.13
-      date:
-      - Tue, 20 Mar 2012 05:45:06 GMT
-      content-type:
-      - application/json; charset=utf-8
-      connection:
-      - close
-      status:
-      - 400 Bad Request
-      x-ratelimit-limit:
-      - '5000'
-      etag:
-      - ! '"534a731a5098a869b70860c905e76baf"'
-      x-oauth-scopes:
-      - repo
-      x-ratelimit-remaining:
-      - '4999'
-      x-accepted-oauth-scopes:
-      - repo
-      content-length:
-      - '40'
-    body: ! '{"message":"Body should be a JSON Hash"}'
-    http_version: 
-  recorded_at: Tue, 20 Mar 2012 05:45:02 GMT
+  recorded_at: Tue, 19 Jun 2012 02:34:27 GMT
 recorded_with: VCR 2.0.0.rc1

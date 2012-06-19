@@ -25,7 +25,7 @@ module Leadlight
         include Service
         include HookR::Hooks
         extend SingleForwardable
-        
+
         request_events = request_class.hooks.map(&:name)
         def_delegators :request_class, *request_events
         define_hook :on_init, :service
