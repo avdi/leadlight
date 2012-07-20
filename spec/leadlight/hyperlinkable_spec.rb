@@ -69,7 +69,7 @@ module Leadlight
       it 'adds a link helper' do
         subject.add_link('/parent', 'parent')
         service.should_receive(:get_representation!).
-          with(Addressable::URI.parse('/parent')).
+          with(Addressable::URI.parse('/parent'), anything).
           and_return(request)
         subject.parent
       end

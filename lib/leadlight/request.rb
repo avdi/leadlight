@@ -1,3 +1,4 @@
+require 'ostruct'
 require 'monitor'
 require 'fattr'
 require 'forwardable'
@@ -8,6 +9,7 @@ require 'leadlight/hyperlinkable'
 require 'leadlight/representation'
 require 'leadlight/type_map'
 require 'leadlight/header_helpers'
+require 'leadlight/null_link'
 
 module Leadlight
   class Request
@@ -24,14 +26,15 @@ module Leadlight
     fattr(:codec)
     fattr(:type_map) { service.type_map || TypeMap.new }
 
-    attr_reader :response
+    attr_reader :response, :options, :link
 
     define_hook :on_prepare_request, :request
     define_hook :on_complete,        :response
 
     def_delegator :service, :service_options
 
-    def initialize(service, connection, url, method, body=nil)
+    def initialize(service, connection, url, method, body=nil, options={})
+      @options         = options
       self.connection  = connection
       self.url         = url
       self.http_method = method
@@ -41,6 +44,7 @@ module Leadlight
       @state           = :initialized
       @env             = nil
       @response        = nil
+      @link            = options.fetch(:link) { NullLink.new(url) }
       super()
     end
 
@@ -115,16 +119,40 @@ module Leadlight
       location = Addressable::URI.parse(env[:response_headers].fetch('location'){ env[:url] })
       representation.
         extend(Representation).
-        initialize_representation(env[:leadlight_service], location, env[:response]).
+        initialize_representation(env[:leadlight_service], location, env[:response], self).
         extend(Hyperlinkable).
         apply_all_tints
     end
 
+    def params
+      link_params.merge(request_params)
+    end
+
     private
+
+    fattr(:faraday_request) {
+      env.fetch(:request) { OpenStruct.new(params: {}) }
+    }
+
+    def env
+      if completed?
+        @env
+      else
+        {}
+      end
+    end
 
     def representation
       raise "No representation until complete" unless completed?
       @env.fetch(:leadlight_representation)
+    end
+
+    def request_params
+      faraday_request.params
+    end
+
+    def link_params
+      link.params
     end
   end
 end

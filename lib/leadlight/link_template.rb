@@ -23,6 +23,7 @@ module Leadlight
         mapping.merge!(var => args.shift) unless args.empty?
         mapping
       end
+      full_mapping = mapping.dup
       extra_keys = (mapping.keys.map(&:to_s) - href_template.variables)
       extra_params = extra_keys.inject({}) do |params, key|
         params[key] = mapping.delete(key)
@@ -32,7 +33,7 @@ module Leadlight
       uri          = href_template.expand(mapping)
       expanded_uri = expand_uri_with_params(uri, extra_params)
       Link.new(service, expanded_uri, rel, title,
-               rev: rev, aliases: aliases)
+               rev: rev, aliases: aliases, expansion_params: full_mapping)
     end
 
     private

@@ -39,9 +39,7 @@ module Leadlight
   end
 
   def self.common_connection_stack
-    @common_connection_stack ||= ->(builder) {
-      builder.adapter :net_http
-    }
+    @common_connection_stack ||= ->(builder) {}
   end
 
 

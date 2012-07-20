@@ -14,7 +14,8 @@ module Leadlight
     fattr(:type_map) { TypeMap.new }
 
     def_delegators :codec, :encode, :decode
-    def_delegators 'self.class', :types, :type_for_name, :request_class
+    def_delegators 'self.class', :types, :type_for_name, :request_class, :http_adapter
+    def_delegators :Leadlight, :common_connection_stack
 
     def initialize(service_options={})
       @service_options = service_options
@@ -33,8 +34,10 @@ module Leadlight
 
     def connection
       @connection ||= ConnectionBuilder.new do |cxn|
-        cxn.url     url
-        cxn.service self
+        cxn.url          url
+        cxn.service      self
+        cxn.common_stack common_connection_stack
+        cxn.adapter      http_adapter
       end.call
     end
 
@@ -52,8 +55,10 @@ module Leadlight
 
     private
 
-    def perform_request(url, http_method, body=nil, &representation_handler)
-      req = request_class.new(self, connection, url, http_method, body)
+    def perform_request(url, http_method, body_or_options=nil, options=nil, &representation_handler)
+      options ||= body_or_options.is_a?(Hash) ? body_or_options : {}
+      body    ||= body_or_options.is_a?(Hash) ? nil : body_or_options
+      req = request_class.new(self, connection, url, http_method, body, options)
       if representation_handler
         req.submit_and_wait(&representation_handler)
       end

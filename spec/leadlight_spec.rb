@@ -194,7 +194,7 @@ describe Leadlight, vcr: true do
       end
 
       tint 'teamlist' do
-        match_path(%r{^/orgs/\w+/teams$})
+        match_path(%r{^/orgs/(?<org_id>\w+)/teams$})
 
         add_link_set('child', :get) do
           map{|team|
@@ -208,6 +208,8 @@ describe Leadlight, vcr: true do
 
         add_link "#{__location__}/members", 'members'
         add_link_template "#{__location__}/members/{id}", 'member'
+        # add_link "/orgs/#{__params__['name']}/", 'parent'
+        # add_link "../..", "root"
 
         extend do
           def add_member(member_name)

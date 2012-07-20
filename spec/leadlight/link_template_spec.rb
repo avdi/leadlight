@@ -25,6 +25,7 @@ module Leadlight
     end
 
     it { should(expand_to('/TEST_PATH/N/M/?foo=bar').
+                with_params('n' => 'N', 'm' => 'M').
                 given(:n => "N", :m => "M", :foo => 'bar'))}
 
     it { should(expand_to('/TEST_PATH/N/M/?foo=bar&x=42').

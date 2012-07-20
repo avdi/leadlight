@@ -510,4 +510,36 @@ http_interactions:
     body: ! '[{"login":"loganlinn","gravatar_id":"2c8089a78bf15883302e9ac5b4367895","url":"https://api.github.com/users/loganlinn","avatar_url":"https://secure.gravatar.com/avatar/2c8089a78bf15883302e9ac5b4367895?d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-140.png","id":207988},{"login":"enzoz","gravatar_id":"fe7e3f5050e37172fcb2e273d686cf92","url":"https://api.github.com/users/enzoz","avatar_url":"https://secure.gravatar.com/avatar/fe7e3f5050e37172fcb2e273d686cf92?d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-140.png","id":431361},{"login":"oholiab","gravatar_id":"f2257b127f5b967a1eafcc05c5afbf91","url":"https://api.github.com/users/oholiab","avatar_url":"https://secure.gravatar.com/avatar/f2257b127f5b967a1eafcc05c5afbf91?d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-140.png","id":814470},{"login":"wicz","gravatar_id":"e294c60b884bb3a39e1d37b403d0c320","url":"https://api.github.com/users/wicz","avatar_url":"https://secure.gravatar.com/avatar/e294c60b884bb3a39e1d37b403d0c320?d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-140.png","id":43020}]'
     http_version: 
   recorded_at: Tue, 19 Jun 2012 02:34:24 GMT
+- request:
+    method: get
+    uri: https://api.github.com/
+    body: ! '{"body":null}'
+    headers:
+      Content-Type:
+      - application/json
+      Accept:
+      - application/json, text/x-yaml, application/xml, application/xhtml+xml, text/html,
+        text/plain
+  response:
+    status:
+      code: 204
+      message: 
+    headers:
+      server:
+      - nginx/1.0.13
+      date:
+      - Fri, 20 Jul 2012 17:36:26 GMT
+      connection:
+      - close
+      status:
+      - 204 No Content
+      x-ratelimit-remaining:
+      - '4987'
+      cache-control:
+      - ''
+      x-ratelimit-limit:
+      - '5000'
+    body: ''
+    http_version: 
+  recorded_at: Fri, 20 Jul 2012 17:36:25 GMT
 recorded_with: VCR 2.0.0.rc1

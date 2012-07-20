@@ -16,19 +16,29 @@ module Leadlight
     attr_reader :title
     attr_reader :href
     attr_reader :aliases
+    attr_reader :options
+
+    # Expansion params have no effect on the Link. They exist to keep
+    # a record of how this particular Link instance was constructed,
+    # if it was constructed via expansion.
+    attr_reader :expansion_params
 
     def initialize(service, href, rel=nil, title=rel, options={})
+      @options = options
       @service = service
       @href    = Addressable::URI.parse(href)
       @rel     = rel.to_s
       @title   = title.to_s
       @rev     = options[:rev]
       @aliases = Array(options[:aliases])
+      self.expansion_params = options.fetch(:expansion_params) { {} }
     end
 
     HTTP_METHODS.each do |name|
       define_method(name) do |*args, &block|
-        service.public_send(name, href, *args, &block)
+        request_options = args.last.is_a?(Hash) ? args.pop : {}
+        request_options[:link] = self
+        service.public_send(name, href, *args, request_options, &block)
       end
     end
 
@@ -38,9 +48,9 @@ module Leadlight
       end
     end
 
-    def expand(params=nil)
-      if params
-        dup_with_new_href(expand_uri_with_params(href.dup, params))
+    def expand(expansion_params=nil)
+      if expansion_params
+        dup_with_new_href(expand_uri_with_params(href.dup, expansion_params), expansion_params)
       else
         self
       end
@@ -51,24 +61,47 @@ module Leadlight
     end
 
     def to_s
-      "Link(#{rel}:#{href})"
+      "Link(#{rel}:#{href}#{inspect_expansion_params})"
+    end
+
+    def params
+      extracted_params.merge(expansion_params)
     end
 
     protected
 
     attr_writer :href
 
+    def expansion_params=(new_params)
+      @expansion_params = new_params.each_with_object({}){|(k,v),h|
+        h[k.to_s] = v.to_s
+      }
+    end
+
     private
 
-    def expand_uri_with_params(uri, params)
-      uri.query_values = ParamHash(params) if params.any?
+    def expand_uri_with_params(uri, uri_params)
+      uri.query_values = ParamHash(uri_params) if uri_params.any?
       uri.normalize
     end
 
-    def dup_with_new_href(uri)
+    def dup_with_new_href(uri, expansion_params={})
       self.dup.tap do |link|
         link.href = uri
+        link.expansion_params = expansion_params
       end
+    end
+
+    def inspect_expansion_params
+      if expansion_params.empty?
+        ""
+      else
+        " [#{expansion_params.inspect}]"
+      end
+    end
+
+    def extracted_params
+      href.query_values || {}
     end
   end
 end

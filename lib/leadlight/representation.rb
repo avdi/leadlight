@@ -1,17 +1,22 @@
+require 'forwardable'
 require 'addressable/uri'
 require 'leadlight/link'
 require 'leadlight/errors'
 
 module Leadlight
   module Representation
+    extend Forwardable
+
     attr_accessor :__service__
     attr_accessor :__location__
     attr_accessor :__response__
+    attr_accessor :__request__
 
-    def initialize_representation(service, location, response)
-      self.__service__ = service
+    def initialize_representation(service, location, response, request)
+      self.__service__  = service
       self.__location__ = location
       self.__response__ = response
+      self.__request__  = request
       self
     end
 
@@ -38,6 +43,14 @@ module Leadlight
       __response__.env.fetch(:response_headers).fetch('status'){
         status.to_s
       }
+    end
+
+    def __link__
+      __request__.link
+    end
+
+    def __params__
+      __request__.params
     end
 
     private

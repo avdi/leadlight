@@ -47,18 +47,22 @@ module Leadlight
       end
     end
 
-    subject { Request.new(service, connection, url, http_method, body) }
+    subject { Request.new(service, connection, url, http_method, body, options) }
     let(:service)    { stub(:service, :type_map => type_map) }
     let(:type_map)   { stub(:type_map).as_null_object }
     let(:connection) { stub(:connection, :run_request => faraday_response) }
     let(:url)        { stub(:url, :to_s => "STRINGIFIED_URL") }
     let(:http_method){ :get              }
     let(:body)       { stub(:body)       }
-    let(:faraday_request) {stub(:faraday_request, options: {})}
+    let(:faraday_request) {stub(:faraday_request, options: {}, params: request_params)}
     let(:on_complete_handlers) { [] }
-    let(:faraday_env)      { {} }
+    let(:faraday_env)      { {request: faraday_request} }
     let(:representation)   { stub(:representation) }
     let(:faraday_response) { FakeFaradayResponse.new(faraday_env) }
+    let(:link)             { stub(:link, params: link_params) }
+    let(:link_params)      { { a: "123", b: "456" } }
+    let(:request_params)   { { b: "789", c: "321" } }
+    let(:options)          { { link: link } }
 
     def run_completion_handlers
       faraday_env[:status]   ||= 200
@@ -294,6 +298,35 @@ module Leadlight
         submit_and_complete
       end
 
+    end
+
+    describe "#link" do
+      it "defaults to a null link with the URL passed in" do
+        subject = Request.new(service, connection, url, http_method, body)
+        subject.link.should eq(NullLink.new(url))
+      end
+
+      it 'is taken from options supplied to constructor' do
+        link = double
+        subject = Request.new(service, connection, url, http_method, body, link: link)
+        subject.link.should be(link)
+      end
+    end
+
+    describe "#params" do
+      context "(after completion)" do
+        def do_it(&block)
+          subject.submit_and_wait(&block)
+        end
+
+        before do
+          do_it_and_complete
+        end
+
+        it 'merges request params and link params' do
+          subject.params.should eq(a: "123", b: "789", c: "321")
+        end
+      end
     end
 
   end

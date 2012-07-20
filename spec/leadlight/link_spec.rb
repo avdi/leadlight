@@ -30,7 +30,7 @@ module Leadlight
 
     describe '#follow' do
       it 'calls service.get with the href' do
-        service.should_receive(:get_representation!).with(Addressable::URI.parse(href))
+        service.should_receive(:get_representation!).with(Addressable::URI.parse(href), anything)
         subject.follow
       end
 
@@ -51,12 +51,32 @@ module Leadlight
         request        = stub(:request)
         representation = stub(:representation)
         service.should_receive(method_name).
-          with(subject.href, *args).
+          with(subject.href, *args, anything).
           and_yield(representation).
           and_return(request)
         subject.public_send(method_name, *args) do |rep|
           yielded = rep
         end.should equal(request)
+      end
+
+      it "adds itself to the options for ##{method_name}" do
+        yielded        = :nothing
+        args           = [:foo, :bar, {baz: "buz"}]
+        request        = stub(:request)
+        representation = stub(:representation)
+        service.should_receive(method_name).
+          with(subject.href, :foo, :bar, {baz: "buz", link: subject})
+        subject.public_send(method_name, *args)
+      end
+
+      it "adds missing request options hash to calls to ##{method_name}" do
+        yielded        = :nothing
+        args           = [:foo, :bar]
+        request        = stub(:request)
+        representation = stub(:representation)
+        service.should_receive(method_name).
+          with(subject.href, :foo, :bar, {link: subject})
+        subject.public_send(method_name, *args)
       end
     end
 
@@ -68,5 +88,15 @@ module Leadlight
     delegates_to_service :delete
     delegates_to_service :patch
 
+
+    describe '#params' do
+      context 'when explicitly specified' do
+        it 'gives explicit params priority over query params' do
+          href = "/somepath?foo=baz&fizz=buzz"
+          link = Link.new(service, href, rel, title, :expansion_params => {:foo => 'bar'})
+          link.params.should eq('foo' => 'bar', 'fizz' => 'buzz')
+        end
+      end
+    end
   end
 end

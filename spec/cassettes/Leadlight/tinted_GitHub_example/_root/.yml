@@ -30,4 +30,36 @@ http_interactions:
     body: ''
     http_version: 
   recorded_at: Tue, 19 Jun 2012 02:34:16 GMT
+- request:
+    method: get
+    uri: https://api.github.com/
+    body: ! '{"body":null}'
+    headers:
+      Content-Type:
+      - application/json
+      Accept:
+      - application/json, text/x-yaml, application/xml, application/xhtml+xml, text/html,
+        text/plain
+  response:
+    status:
+      code: 204
+      message: 
+    headers:
+      server:
+      - nginx/1.0.13
+      date:
+      - Fri, 20 Jul 2012 17:36:24 GMT
+      connection:
+      - close
+      status:
+      - 204 No Content
+      cache-control:
+      - ''
+      x-ratelimit-remaining:
+      - '4996'
+      x-ratelimit-limit:
+      - '5000'
+    body: ''
+    http_version: 
+  recorded_at: Fri, 20 Jul 2012 17:36:23 GMT
 recorded_with: VCR 2.0.0.rc1

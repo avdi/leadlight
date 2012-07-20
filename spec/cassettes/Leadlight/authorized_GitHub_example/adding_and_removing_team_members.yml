@@ -398,4 +398,42 @@ http_interactions:
     body: ! '[]'
     http_version: 
   recorded_at: Tue, 19 Jun 2012 02:34:30 GMT
+- request:
+    method: put
+    uri: https://api.github.com/members/leadlight-test
+    body: ''
+    headers:
+      Authorization:
+      - <AUTH FILTERED>
+      Accept:
+      - application/json, text/x-yaml, application/xml, application/xhtml+xml, text/html,
+        text/plain
+  response:
+    status:
+      code: 404
+      message: 
+    headers:
+      server:
+      - nginx/1.0.13
+      date:
+      - Fri, 20 Jul 2012 21:36:23 GMT
+      content-type:
+      - application/json; charset=utf-8
+      connection:
+      - close
+      status:
+      - 404 Not Found
+      content-length:
+      - '23'
+      x-ratelimit-limit:
+      - '5000'
+      x-ratelimit-remaining:
+      - '4985'
+      cache-control:
+      - ''
+      x-oauth-scopes:
+      - repo
+    body: ! '{"message":"Not Found"}'
+    http_version: 
+  recorded_at: Fri, 20 Jul 2012 21:36:21 GMT
 recorded_with: VCR 2.0.0.rc1

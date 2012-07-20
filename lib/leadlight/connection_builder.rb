@@ -7,6 +7,8 @@ module Leadlight
 
     fattr(:url)
     fattr(:service)
+    fattr(:common_stack)
+    fattr(:adapter)
 
     def_delegators :service, :connection_stack, :logger
 
@@ -16,13 +18,11 @@ module Leadlight
 
     def call
       Faraday.new(url: url.to_s) do |connection|
-        builder = connection.builder
-        builder.use Leadlight::ServiceMiddleware, service: service
-        builder.use Faraday::Response::Logger, logger
-        service.instance_exec(builder, &connection_stack)
-        unless builder.handlers.any?{|h| h.is_a?(Faraday::Adapter)}
-          service.instance_exec(builder, &Leadlight.common_connection_stack)
-        end
+        connection.use Leadlight::ServiceMiddleware, service: service
+        connection.use Faraday::Response::Logger, logger
+        service.instance_exec(connection, &connection_stack)
+        service.instance_exec(connection, &common_stack)
+        connection.adapter = adapter
       end
     end
   end

@@ -36,28 +36,28 @@ module Leadlight
 
         it 'passes self to the request' do
           request_class.should_receive(:new).
-            with(subject, anything, anything, anything, anything).
+            with(subject, anything, anything, anything, anything, anything).
             and_return(request)
           subject.public_send(http_method, '/somepath')
         end
 
         it 'passes the connection to the request' do
           request_class.should_receive(:new).
-            with(anything, connection, anything, anything, anything).
+            with(anything, connection, anything, anything, anything, anything).
             and_return(request)
           subject.public_send(http_method, '/somepath')
         end
 
         it 'passes the path to the request' do
           request_class.should_receive(:new).
-            with(anything, anything, '/somepath', anything, anything).
+            with(anything, anything, '/somepath', anything, anything, anything).
             and_return(request)
           subject.public_send(http_method, '/somepath')
         end
 
         it 'passes the method to the request' do
           request_class.should_receive(:new).
-            with(anything, anything, anything, http_method, anything).
+            with(anything, anything, anything, http_method, anything, anything).
             and_return(request)
           subject.public_send(http_method, '/somepath')
         end
@@ -65,9 +65,18 @@ module Leadlight
         it 'passes the body to the request' do
           body = stub
           request_class.should_receive(:new).
-            with(anything, anything, anything, anything, body).
+            with(anything, anything, anything, anything, body, anything).
             and_return(request)
           subject.public_send(http_method, '/somepath', body)
+        end
+
+        it 'passes the originating link to the request' do
+          link = double(:link)
+          request_class.should_receive(:new).
+            with(anything, anything, anything, anything, anything,
+                 hash_including(link: link)).
+            and_return(request)
+          subject.public_send(http_method, '/somepath', anything, link: link)
         end
 
         context 'given a block' do
