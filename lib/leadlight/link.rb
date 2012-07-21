@@ -1,3 +1,5 @@
+require 'addressable/uri'
+require 'addressable/template'
 require 'leadlight/param_hash'
 
 module Leadlight
@@ -34,11 +36,24 @@ module Leadlight
       self.expansion_params = options.fetch(:expansion_params) { {} }
     end
 
-    HTTP_METHODS.each do |name|
+    HTTP_METHODS_WITHOUT_BODY.each do |name|
       define_method(name) do |*args, &block|
         request_options = args.last.is_a?(Hash) ? args.pop : {}
         request_options[:link] = self
-        service.public_send(name, href, *args, request_options, &block)
+        service.public_send(name, href, nil, *args, request_options, &block)
+      end
+    end
+
+    HTTP_METHODS_WITH_BODY.each do |name|
+      define_method(name) do |*args, &block|
+        request_options = if args.size > 1 && args.last.is_a?(Hash)
+                            args.pop
+                          else
+                            {}
+                          end
+        body = args.shift
+        request_options[:link] = self
+        service.public_send(name, href, body, *args, request_options, &block)
       end
     end
 

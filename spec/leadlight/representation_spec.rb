@@ -11,9 +11,10 @@ module Leadlight
     let(:service) { stub(:service, tints: [TintA, TintB]) }
     let(:location) { stub(:location) }
     let(:response) { stub(:response) }
-    let(:params)   { stub(:params)   }
+    let(:request_params)   { stub(:request_params)   }
     let(:link)     { stub(:link)     }
-    let(:request)  { stub(:request, params: params, link: link)  }
+    let(:request)  { stub(:request, params: request_params, link: link)  }
+    let(:captures) { stub(:captures) }
 
     it 'has a __service__ accessor' do
       subject.__service__ = service
@@ -40,9 +41,15 @@ module Leadlight
       subject.__link__.should equal(link)
     end
 
-    it 'has a __params__ accessor' do
+    it 'has a __request_params__ accessor' do
       subject.__request__ = request
-      subject.__params__.should equal(params)
+      subject.__request_params__.should equal(request_params)
+    end
+
+    describe '#__captures__' do
+      it 'defaults to an empty hash' do
+        subject.__captures__.should eq({})
+      end
     end
 
     describe '#initialize_representation' do
@@ -65,7 +72,10 @@ module Leadlight
     end
     describe '#apply_all_tints' do
       before do
-        subject.initialize_representation(service, location, response, params)
+        subject.initialize_representation(service,
+                                          location,
+                                          response,
+                                          request_params)
       end
 
       it 'extends object with tints from service' do

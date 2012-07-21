@@ -5,8 +5,9 @@ module Leadlight
   describe TintHelper do
     subject{ TintHelper.new(object, tint) }
     let(:object) {
-      stub(__location__: stub(path: '/the/path'),
-           __response__: response)
+      stub(__location__: Addressable::URI.parse('/the/path'),
+           __response__: response,
+           __captures__: captures)
     }
     let(:response) {
       stub(:response,
@@ -18,6 +19,7 @@ module Leadlight
       { 'Content-Type' => 'text/html; charset=UTF-8'}
     }
     let(:tint) { Module.new }
+    let(:captures) { {} }
 
     it 'forwards unknown calls to the wrapped object' do
       object.should_receive(:foo).with('bar')
@@ -41,12 +43,44 @@ module Leadlight
         end
       end
 
+      it 'adds regex captures to representation captures' do
+        subject.exec_tint do
+          match_path(%r{/(?<x>\w+)/(?<y>\w+)})
+        end
+        captures.should eq('x' => 'the', 'y' => 'path')
+      end
+
       it 'does not allow execution to proceed on no match' do
         object.should_not_receive(:baz)
         subject.exec_tint do
           match_path('/the/wrong/path')
           baz
         end
+      end
+    end
+
+    describe '#match_template' do
+      it 'allows execution to proceed on match' do
+        object.should_receive(:baz)
+        subject.exec_tint do
+          match_template('/{a}/{b}')
+          baz
+        end
+      end
+
+      it 'halts execution on no match' do
+        object.should_not_receive(:baz)
+        subject.exec_tint do
+          match_template('/{a}/{b}/{c}')
+          baz
+        end
+      end
+
+      it 'adds mappings to representation captures' do
+        subject.exec_tint do
+          match_template('/{a}/{b}')
+        end
+        captures.should eq('a' => 'the', 'b' => 'path')
       end
     end
 

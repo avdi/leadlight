@@ -16,20 +16,20 @@ http_interactions:
       server:
       - nginx/1.0.13
       date:
-      - Tue, 19 Jun 2012 02:34:26 GMT
+      - Sat, 21 Jul 2012 05:42:18 GMT
       connection:
       - close
       status:
       - 204 No Content
       x-ratelimit-limit:
       - '5000'
-      etag:
-      - ! '"d41d8cd98f00b204e9800998ecf8427e"'
       x-ratelimit-remaining:
       - '4962'
+      cache-control:
+      - ''
     body: ''
     http_version: 
-  recorded_at: Tue, 19 Jun 2012 02:34:25 GMT
+  recorded_at: Sat, 21 Jul 2012 05:42:17 GMT
 - request:
     method: get
     uri: https://api.github.com/not_exist
@@ -46,7 +46,7 @@ http_interactions:
       server:
       - nginx/1.0.13
       date:
-      - Tue, 19 Jun 2012 02:34:26 GMT
+      - Sat, 21 Jul 2012 05:42:19 GMT
       content-type:
       - application/json; charset=utf-8
       transfer-encoding:
@@ -55,45 +55,13 @@ http_interactions:
       - close
       status:
       - 404 Not Found
-      x-ratelimit-limit:
-      - '5000'
-      etag:
-      - ! '"e66a7a6c91e2c26803f3f49feb7a883f"'
-      x-ratelimit-remaining:
-      - '4961'
-    body: ! '{"message":"Not Found"}'
-    http_version: 
-  recorded_at: Tue, 19 Jun 2012 02:34:26 GMT
-- request:
-    method: get
-    uri: https://api.github.com/
-    body: ! '{"body":null}'
-    headers:
-      Content-Type:
-      - application/json
-      Accept:
-      - application/json, text/x-yaml, application/xml, application/xhtml+xml, text/html,
-        text/plain
-  response:
-    status:
-      code: 204
-      message: 
-    headers:
-      server:
-      - nginx/1.0.13
-      date:
-      - Fri, 20 Jul 2012 17:36:27 GMT
-      connection:
-      - close
-      status:
-      - 204 No Content
-      x-ratelimit-limit:
-      - '5000'
-      x-ratelimit-remaining:
-      - '4985'
       cache-control:
       - ''
-    body: ''
+      x-ratelimit-remaining:
+      - '4961'
+      x-ratelimit-limit:
+      - '5000'
+    body: ! '{"message":"Not Found"}'
     http_version: 
-  recorded_at: Fri, 20 Jul 2012 17:36:26 GMT
+  recorded_at: Sat, 21 Jul 2012 05:42:17 GMT
 recorded_with: VCR 2.0.0.rc1

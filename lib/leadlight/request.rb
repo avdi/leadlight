@@ -116,16 +116,21 @@ module Leadlight
       content_type = env[:response_headers]['Content-Type']
       content_type = clean_content_type(content_type)
       representation = type_map.to_native(content_type, env[:body])
-      location = Addressable::URI.parse(env[:response_headers].fetch('location'){ env[:url] })
       representation.
         extend(Representation).
-        initialize_representation(env[:leadlight_service], location, env[:response], self).
+        initialize_representation(env[:leadlight_service], location(env), env[:response], self).
         extend(Hyperlinkable).
         apply_all_tints
     end
 
     def params
       link_params.merge(request_params)
+    end
+
+    def location(env=@env)
+      env ||= {}
+      url = env.fetch(:response_headers){{}}.fetch('location'){ env.fetch(:url){ self.url } }
+      Addressable::URI.parse(url)
     end
 
     private

@@ -55,9 +55,7 @@ module Leadlight
 
     private
 
-    def perform_request(url, http_method, body_or_options=nil, options=nil, &representation_handler)
-      options ||= body_or_options.is_a?(Hash) ? body_or_options : {}
-      body    ||= body_or_options.is_a?(Hash) ? nil : body_or_options
+    def perform_request(url, http_method, body=nil, options={}, &representation_handler)
       req = request_class.new(self, connection, url, http_method, body, options)
       if representation_handler
         req.submit_and_wait(&representation_handler)

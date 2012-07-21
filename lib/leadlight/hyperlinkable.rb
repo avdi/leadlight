@@ -29,7 +29,9 @@ module Leadlight
     end
 
     def add_link(url, rel=nil, title=rel, options={})
-      link = Link.new(__service__, url, rel, title, options)
+      template = LinkTemplate.new(__service__, url, rel, title, options)
+      link     = template.expand(captures_for_variables(__captures__,
+                                                        template.variables))
       define_link_helper(rel) if rel
       links << link
     end
@@ -121,6 +123,12 @@ module Leadlight
             return result
           end
         end
+      end
+    end
+
+    def captures_for_variables(captures, variables)
+      variables.each_with_object({}) do |key, h|
+        h[key] = captures[key] if captures[key]
       end
     end
   end

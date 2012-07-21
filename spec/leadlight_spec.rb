@@ -194,7 +194,9 @@ describe Leadlight, vcr: true do
       end
 
       tint 'teamlist' do
-        match_path(%r{^/orgs/(?<org_id>\w+)/teams$})
+        match_template('/orgs/{org_id}/teams')
+
+        add_link '/orgs/{org_id}', 'organization'
 
         add_link_set('child', :get) do
           map{|team|
@@ -273,6 +275,14 @@ describe Leadlight, vcr: true do
 
       it 'indicates the expected oath scopes' do
         subject.root.user('avdi').oauth_scopes.should eq(['repo'])
+      end
+    end
+
+    describe 'team list' do
+      subject { session.root.organization('shiprise').teams }
+
+      it 'should have a link back to the org' do
+        subject.organization['name'].should eq('ShipRise')
       end
     end
 

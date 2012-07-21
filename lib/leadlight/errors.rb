@@ -6,13 +6,19 @@ module Leadlight
   class HttpError < Error
     extend Forwardable
 
-    attr_reader :response
+    attr_reader :request
 
-    def_delegator :response, :status
+    def_delegators :response, :status, :response
 
-    def initialize(response, message=response.status.to_s)
-      @response = response
-      super(message)
+    def initialize(request, message=response.status.to_s)
+      @request = request
+      super(amplify_message(message))
+    end
+
+    private
+
+    def amplify_message(message)
+      "#{message} (#{request.http_method.upcase} #{request.location})"
     end
   end
   class ClientError < HttpError; end

@@ -1,5 +1,6 @@
 require 'forwardable'
 require 'addressable/uri'
+require 'fattr'
 require 'leadlight/link'
 require 'leadlight/errors'
 
@@ -11,6 +12,8 @@ module Leadlight
     attr_accessor :__location__
     attr_accessor :__response__
     attr_accessor :__request__
+
+    #fattr(:__captures__) { {} }
 
     def initialize_representation(service, location, response, request)
       self.__service__  = service
@@ -32,7 +35,7 @@ module Leadlight
       when 404 then ResourceNotFound
       when (400..499) then ClientError
       when (500..599) then ServerError
-      end.new(__response__, exception_message)
+      end.new(__request__, exception_message)
     end
 
     def exception_message
@@ -49,8 +52,12 @@ module Leadlight
       __request__.link
     end
 
-    def __params__
+    def __request_params__
       __request__.params
+    end
+
+    def __captures__
+      @__captures__ ||= {}
     end
 
     private

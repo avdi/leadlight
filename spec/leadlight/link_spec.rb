@@ -30,7 +30,8 @@ module Leadlight
 
     describe '#follow' do
       it 'calls service.get with the href' do
-        service.should_receive(:get_representation!).with(Addressable::URI.parse(href), anything)
+        service.should_receive(:get_representation!).
+          with(Addressable::URI.parse(href), anything, anything)
         subject.follow
       end
 
@@ -44,14 +45,17 @@ module Leadlight
       end
     end
 
-    def self.delegates_to_service(method_name)
+    def self.delegates_to_service(method_name, has_body)
       it "delegates ##{method_name} to the service" do
         yielded        = :nothing
         args           = [:foo, :bar]
         request        = stub(:request)
         representation = stub(:representation)
+        if has_body
+          args.unshift nil
+        end
         service.should_receive(method_name).
-          with(subject.href, *args, anything).
+          with(subject.href, nil, :foo, :bar, anything).
           and_yield(representation).
           and_return(request)
         subject.public_send(method_name, *args) do |rep|
@@ -64,8 +68,11 @@ module Leadlight
         args           = [:foo, :bar, {baz: "buz"}]
         request        = stub(:request)
         representation = stub(:representation)
+        if has_body
+          args.unshift nil
+        end
         service.should_receive(method_name).
-          with(subject.href, :foo, :bar, {baz: "buz", link: subject})
+          with(subject.href, nil, :foo, :bar, {baz: "buz", link: subject})
         subject.public_send(method_name, *args)
       end
 
@@ -74,19 +81,23 @@ module Leadlight
         args           = [:foo, :bar]
         request        = stub(:request)
         representation = stub(:representation)
+        if has_body
+          args.unshift nil
+        end
         service.should_receive(method_name).
-          with(subject.href, :foo, :bar, {link: subject})
+          with(subject.href, nil, :foo, :bar, {link: subject})
         subject.public_send(method_name, *args)
       end
     end
 
-    delegates_to_service :get
-    delegates_to_service :post
-    delegates_to_service :head
-    delegates_to_service :options
-    delegates_to_service :put
-    delegates_to_service :delete
-    delegates_to_service :patch
+    #                    method    has_body
+    delegates_to_service :get,     false
+    delegates_to_service :post,    true
+    delegates_to_service :head,    false
+    delegates_to_service :options, false
+    delegates_to_service :put,     true
+    delegates_to_service :delete,  false
+    delegates_to_service :patch,   true
 
 
     describe '#params' do

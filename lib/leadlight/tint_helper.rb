@@ -22,14 +22,20 @@ module Leadlight
     end
 
     def match_path(pattern)
-      match{ pattern === __location__.path }
+      matcher = path_matcher(pattern)
+      match{ matcher.call(pattern, __location__.path, __captures__) }
     end
 
     def match_template(path_template)
       path_url = Addressable::URI.parse(path_template)
       full_url = __location__ + path_url
       template = Addressable::Template.new(full_url.to_s)
-      match { template.match(__location__) }
+      match {
+        match_data = template.match(__location__)
+        if match_data
+          __captures__.merge!(match_data.mapping)
+        end
+      }
     end
 
     def match_content_type(pattern)
@@ -85,6 +91,30 @@ module Leadlight
           patterns << pattern
         end
       }
+    end
+
+    def path_matcher(object)
+      case object
+      when Regexp then method(:match_path_with_regexp)
+      else method(:match_path_generic)
+      end
+    end
+
+    def match_path_with_regexp(pattern, path, captures)
+      capture_names = pattern.names
+      match_data = pattern.match(path)
+      if match_data
+        capture_names.each do |name|
+          value = match_data[name]
+          captures[name] = value if value
+        end
+      end
+    end
+
+    def match_path_generic(pattern, path, captures)
+      # We can't capture any values if we don't know what kind of
+      # matcher this is
+      pattern === path
     end
   end
 end

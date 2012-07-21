@@ -21,11 +21,13 @@ module Leadlight
       '<https://api.github.com/users/avdi/followers?page=2>; rel="next",'\
       ' <https://api.github.com/users/avdi/followers?page=6>; rel="last"'
     }
+    let(:captures) { {} }
 
     before do
       representation.stub(__response__: response,
                           __service__: service,
-                          __location__: '/foo')
+                          __location__: '/foo',
+                          __captures__: captures)
     end
 
     describe '.extend' do
@@ -69,9 +71,20 @@ module Leadlight
       it 'adds a link helper' do
         subject.add_link('/parent', 'parent')
         service.should_receive(:get_representation!).
-          with(Addressable::URI.parse('/parent'), anything).
+          with(Addressable::URI.parse('/parent'), anything, anything).
           and_return(request)
         subject.parent
+      end
+
+      context 'given a URI template' do
+        let(:captures) { { 'id' => '123', 'type' => 'user', 'secret' => 'xyzzy' } }
+        before do
+          subject.add_link('/{type}/{id}/', 'foo')
+        end
+
+        it 'statically expands the template using data in __captures__' do
+          subject.link('foo').href.to_s.should eq('/user/123/')
+        end
       end
     end
 

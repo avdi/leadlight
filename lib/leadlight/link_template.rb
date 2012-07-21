@@ -1,8 +1,12 @@
+require 'forwardable'
 require 'leadlight/link'
 require 'addressable/template'
 
 module Leadlight
   class LinkTemplate < Link
+    extend Forwardable
+
+    def_delegators :href_template, :variables
 
     def href_template
       @href_template ||= Addressable::Template.new(href.to_s)
