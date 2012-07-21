@@ -56,7 +56,7 @@ describe Leadlight, vcr: true do
           match_content_type('application/json')
           match_class(Hash)
           match{self['type'] == 'User'}
-          add_link "#{__location__}/followers", 'followers', 'List followers'
+          add_link "./followers", 'followers', 'List followers'
         end
       end
     end
@@ -83,7 +83,7 @@ describe Leadlight, vcr: true do
       end
 
       it 'links to the expected URL' do
-        subject.root.link('user').href.should eq(uri('/users/{login}'))
+        subject.root.link('user').href.path.should eq('/users/{login}')
       end
     end
 
@@ -174,7 +174,7 @@ describe Leadlight, vcr: true do
 
       tint 'organization' do
         match_path(%r{^/orgs/\w+$})
-        add_link "#{__location__}/teams", 'teams'
+        add_link "./teams", 'teams'
 
         extend do
           def team_for_name(name)
@@ -208,10 +208,9 @@ describe Leadlight, vcr: true do
       tint 'team' do
         match_template('/teams/{id}')
 
-        add_link "#{__location__}/members", 'members'
-        add_link_template "#{__location__}/members/{id}", 'member'
-        # add_link "/orgs/#{__params__['name']}/", 'parent'
-        # add_link "../..", "root"
+        add_link "./members", 'members'
+        add_link_template "./members/{id}", 'member'
+        add_link "../..", "root"
 
         extend do
           def add_member(member_name)
@@ -290,6 +289,10 @@ describe Leadlight, vcr: true do
       subject { session.root.organization('shiprise').team_for_name('Leadlight Test Team') }
 
       it { should be }
+
+      it 'has a root link' do
+        subject.link('root').href.path.should eq('/')
+      end
     end
 
     specify "adding and removing teams" do

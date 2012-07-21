@@ -29,15 +29,19 @@ module Leadlight
     end
 
     def add_link(url, rel=nil, title=rel, options={})
-      template = LinkTemplate.new(__service__, url, rel, title, options)
-      link     = template.expand(captures_for_variables(__captures__,
-                                                        template.variables))
+      absolute_url = base_url + url
+      template     = LinkTemplate.new(__service__, absolute_url, rel,
+                                      title,       options)
+      link         = template.expand(captures_for_variables(__captures__,
+                                                            template.variables))
       define_link_helper(rel) if rel
       links << link
     end
 
     def add_link_template(template, rel=nil, title=rel, options={})
-      link = LinkTemplate.new(__service__, template, rel, title, options)
+      absolute_url = base_url + template
+      link = LinkTemplate.new(__service__, absolute_url.to_s, rel,
+                              title,       options)
       define_link_helper(rel) if rel
       links << link
     end
@@ -130,6 +134,14 @@ module Leadlight
       variables.each_with_object({}) do |key, h|
         h[key] = captures[key] if captures[key]
       end
+    end
+
+    def base_url
+      loc = __location__.to_s
+      unless loc[-1] == "/"
+        loc = loc + "/"
+      end
+      Addressable::URI.parse(loc)
     end
   end
 end

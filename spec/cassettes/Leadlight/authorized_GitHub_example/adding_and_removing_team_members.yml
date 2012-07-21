@@ -417,4 +417,42 @@ http_interactions:
     body: ! '[]'
     http_version: 
   recorded_at: Sat, 21 Jul 2012 05:55:44 GMT
+- request:
+    method: get
+    uri: https://api.github.com/teams
+    body: ''
+    headers:
+      Authorization:
+      - <AUTH FILTERED>
+      Accept:
+      - application/json, text/x-yaml, application/xml, application/xhtml+xml, text/html,
+        text/plain
+  response:
+    status:
+      code: 404
+      message: 
+    headers:
+      server:
+      - nginx/1.0.13
+      date:
+      - Sat, 21 Jul 2012 06:23:23 GMT
+      content-type:
+      - application/json; charset=utf-8
+      transfer-encoding:
+      - chunked
+      connection:
+      - close
+      status:
+      - 404 Not Found
+      cache-control:
+      - ''
+      x-ratelimit-remaining:
+      - '4998'
+      x-ratelimit-limit:
+      - '5000'
+      x-oauth-scopes:
+      - repo
+    body: ! '{"message":"Not Found"}'
+    http_version: 
+  recorded_at: Sat, 21 Jul 2012 06:23:21 GMT
 recorded_with: VCR 2.0.0.rc1

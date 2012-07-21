@@ -162,4 +162,44 @@ http_interactions:
     body: ''
     http_version: 
   recorded_at: Sat, 21 Jul 2012 06:03:30 GMT
+- request:
+    method: post
+    uri: https://api.github.com/teams
+    body: ! '{"name":"Leadlight Ephemeral Team","permission":"pull"}'
+    headers:
+      Content-Type:
+      - application/json
+      Authorization:
+      - <AUTH FILTERED>
+      Accept:
+      - application/json, text/x-yaml, application/xml, application/xhtml+xml, text/html,
+        text/plain
+  response:
+    status:
+      code: 404
+      message: 
+    headers:
+      server:
+      - nginx/1.0.13
+      date:
+      - Sat, 21 Jul 2012 06:23:23 GMT
+      content-type:
+      - application/json; charset=utf-8
+      connection:
+      - close
+      status:
+      - 404 Not Found
+      x-ratelimit-remaining:
+      - '4999'
+      cache-control:
+      - ''
+      content-length:
+      - '23'
+      x-oauth-scopes:
+      - repo
+      x-ratelimit-limit:
+      - '5000'
+    body: ! '{"message":"Not Found"}'
+    http_version: 
+  recorded_at: Sat, 21 Jul 2012 06:23:21 GMT
 recorded_with: VCR 2.0.0.rc1

@@ -86,6 +86,23 @@ module Leadlight
           subject.link('foo').href.to_s.should eq('/user/123/')
         end
       end
+
+      it 'supports relative links' do
+        subject.add_link('./bar', 'bar')
+        subject.link('bar').href.to_s.should eq('/foo/bar')
+      end
+
+      it 'collapses slashes when expanding relative links' do
+        representation.stub(:__location__ => '/foo/')
+        subject.add_link('./bar', 'bar')
+        subject.link('bar').href.to_s.should eq('/foo/bar')
+      end
+
+      it 'supports .. for previous directory' do
+        representation.stub(:__location__ => '/foo/bar/baz')
+        subject.add_link('../../buz', 'buz')
+        subject.link('buz').href.to_s.should eq('/foo/buz')
+      end
     end
 
     describe '#add_link_template' do
@@ -111,6 +128,22 @@ module Leadlight
         subject.child(23)
       end
 
+      it 'supports relative links' do
+        subject.add_link_template('./bar', 'bar')
+        subject.link('bar').href.to_s.should eq('/foo/bar')
+      end
+
+      it 'collapses slashes when expanding relative links' do
+        representation.stub(:__location__ => '/foo/')
+        subject.add_link_template('./bar', 'bar')
+        subject.link('bar').href.to_s.should eq('/foo/bar')
+      end
+
+      it 'supports .. for previous directory' do
+        representation.stub(:__location__ => '/foo/bar/baz')
+        subject.add_link_template('../../buz', 'buz')
+        subject.link('buz').href.to_s.should eq('/foo/buz')
+      end
     end
 
     describe '#add_link_set' do
