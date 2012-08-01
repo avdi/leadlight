@@ -2,6 +2,7 @@ require 'faraday'
 require 'fattr'
 require 'logger'
 require 'hookr'
+require 'leadlight/lib_ext'
 require 'leadlight/errors'
 require 'leadlight/link'
 require 'leadlight/hyperlinkable'
@@ -16,7 +17,7 @@ require 'leadlight/basic_converter'
 
 module Leadlight
 
-  VERSION = '0.0.5'
+  VERSION = '0.0.6'
 
   def self.build_service(target=Class.new, &block)
     target.tap do

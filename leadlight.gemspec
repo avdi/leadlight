@@ -13,8 +13,8 @@ Gem::Specification.new do |s|
   ## If your rubyforge_project name is different, then edit it and comment out
   ## the sub! line in the Rakefile
   s.name              = 'leadlight'
-  s.version           = '0.0.5'
-  s.date              = '2012-02-15'
+  s.version           = '0.0.6'
+  s.date              = '2012-08-01'
   s.rubyforge_project = 'leadlight'
 
   ## Make sure your summary is short. The description may be as long
@@ -42,7 +42,12 @@ Gem::Specification.new do |s|
   ## that are needed for an end user to actually USE your code.
   ## s.add_dependency('DEPNAME', [">= 1.1.0", "< 2.0.0"])
   s.add_dependency 'addressable'
-  s.add_dependency 'avdi-faraday', '~> 0.8.1'
+
+  # This dependency will have to stay fixed until the adapter API
+  # changes in lib_ext (or something like them) get rolled into
+  # Faraday
+  s.add_dependency 'faraday', '= 0.8.1'
+
   s.add_dependency 'fattr'
   s.add_dependency 'link_header'
   s.add_dependency 'multi_json', '~> 1.0.4'
@@ -76,6 +81,7 @@ Gem::Specification.new do |s|
     lib/leadlight/basic_converter.rb
     lib/leadlight/blank.rb
     lib/leadlight/codec.rb
+    lib/leadlight/connection_builder.rb
     lib/leadlight/entity.rb
     lib/leadlight/enumerable_representation.rb
     lib/leadlight/errors.rb
@@ -83,6 +89,8 @@ Gem::Specification.new do |s|
     lib/leadlight/hyperlinkable.rb
     lib/leadlight/link.rb
     lib/leadlight/link_template.rb
+    lib/leadlight/null_link.rb
+    lib/leadlight/param_hash.rb
     lib/leadlight/representation.rb
     lib/leadlight/request.rb
     lib/leadlight/service.rb
@@ -95,7 +103,9 @@ Gem::Specification.new do |s|
     spec/cassettes/Leadlight/authorized_GitHub_example/_user/indicates_the_expected_oath_scopes.yml
     spec/cassettes/Leadlight/authorized_GitHub_example/adding_and_removing_team_members.yml
     spec/cassettes/Leadlight/authorized_GitHub_example/adding_and_removing_teams.yml
+    spec/cassettes/Leadlight/authorized_GitHub_example/team_list/should_have_a_link_back_to_the_org.yml
     spec/cassettes/Leadlight/authorized_GitHub_example/test_team/.yml
+    spec/cassettes/Leadlight/authorized_GitHub_example/test_team/has_a_root_link.yml
     spec/cassettes/Leadlight/basic_GitHub_example/_root/.yml
     spec/cassettes/Leadlight/basic_GitHub_example/_root/__location__/.yml
     spec/cassettes/Leadlight/basic_GitHub_example/_root/should_be_a_204_no_content.yml
@@ -116,6 +126,8 @@ Gem::Specification.new do |s|
     spec/leadlight/hyperlinkable_spec.rb
     spec/leadlight/link_spec.rb
     spec/leadlight/link_template_spec.rb
+    spec/leadlight/null_link_spec.rb
+    spec/leadlight/param_hash_spec.rb
     spec/leadlight/representation_spec.rb
     spec/leadlight/request_spec.rb
     spec/leadlight/service_middleware_spec.rb
@@ -126,6 +138,8 @@ Gem::Specification.new do |s|
     spec/leadlight_spec.rb
     spec/spec_helper_lite.rb
     spec/support/credentials.rb
+    spec/support/link_matchers.rb
+    spec/support/misc.rb
     spec/support/vcr.rb
   ]
   # = MANIFEST =

@@ -1,0 +1,6 @@
+This directory contains monkeypatches to the Faraday library, on which
+Leadlight is based.
+
+I feel really bad for doing this, and I fully intend to work with
+Mislav to come up with some mutually-agreeable changes to the Faraday
+API which will eliminate the need for this directory to exist. This is strictly an interim measure.
