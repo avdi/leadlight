@@ -33,7 +33,7 @@ module Leadlight
       end
 
       def params_match?(actual, expected)
-        if defined?(@expected_params)
+        if @expected_params
           @expected_params.each do |key, value|
             unless expanded_link.params[key] == value
               @failures << "Expected #{expanded_link.params.inspect} to include "\
