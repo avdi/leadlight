@@ -87,6 +87,12 @@ Gem::Specification.new do |s|
     lib/leadlight/errors.rb
     lib/leadlight/header_helpers.rb
     lib/leadlight/hyperlinkable.rb
+    lib/leadlight/lib_ext.rb
+    lib/leadlight/lib_ext/faraday/README
+    lib/leadlight/lib_ext/faraday/adapter.rb
+    lib/leadlight/lib_ext/faraday/builder.rb
+    lib/leadlight/lib_ext/faraday/connection.rb
+    lib/leadlight/lib_ext/faraday/middleware.rb
     lib/leadlight/link.rb
     lib/leadlight/link_template.rb
     lib/leadlight/null_link.rb
