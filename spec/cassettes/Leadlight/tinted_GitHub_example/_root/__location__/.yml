@@ -3,7 +3,9 @@ http_interactions:
 - request:
     method: get
     uri: https://api.github.com/
-    body: ''
+    body:
+      encoding: US-ASCII
+      string: ''
     headers:
       Accept:
       - application/json, text/x-yaml, application/xml, application/xhtml+xml, text/html,
@@ -16,7 +18,7 @@ http_interactions:
       server:
       - nginx/1.0.13
       date:
-      - Sat, 21 Jul 2012 05:42:12 GMT
+      - Wed, 01 Aug 2012 19:38:40 GMT
       connection:
       - close
       status:
@@ -26,8 +28,10 @@ http_interactions:
       x-ratelimit-limit:
       - '5000'
       x-ratelimit-remaining:
-      - '4994'
-    body: ''
+      - '4989'
+    body:
+      encoding: US-ASCII
+      string: ''
     http_version: 
-  recorded_at: Sat, 21 Jul 2012 05:42:10 GMT
-recorded_with: VCR 2.0.0.rc1
+  recorded_at: Wed, 01 Aug 2012 19:38:30 GMT
+recorded_with: VCR 2.2.4

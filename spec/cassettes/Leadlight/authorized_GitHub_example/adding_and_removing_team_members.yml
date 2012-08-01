@@ -3,7 +3,9 @@ http_interactions:
 - request:
     method: get
     uri: https://api.github.com/
-    body: ''
+    body:
+      encoding: US-ASCII
+      string: ''
     headers:
       Authorization:
       - <AUTH FILTERED>
@@ -18,26 +20,30 @@ http_interactions:
       server:
       - nginx/1.0.13
       date:
-      - Sat, 21 Jul 2012 05:55:44 GMT
+      - Wed, 01 Aug 2012 19:38:56 GMT
       connection:
       - close
       status:
       - 204 No Content
+      cache-control:
+      - ''
+      x-ratelimit-remaining:
+      - '4995'
       x-ratelimit-limit:
       - '5000'
       x-oauth-scopes:
       - repo
-      x-ratelimit-remaining:
-      - '4956'
-      cache-control:
-      - ''
-    body: ''
+    body:
+      encoding: US-ASCII
+      string: ''
     http_version: 
-  recorded_at: Sat, 21 Jul 2012 05:55:42 GMT
+  recorded_at: Wed, 01 Aug 2012 19:38:45 GMT
 - request:
     method: get
     uri: https://api.github.com/users/leadlight-test
-    body: ''
+    body:
+      encoding: US-ASCII
+      string: ''
     headers:
       Authorization:
       - <AUTH FILTERED>
@@ -52,7 +58,7 @@ http_interactions:
       server:
       - nginx/1.0.13
       date:
-      - Sat, 21 Jul 2012 05:55:44 GMT
+      - Wed, 01 Aug 2012 19:38:56 GMT
       content-type:
       - application/json; charset=utf-8
       transfer-encoding:
@@ -61,29 +67,33 @@ http_interactions:
       - close
       status:
       - 200 OK
-      x-oauth-scopes:
-      - repo
-      cache-control:
-      - private, max-age=60
       etag:
       - ! '"eafac876698e5fee8675ae11fe3ef9fd"'
-      x-ratelimit-remaining:
-      - '4955'
       x-accepted-oauth-scopes:
       - user
-      x-ratelimit-limit:
-      - '5000'
-      last-modified:
-      - Mon, 09 Jan 2012 02:38:20 GMT
       vary:
       - Accept, Authorization, Cookie
-    body: ! '{"public_repos":0,"type":"User","created_at":"2012-01-09T02:38:20Z","gravatar_id":"71a3f4f0d28bcb9c10fe96bbfce8fef8","followers":0,"html_url":"https://github.com/leadlight-test","avatar_url":"https://secure.gravatar.com/avatar/71a3f4f0d28bcb9c10fe96bbfce8fef8?d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-140.png","public_gists":0,"following":0,"id":1314019,"login":"leadlight-test","url":"https://api.github.com/users/leadlight-test"}'
+      cache-control:
+      - private, max-age=60
+      x-ratelimit-limit:
+      - '5000'
+      x-ratelimit-remaining:
+      - '4994'
+      last-modified:
+      - Mon, 09 Jan 2012 02:38:20 GMT
+      x-oauth-scopes:
+      - repo
+    body:
+      encoding: ASCII-8BIT
+      string: ! '{"type":"User","gravatar_id":"71a3f4f0d28bcb9c10fe96bbfce8fef8","login":"leadlight-test","following":0,"avatar_url":"https://secure.gravatar.com/avatar/71a3f4f0d28bcb9c10fe96bbfce8fef8?d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-140.png","public_gists":0,"created_at":"2012-01-09T02:38:20Z","html_url":"https://github.com/leadlight-test","public_repos":0,"followers":0,"url":"https://api.github.com/users/leadlight-test","id":1314019}'
     http_version: 
-  recorded_at: Sat, 21 Jul 2012 05:55:42 GMT
+  recorded_at: Wed, 01 Aug 2012 19:38:46 GMT
 - request:
     method: get
     uri: https://api.github.com/
-    body: ''
+    body:
+      encoding: US-ASCII
+      string: ''
     headers:
       Authorization:
       - <AUTH FILTERED>
@@ -98,26 +108,30 @@ http_interactions:
       server:
       - nginx/1.0.13
       date:
-      - Sat, 21 Jul 2012 05:55:45 GMT
+      - Wed, 01 Aug 2012 19:38:56 GMT
       connection:
       - close
       status:
       - 204 No Content
-      x-ratelimit-limit:
-      - '5000'
       x-oauth-scopes:
       - repo
       x-ratelimit-remaining:
-      - '4954'
+      - '4993'
       cache-control:
       - ''
-    body: ''
+      x-ratelimit-limit:
+      - '5000'
+    body:
+      encoding: US-ASCII
+      string: ''
     http_version: 
-  recorded_at: Sat, 21 Jul 2012 05:55:43 GMT
+  recorded_at: Wed, 01 Aug 2012 19:38:46 GMT
 - request:
     method: get
     uri: https://api.github.com/orgs/shiprise
-    body: ''
+    body:
+      encoding: US-ASCII
+      string: ''
     headers:
       Authorization:
       - <AUTH FILTERED>
@@ -132,7 +146,7 @@ http_interactions:
       server:
       - nginx/1.0.13
       date:
-      - Sat, 21 Jul 2012 05:55:45 GMT
+      - Wed, 01 Aug 2012 19:38:57 GMT
       content-type:
       - application/json; charset=utf-8
       transfer-encoding:
@@ -141,29 +155,33 @@ http_interactions:
       - close
       status:
       - 200 OK
+      x-oauth-scopes:
+      - repo
+      x-accepted-oauth-scopes:
+      - repo
+      etag:
+      - ! '"5d02babf97893a4583b7052dec00a037"'
+      x-ratelimit-remaining:
+      - '4992'
+      last-modified:
+      - Fri, 27 Jul 2012 04:06:17 GMT
+      cache-control:
+      - private, max-age=60
       vary:
       - Accept, Authorization, Cookie
       x-ratelimit-limit:
       - '5000'
-      last-modified:
-      - Sat, 21 Jul 2012 05:38:32 GMT
-      x-oauth-scopes:
-      - repo
-      x-ratelimit-remaining:
-      - '4953'
-      etag:
-      - ! '"a132e9d424b27c101304dfb05adadac3"'
-      x-accepted-oauth-scopes:
-      - repo
-      cache-control:
-      - private, max-age=60
-    body: ! '{"plan":{"private_repos":10,"name":"bronze","space":2516582},"public_repos":0,"type":"Organization","owned_private_repos":5,"disk_usage":22520,"public_gists":0,"html_url":"https://github.com/ShipRise","login":"ShipRise","private_gists":0,"billing_email":"avdi@shiprise.net","email":"avdi@shiprise.net","created_at":"2011-10-27T20:49:51Z","following":0,"location":null,"avatar_url":"https://secure.gravatar.com/avatar/6dd3c12e97a46ff08c358542cae955e2?d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-orgs.png","collaborators":0,"name":"ShipRise","blog":"http://shiprise.net","id":1156570,"total_private_repos":5,"followers":0,"company":null,"url":"https://api.github.com/orgs/ShipRise"}'
+    body:
+      encoding: ASCII-8BIT
+      string: ! '{"disk_usage":22816,"public_repos":0,"type":"Organization","login":"ShipRise","private_gists":0,"following":0,"location":null,"email":null,"created_at":"2011-10-27T20:49:51Z","avatar_url":"https://secure.gravatar.com/avatar/6dd3c12e97a46ff08c358542cae955e2?d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-orgs.png","blog":"http://shiprise.net","total_private_repos":5,"html_url":"https://github.com/ShipRise","company":null,"owned_private_repos":5,"collaborators":0,"plan":{"space":2516582,"name":"bronze","private_repos":10},"followers":0,"name":"ShipRise","url":"https://api.github.com/orgs/ShipRise","billing_email":"avdi@shiprise.net","id":1156570,"public_gists":0}'
     http_version: 
-  recorded_at: Sat, 21 Jul 2012 05:55:43 GMT
+  recorded_at: Wed, 01 Aug 2012 19:38:46 GMT
 - request:
     method: get
     uri: https://api.github.com/orgs/shiprise/teams
-    body: ''
+    body:
+      encoding: US-ASCII
+      string: ''
     headers:
       Authorization:
       - <AUTH FILTERED>
@@ -178,7 +196,7 @@ http_interactions:
       server:
       - nginx/1.0.13
       date:
-      - Sat, 21 Jul 2012 05:55:45 GMT
+      - Wed, 01 Aug 2012 19:38:57 GMT
       content-type:
       - application/json; charset=utf-8
       transfer-encoding:
@@ -189,31 +207,36 @@ http_interactions:
       - 200 OK
       vary:
       - Accept, Authorization, Cookie
-      x-ratelimit-limit:
-      - '5000'
-      last-modified:
-      - Mon, 09 Jul 2012 22:52:35 GMT
-      x-oauth-scopes:
-      - repo
-      x-ratelimit-remaining:
-      - '4952'
       etag:
       - ! '"ae0dfae72ca6d563953a4ca8f906e03b"'
       x-accepted-oauth-scopes:
       - repo
+      x-ratelimit-remaining:
+      - '4991'
+      x-oauth-scopes:
+      - repo
+      last-modified:
+      - Mon, 09 Jul 2012 22:52:35 GMT
+      x-ratelimit-limit:
+      - '5000'
       cache-control:
       - private, max-age=60
-    body: ! '[{"permission":"push","name":"BitBindery Development","id":111894,"url":"https://api.github.com/teams/111894"},{"permission":"pull","name":"BitBindery
-      Test Team","id":210238,"url":"https://api.github.com/teams/210238"},{"permission":"pull","name":"Leadlight
-      Test Team","id":127491,"url":"https://api.github.com/teams/127491"},{"permission":"pull","name":"Objects
-      on Rails Readers","id":176711,"url":"https://api.github.com/teams/176711"},{"permission":"admin","name":"Owners","id":104018,"url":"https://api.github.com/teams/104018"},{"permission":"push","name":"Publishing","id":154780,"url":"https://api.github.com/teams/154780"},{"permission":"pull","name":"ShipRise
-      Internal","id":148656,"url":"https://api.github.com/teams/148656"}]'
+    body:
+      encoding: ASCII-8BIT
+      string: ! '[{"url":"https://api.github.com/teams/111894","name":"BitBindery
+        Development","id":111894,"permission":"push"},{"url":"https://api.github.com/teams/210238","name":"BitBindery
+        Test Team","id":210238,"permission":"pull"},{"url":"https://api.github.com/teams/127491","name":"Leadlight
+        Test Team","id":127491,"permission":"pull"},{"url":"https://api.github.com/teams/176711","name":"Objects
+        on Rails Readers","id":176711,"permission":"pull"},{"url":"https://api.github.com/teams/104018","name":"Owners","id":104018,"permission":"admin"},{"url":"https://api.github.com/teams/154780","name":"Publishing","id":154780,"permission":"push"},{"url":"https://api.github.com/teams/148656","name":"ShipRise
+        Internal","id":148656,"permission":"pull"}]'
     http_version: 
-  recorded_at: Sat, 21 Jul 2012 05:55:43 GMT
+  recorded_at: Wed, 01 Aug 2012 19:38:46 GMT
 - request:
     method: get
     uri: https://api.github.com/teams/127491
-    body: ''
+    body:
+      encoding: US-ASCII
+      string: ''
     headers:
       Authorization:
       - <AUTH FILTERED>
@@ -228,7 +251,7 @@ http_interactions:
       server:
       - nginx/1.0.13
       date:
-      - Sat, 21 Jul 2012 05:55:45 GMT
+      - Wed, 01 Aug 2012 19:38:57 GMT
       content-type:
       - application/json; charset=utf-8
       transfer-encoding:
@@ -237,30 +260,34 @@ http_interactions:
       - close
       status:
       - 200 OK
-      x-accepted-oauth-scopes:
-      - repo
+      x-ratelimit-limit:
+      - '5000'
+      vary:
+      - Accept, Authorization, Cookie
       cache-control:
       - private, max-age=60
       x-ratelimit-remaining:
-      - '4951'
-      x-oauth-scopes:
+      - '4990'
+      x-accepted-oauth-scopes:
       - repo
-      x-ratelimit-limit:
-      - '5000'
-      last-modified:
-      - Sat, 20 Oct 2007 11:24:19 GMT
       etag:
       - ! '"7873ec2b76a99d0d68e8010119dd9e25"'
-      vary:
-      - Accept, Authorization, Cookie
-    body: ! '{"repos_count":0,"permission":"pull","members_count":0,"name":"Leadlight
-      Test Team","id":127491,"url":"https://api.github.com/teams/127491"}'
+      x-oauth-scopes:
+      - repo
+      last-modified:
+      - Sat, 20 Oct 2007 11:24:19 GMT
+    body:
+      encoding: ASCII-8BIT
+      string: ! '{"repos_count":0,"members_count":0,"permission":"pull","url":"https://api.github.com/teams/127491","name":"Leadlight
+        Test Team","id":127491}'
     http_version: 
-  recorded_at: Sat, 21 Jul 2012 05:55:43 GMT
+  recorded_at: Wed, 01 Aug 2012 19:38:47 GMT
 - request:
     method: put
     uri: https://api.github.com/teams/127491/members/leadlight-test
-    body: ''
+    body:
+      encoding: US-ASCII
+      string: ''
     headers:
       Authorization:
       - <AUTH FILTERED>
@@ -275,28 +302,32 @@ http_interactions:
       server:
       - nginx/1.0.13
       date:
-      - Sat, 21 Jul 2012 05:55:45 GMT
+      - Wed, 01 Aug 2012 19:38:59 GMT
       connection:
       - close
       status:
       - 204 No Content
-      x-ratelimit-remaining:
-      - '4950'
-      cache-control:
-      - ''
-      x-accepted-oauth-scopes:
-      - repo
       x-oauth-scopes:
       - repo
+      x-accepted-oauth-scopes:
+      - repo
+      x-ratelimit-remaining:
+      - '4989'
+      cache-control:
+      - ''
       x-ratelimit-limit:
       - '5000'
-    body: ''
+    body:
+      encoding: US-ASCII
+      string: ''
     http_version: 
-  recorded_at: Sat, 21 Jul 2012 05:55:43 GMT
+  recorded_at: Wed, 01 Aug 2012 19:38:48 GMT
 - request:
     method: get
     uri: https://api.github.com/teams/127491/members
-    body: ''
+    body:
+      encoding: US-ASCII
+      string: ''
     headers:
       Authorization:
       - <AUTH FILTERED>
@@ -311,7 +342,7 @@ http_interactions:
       server:
       - nginx/1.0.13
       date:
-      - Sat, 21 Jul 2012 05:55:46 GMT
+      - Wed, 01 Aug 2012 19:38:59 GMT
       content-type:
       - application/json; charset=utf-8
       transfer-encoding:
@@ -320,29 +351,33 @@ http_interactions:
       - close
       status:
       - 200 OK
+      x-ratelimit-remaining:
+      - '4988'
       x-oauth-scopes:
+      - repo
+      last-modified:
+      - Wed, 01 Aug 2012 19:38:58 GMT
+      vary:
+      - Accept, Authorization, Cookie
+      x-accepted-oauth-scopes:
       - repo
       cache-control:
       - private, max-age=60
       etag:
-      - ! '"6fbdf1f4d9a83745be87edd44609a09d"'
-      x-ratelimit-remaining:
-      - '4949'
-      x-accepted-oauth-scopes:
-      - repo
+      - ! '"6093f9ee30540372345b27ca7c742dac"'
       x-ratelimit-limit:
       - '5000'
-      last-modified:
-      - Sat, 21 Jul 2012 05:55:45 GMT
-      vary:
-      - Accept, Authorization, Cookie
-    body: ! '[{"gravatar_id":"71a3f4f0d28bcb9c10fe96bbfce8fef8","avatar_url":"https://secure.gravatar.com/avatar/71a3f4f0d28bcb9c10fe96bbfce8fef8?d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-140.png","id":1314019,"login":"leadlight-test","url":"https://api.github.com/users/leadlight-test"}]'
+    body:
+      encoding: ASCII-8BIT
+      string: ! '[{"gravatar_id":"71a3f4f0d28bcb9c10fe96bbfce8fef8","login":"leadlight-test","url":"https://api.github.com/users/leadlight-test","avatar_url":"https://secure.gravatar.com/avatar/71a3f4f0d28bcb9c10fe96bbfce8fef8?d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-140.png","id":1314019}]'
     http_version: 
-  recorded_at: Sat, 21 Jul 2012 05:55:44 GMT
+  recorded_at: Wed, 01 Aug 2012 19:38:48 GMT
 - request:
     method: delete
     uri: https://api.github.com/teams/127491/members/leadlight-test
-    body: ''
+    body:
+      encoding: US-ASCII
+      string: ''
     headers:
       Authorization:
       - <AUTH FILTERED>
@@ -357,7 +392,7 @@ http_interactions:
       server:
       - nginx/1.0.13
       date:
-      - Sat, 21 Jul 2012 05:55:46 GMT
+      - Wed, 01 Aug 2012 19:38:59 GMT
       connection:
       - close
       status:
@@ -366,19 +401,23 @@ http_interactions:
       - repo
       x-accepted-oauth-scopes:
       - repo
+      x-ratelimit-remaining:
+      - '4987'
       cache-control:
       - ''
-      x-ratelimit-remaining:
-      - '4948'
       x-ratelimit-limit:
       - '5000'
-    body: ''
+    body:
+      encoding: US-ASCII
+      string: ''
     http_version: 
-  recorded_at: Sat, 21 Jul 2012 05:55:44 GMT
+  recorded_at: Wed, 01 Aug 2012 19:38:48 GMT
 - request:
     method: get
     uri: https://api.github.com/teams/127491/members
-    body: ''
+    body:
+      encoding: US-ASCII
+      string: ''
     headers:
       Authorization:
       - <AUTH FILTERED>
@@ -393,66 +432,30 @@ http_interactions:
       server:
       - nginx/1.0.13
       date:
-      - Sat, 21 Jul 2012 05:55:46 GMT
+      - Wed, 01 Aug 2012 19:38:59 GMT
       content-type:
       - application/json; charset=utf-8
       connection:
       - close
       status:
       - 200 OK
-      content-length:
-      - '2'
-      x-ratelimit-limit:
-      - '5000'
-      x-oauth-scopes:
-      - repo
-      x-ratelimit-remaining:
-      - '4947'
       etag:
       - ! '"d751713988987e9331980363e24189ce"'
-      cache-control:
-      - max-age=0, private, must-revalidate
+      content-length:
+      - '2'
       x-accepted-oauth-scopes:
       - repo
-    body: ! '[]'
-    http_version: 
-  recorded_at: Sat, 21 Jul 2012 05:55:44 GMT
-- request:
-    method: get
-    uri: https://api.github.com/teams
-    body: ''
-    headers:
-      Authorization:
-      - <AUTH FILTERED>
-      Accept:
-      - application/json, text/x-yaml, application/xml, application/xhtml+xml, text/html,
-        text/plain
-  response:
-    status:
-      code: 404
-      message: 
-    headers:
-      server:
-      - nginx/1.0.13
-      date:
-      - Sat, 21 Jul 2012 06:23:23 GMT
-      content-type:
-      - application/json; charset=utf-8
-      transfer-encoding:
-      - chunked
-      connection:
-      - close
-      status:
-      - 404 Not Found
-      cache-control:
-      - ''
       x-ratelimit-remaining:
-      - '4998'
-      x-ratelimit-limit:
-      - '5000'
+      - '4986'
       x-oauth-scopes:
       - repo
-    body: ! '{"message":"Not Found"}'
+      x-ratelimit-limit:
+      - '5000'
+      cache-control:
+      - max-age=0, private, must-revalidate
+    body:
+      encoding: US-ASCII
+      string: ! '[]'
     http_version: 
-  recorded_at: Sat, 21 Jul 2012 06:23:21 GMT
-recorded_with: VCR 2.0.0.rc1
+  recorded_at: Wed, 01 Aug 2012 19:38:49 GMT
+recorded_with: VCR 2.2.4

@@ -3,7 +3,9 @@ http_interactions:
 - request:
     method: get
     uri: https://api.github.com/
-    body: ''
+    body:
+      encoding: US-ASCII
+      string: ''
     headers:
       Accept:
       - application/json, text/x-yaml, application/xml, application/xhtml+xml, text/html,
@@ -16,24 +18,28 @@ http_interactions:
       server:
       - nginx/1.0.13
       date:
-      - Sat, 21 Jul 2012 05:42:18 GMT
+      - Wed, 01 Aug 2012 19:38:54 GMT
       connection:
       - close
       status:
       - 204 No Content
+      x-ratelimit-remaining:
+      - '4956'
       x-ratelimit-limit:
       - '5000'
-      x-ratelimit-remaining:
-      - '4962'
       cache-control:
       - ''
-    body: ''
+    body:
+      encoding: US-ASCII
+      string: ''
     http_version: 
-  recorded_at: Sat, 21 Jul 2012 05:42:17 GMT
+  recorded_at: Wed, 01 Aug 2012 19:38:44 GMT
 - request:
     method: get
     uri: https://api.github.com/not_exist
-    body: ''
+    body:
+      encoding: US-ASCII
+      string: ''
     headers:
       Accept:
       - application/json, text/x-yaml, application/xml, application/xhtml+xml, text/html,
@@ -46,7 +52,7 @@ http_interactions:
       server:
       - nginx/1.0.13
       date:
-      - Sat, 21 Jul 2012 05:42:19 GMT
+      - Wed, 01 Aug 2012 19:38:54 GMT
       content-type:
       - application/json; charset=utf-8
       transfer-encoding:
@@ -57,11 +63,13 @@ http_interactions:
       - 404 Not Found
       cache-control:
       - ''
-      x-ratelimit-remaining:
-      - '4961'
       x-ratelimit-limit:
       - '5000'
-    body: ! '{"message":"Not Found"}'
+      x-ratelimit-remaining:
+      - '4955'
+    body:
+      encoding: ASCII-8BIT
+      string: ! '{"message":"Not Found"}'
     http_version: 
-  recorded_at: Sat, 21 Jul 2012 05:42:17 GMT
-recorded_with: VCR 2.0.0.rc1
+  recorded_at: Wed, 01 Aug 2012 19:38:44 GMT
+recorded_with: VCR 2.2.4

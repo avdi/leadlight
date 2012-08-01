@@ -3,7 +3,9 @@ http_interactions:
 - request:
     method: get
     uri: https://api.github.com/
-    body: ''
+    body:
+      encoding: US-ASCII
+      string: ''
     headers:
       Authorization:
       - <AUTH FILTERED>
@@ -18,26 +20,30 @@ http_interactions:
       server:
       - nginx/1.0.13
       date:
-      - Sat, 21 Jul 2012 05:42:22 GMT
+      - Wed, 01 Aug 2012 19:39:00 GMT
       connection:
       - close
       status:
       - 204 No Content
       x-oauth-scopes:
       - repo
+      x-ratelimit-remaining:
+      - '4985'
       cache-control:
       - ''
-      x-ratelimit-remaining:
-      - '4971'
       x-ratelimit-limit:
       - '5000'
-    body: ''
+    body:
+      encoding: US-ASCII
+      string: ''
     http_version: 
-  recorded_at: Sat, 21 Jul 2012 05:42:20 GMT
+  recorded_at: Wed, 01 Aug 2012 19:38:49 GMT
 - request:
     method: get
     uri: https://api.github.com/users/avdi
-    body: ''
+    body:
+      encoding: US-ASCII
+      string: ''
     headers:
       Authorization:
       - <AUTH FILTERED>
@@ -52,7 +58,7 @@ http_interactions:
       server:
       - nginx/1.0.13
       date:
-      - Sat, 21 Jul 2012 05:42:22 GMT
+      - Wed, 01 Aug 2012 19:39:01 GMT
       content-type:
       - application/json; charset=utf-8
       transfer-encoding:
@@ -61,25 +67,27 @@ http_interactions:
       - close
       status:
       - 200 OK
-      x-oauth-scopes:
-      - repo
+      etag:
+      - ! '"ddb253ed98ca6098d5078df699ed28ee"'
       cache-control:
       - private, max-age=60
-      etag:
-      - ! '"526d2fe752e02f9d1c74b4bbd54230ed"'
-      x-ratelimit-remaining:
-      - '4970'
-      x-accepted-oauth-scopes:
-      - user
-      x-ratelimit-limit:
-      - '5000'
-      last-modified:
-      - Sat, 14 Jul 2012 06:31:09 GMT
       vary:
       - Accept, Authorization, Cookie
-    body: ! '{"public_repos":70,"type":"User","email":"avdi@avdi.org","created_at":"2008-02-26T19:54:34Z","gravatar_id":"4dea430d31b993abaf41cd9b54f8128d","followers":299,"blog":"http://avdi.org/devblog/","html_url":"https://github.com/avdi","company":"ShipRise","avatar_url":"https://secure.gravatar.com/avatar/4dea430d31b993abaf41cd9b54f8128d?d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-140.png","name":"Avdi
-      Grimm","hireable":false,"public_gists":86,"following":34,"location":"Pennsylvania,
-      USA","id":982,"login":"avdi","bio":null,"url":"https://api.github.com/users/avdi"}'
+      x-ratelimit-remaining:
+      - '4984'
+      last-modified:
+      - Tue, 31 Jul 2012 06:09:16 GMT
+      x-oauth-scopes:
+      - repo
+      x-ratelimit-limit:
+      - '5000'
+      x-accepted-oauth-scopes:
+      - user
+    body:
+      encoding: ASCII-8BIT
+      string: ! '{"followers":302,"type":"User","blog":"http://avdi.org/devblog/","gravatar_id":"4dea430d31b993abaf41cd9b54f8128d","following":34,"location":"Pennsylvania,
+        USA","hireable":false,"login":"avdi","public_repos":71,"html_url":"https://github.com/avdi","name":"Avdi
+        Grimm","email":"avdi@avdi.org","url":"https://api.github.com/users/avdi","avatar_url":"https://secure.gravatar.com/avatar/4dea430d31b993abaf41cd9b54f8128d?d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-140.png","public_gists":86,"created_at":"2008-02-26T19:54:34Z","company":"ShipRise","bio":null,"id":982}'
     http_version: 
-  recorded_at: Sat, 21 Jul 2012 05:42:20 GMT
-recorded_with: VCR 2.0.0.rc1
+  recorded_at: Wed, 01 Aug 2012 19:38:51 GMT
+recorded_with: VCR 2.2.4

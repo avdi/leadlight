@@ -3,7 +3,9 @@ http_interactions:
 - request:
     method: get
     uri: https://api.github.com/
-    body: ''
+    body:
+      encoding: US-ASCII
+      string: ''
     headers:
       Authorization:
       - <AUTH FILTERED>
@@ -18,26 +20,30 @@ http_interactions:
       server:
       - nginx/1.0.13
       date:
-      - Sat, 21 Jul 2012 05:42:23 GMT
+      - Wed, 01 Aug 2012 19:39:08 GMT
       connection:
       - close
       status:
       - 204 No Content
-      x-oauth-scopes:
-      - repo
       cache-control:
       - ''
       x-ratelimit-remaining:
-      - '4967'
+      - '4981'
       x-ratelimit-limit:
       - '5000'
-    body: ''
+      x-oauth-scopes:
+      - repo
+    body:
+      encoding: US-ASCII
+      string: ''
     http_version: 
-  recorded_at: Sat, 21 Jul 2012 05:42:21 GMT
+  recorded_at: Wed, 01 Aug 2012 19:38:57 GMT
 - request:
     method: get
     uri: https://api.github.com/orgs/shiprise
-    body: ''
+    body:
+      encoding: US-ASCII
+      string: ''
     headers:
       Authorization:
       - <AUTH FILTERED>
@@ -52,7 +58,7 @@ http_interactions:
       server:
       - nginx/1.0.13
       date:
-      - Sat, 21 Jul 2012 05:42:23 GMT
+      - Wed, 01 Aug 2012 19:39:08 GMT
       content-type:
       - application/json; charset=utf-8
       transfer-encoding:
@@ -61,29 +67,33 @@ http_interactions:
       - close
       status:
       - 200 OK
+      etag:
+      - ! '"5d02babf97893a4583b7052dec00a037"'
       x-accepted-oauth-scopes:
       - repo
-      cache-control:
-      - private, max-age=60
-      x-ratelimit-remaining:
-      - '4966'
-      x-oauth-scopes:
-      - repo
-      x-ratelimit-limit:
-      - '5000'
-      last-modified:
-      - Sat, 21 Jul 2012 05:38:32 GMT
-      etag:
-      - ! '"a132e9d424b27c101304dfb05adadac3"'
       vary:
       - Accept, Authorization, Cookie
-    body: ! '{"collaborators":0,"type":"Organization","email":"avdi@shiprise.net","created_at":"2011-10-27T20:49:51Z","public_gists":0,"followers":0,"private_gists":0,"billing_email":"avdi@shiprise.net","html_url":"https://github.com/ShipRise","disk_usage":22520,"total_private_repos":5,"name":"ShipRise","owned_private_repos":5,"following":0,"company":null,"blog":"http://shiprise.net","location":null,"id":1156570,"login":"ShipRise","plan":{"space":2516582,"name":"bronze","private_repos":10},"public_repos":0,"avatar_url":"https://secure.gravatar.com/avatar/6dd3c12e97a46ff08c358542cae955e2?d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-orgs.png","url":"https://api.github.com/orgs/ShipRise"}'
+      cache-control:
+      - private, max-age=60
+      x-ratelimit-limit:
+      - '5000'
+      x-ratelimit-remaining:
+      - '4980'
+      last-modified:
+      - Fri, 27 Jul 2012 04:06:17 GMT
+      x-oauth-scopes:
+      - repo
+    body:
+      encoding: ASCII-8BIT
+      string: ! '{"disk_usage":22816,"type":"Organization","login":"ShipRise","collaborators":0,"following":0,"location":null,"email":null,"avatar_url":"https://secure.gravatar.com/avatar/6dd3c12e97a46ff08c358542cae955e2?d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-orgs.png","public_gists":0,"created_at":"2011-10-27T20:49:51Z","private_gists":0,"blog":"http://shiprise.net","html_url":"https://github.com/ShipRise","total_private_repos":5,"company":null,"plan":{"space":2516582,"name":"bronze","private_repos":10},"public_repos":0,"owned_private_repos":5,"followers":0,"name":"ShipRise","url":"https://api.github.com/orgs/ShipRise","billing_email":"avdi@shiprise.net","id":1156570}'
     http_version: 
-  recorded_at: Sat, 21 Jul 2012 05:42:21 GMT
+  recorded_at: Wed, 01 Aug 2012 19:38:58 GMT
 - request:
     method: get
     uri: https://api.github.com/orgs/shiprise/teams
-    body: ''
+    body:
+      encoding: US-ASCII
+      string: ''
     headers:
       Authorization:
       - <AUTH FILTERED>
@@ -98,7 +108,7 @@ http_interactions:
       server:
       - nginx/1.0.13
       date:
-      - Sat, 21 Jul 2012 05:42:23 GMT
+      - Wed, 01 Aug 2012 19:39:09 GMT
       content-type:
       - application/json; charset=utf-8
       transfer-encoding:
@@ -107,33 +117,38 @@ http_interactions:
       - close
       status:
       - 200 OK
-      x-ratelimit-limit:
-      - '5000'
-      x-ratelimit-remaining:
-      - '4965'
-      last-modified:
-      - Mon, 09 Jul 2012 22:52:35 GMT
-      x-oauth-scopes:
-      - repo
-      x-accepted-oauth-scopes:
-      - repo
       etag:
       - ! '"ae0dfae72ca6d563953a4ca8f906e03b"'
-      cache-control:
-      - private, max-age=60
+      x-oauth-scopes:
+      - repo
       vary:
       - Accept, Authorization, Cookie
-    body: ! '[{"permission":"push","name":"BitBindery Development","id":111894,"url":"https://api.github.com/teams/111894"},{"permission":"pull","name":"BitBindery
-      Test Team","id":210238,"url":"https://api.github.com/teams/210238"},{"permission":"pull","name":"Leadlight
-      Test Team","id":127491,"url":"https://api.github.com/teams/127491"},{"permission":"pull","name":"Objects
-      on Rails Readers","id":176711,"url":"https://api.github.com/teams/176711"},{"permission":"admin","name":"Owners","id":104018,"url":"https://api.github.com/teams/104018"},{"permission":"push","name":"Publishing","id":154780,"url":"https://api.github.com/teams/154780"},{"permission":"pull","name":"ShipRise
-      Internal","id":148656,"url":"https://api.github.com/teams/148656"}]'
+      x-ratelimit-limit:
+      - '5000'
+      last-modified:
+      - Mon, 09 Jul 2012 22:52:35 GMT
+      x-ratelimit-remaining:
+      - '4979'
+      cache-control:
+      - private, max-age=60
+      x-accepted-oauth-scopes:
+      - repo
+    body:
+      encoding: ASCII-8BIT
+      string: ! '[{"url":"https://api.github.com/teams/111894","name":"BitBindery
+        Development","id":111894,"permission":"push"},{"url":"https://api.github.com/teams/210238","name":"BitBindery
+        Test Team","id":210238,"permission":"pull"},{"url":"https://api.github.com/teams/127491","name":"Leadlight
+        Test Team","id":127491,"permission":"pull"},{"url":"https://api.github.com/teams/176711","name":"Objects
+        on Rails Readers","id":176711,"permission":"pull"},{"url":"https://api.github.com/teams/104018","name":"Owners","id":104018,"permission":"admin"},{"url":"https://api.github.com/teams/154780","name":"Publishing","id":154780,"permission":"push"},{"url":"https://api.github.com/teams/148656","name":"ShipRise
+        Internal","id":148656,"permission":"pull"}]'
     http_version: 
-  recorded_at: Sat, 21 Jul 2012 05:42:22 GMT
+  recorded_at: Wed, 01 Aug 2012 19:38:58 GMT
 - request:
     method: get
     uri: https://api.github.com/orgs/shiprise
-    body: ''
+    body:
+      encoding: US-ASCII
+      string: ''
     headers:
       Authorization:
       - <AUTH FILTERED>
@@ -148,7 +163,7 @@ http_interactions:
       server:
       - nginx/1.0.13
       date:
-      - Sat, 21 Jul 2012 05:42:24 GMT
+      - Wed, 01 Aug 2012 19:39:09 GMT
       content-type:
       - application/json; charset=utf-8
       transfer-encoding:
@@ -157,61 +172,25 @@ http_interactions:
       - close
       status:
       - 200 OK
-      vary:
-      - Accept, Authorization, Cookie
-      x-ratelimit-remaining:
-      - '4964'
-      last-modified:
-      - Sat, 21 Jul 2012 05:38:32 GMT
       x-ratelimit-limit:
       - '5000'
       x-oauth-scopes:
       - repo
-      x-accepted-oauth-scopes:
-      - repo
-      etag:
-      - ! '"a132e9d424b27c101304dfb05adadac3"'
+      last-modified:
+      - Fri, 27 Jul 2012 04:06:17 GMT
       cache-control:
       - private, max-age=60
-    body: ! '{"total_private_repos":5,"type":"Organization","email":"avdi@shiprise.net","private_gists":0,"created_at":"2011-10-27T20:49:51Z","blog":"http://shiprise.net","owned_private_repos":5,"followers":0,"public_repos":0,"company":null,"disk_usage":22520,"plan":{"space":2516582,"private_repos":10,"name":"bronze"},"html_url":"https://github.com/ShipRise","collaborators":0,"name":"ShipRise","billing_email":"avdi@shiprise.net","following":0,"location":null,"avatar_url":"https://secure.gravatar.com/avatar/6dd3c12e97a46ff08c358542cae955e2?d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-orgs.png","id":1156570,"login":"ShipRise","public_gists":0,"url":"https://api.github.com/orgs/ShipRise"}'
-    http_version: 
-  recorded_at: Sat, 21 Jul 2012 05:42:22 GMT
-- request:
-    method: get
-    uri: https://api.github.com/teams
-    body: ''
-    headers:
-      Authorization:
-      - <AUTH FILTERED>
-      Accept:
-      - application/json, text/x-yaml, application/xml, application/xhtml+xml, text/html,
-        text/plain
-  response:
-    status:
-      code: 404
-      message: 
-    headers:
-      server:
-      - nginx/1.0.13
-      date:
-      - Sat, 21 Jul 2012 06:23:24 GMT
-      content-type:
-      - application/json; charset=utf-8
-      transfer-encoding:
-      - chunked
-      connection:
-      - close
-      status:
-      - 404 Not Found
-      x-oauth-scopes:
-      - repo
-      cache-control:
-      - ''
       x-ratelimit-remaining:
-      - '4997'
-      x-ratelimit-limit:
-      - '5000'
-    body: ! '{"message":"Not Found"}'
+      - '4978'
+      etag:
+      - ! '"5d02babf97893a4583b7052dec00a037"'
+      x-accepted-oauth-scopes:
+      - repo
+      vary:
+      - Accept, Authorization, Cookie
+    body:
+      encoding: ASCII-8BIT
+      string: ! '{"followers":0,"type":"Organization","billing_email":"avdi@shiprise.net","collaborators":0,"disk_usage":22816,"following":0,"location":null,"public_gists":0,"public_repos":0,"avatar_url":"https://secure.gravatar.com/avatar/6dd3c12e97a46ff08c358542cae955e2?d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-orgs.png","private_gists":0,"login":"ShipRise","total_private_repos":5,"html_url":"https://github.com/ShipRise","name":"ShipRise","email":null,"url":"https://api.github.com/orgs/ShipRise","created_at":"2011-10-27T20:49:51Z","company":null,"blog":"http://shiprise.net","id":1156570,"owned_private_repos":5,"plan":{"private_repos":10,"space":2516582,"name":"bronze"}}'
     http_version: 
-  recorded_at: Sat, 21 Jul 2012 06:23:22 GMT
-recorded_with: VCR 2.0.0.rc1
+  recorded_at: Wed, 01 Aug 2012 19:38:58 GMT
+recorded_with: VCR 2.2.4

@@ -59,7 +59,7 @@ Gem::Specification.new do |s|
   ## s.add_development_dependency('DEVDEPNAME', [">= 1.1.0", "< 2.0.0"])
   s.add_development_dependency 'rake'
   s.add_development_dependency 'rspec'
-  s.add_development_dependency 'vcr', '~> 2.0.0.rc1'
+  s.add_development_dependency 'vcr', '~> 2.0'
   s.add_development_dependency 'guard'
   s.add_development_dependency 'guard-rspec'
   s.add_development_dependency 'guard-bundler'
