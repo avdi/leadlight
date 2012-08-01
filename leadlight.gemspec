@@ -41,7 +41,7 @@ Gem::Specification.new do |s|
   ## List your runtime dependencies here. Runtime dependencies are those
   ## that are needed for an end user to actually USE your code.
   ## s.add_dependency('DEPNAME', [">= 1.1.0", "< 2.0.0"])
-  s.add_dependency 'addressable'
+  s.add_dependency 'addressable', '~> 2.2.0'
 
   # This dependency will have to stay fixed until the adapter API
   # changes in lib_ext (or something like them) get rolled into

@@ -14,7 +14,6 @@ require 'leadlight/service_class_methods'
 require 'leadlight/enumerable_representation'
 require 'leadlight/basic_converter'
 
-
 module Leadlight
 
   VERSION = '0.0.6'
