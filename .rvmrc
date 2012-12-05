@@ -1,5 +1,0 @@
-rvm use --create @leadlight
-rvm gemset import
-bundle install --binstubs
-
-
