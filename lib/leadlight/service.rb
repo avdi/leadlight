@@ -7,10 +7,11 @@ module Leadlight
   module Service
     extend Forwardable
 
-    attr_reader :service_options
-    fattr(:logger)  { service_options.fetch(:logger) { ::Logger.new($stderr) } }
-    fattr(:tints)   { self.class.tints }
-    fattr(:codec) { service_options.fetch(:codec) { Codec.new } }
+    attr_reader   :service_options
+    attr_accessor :error_handler
+    fattr(:logger)   { service_options.fetch(:logger) { ::Logger.new($stderr) } }
+    fattr(:tints)    { self.class.tints }
+    fattr(:codec)    { service_options.fetch(:codec) { Codec.new } }
     fattr(:type_map) { TypeMap.new }
 
     def_delegators :codec, :encode, :decode
@@ -20,6 +21,11 @@ module Leadlight
     def initialize(service_options={})
       @service_options = service_options
       execute_hook(:on_init, self)
+    end
+
+    def on_error(&error_handler)
+      self.error_handler = error_handler
+      self
     end
 
     def root
@@ -57,6 +63,7 @@ module Leadlight
 
     def perform_request(url, http_method, body=nil, options={}, &representation_handler)
       req = request_class.new(self, connection, url, http_method, body, options)
+      req.on_error(&error_handler) if error_handler
       if representation_handler
         req.submit_and_wait(&representation_handler)
       end

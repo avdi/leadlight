@@ -3,8 +3,8 @@ require 'leadlight/service'
 
 module Leadlight
   describe Service do
-    subject              { klass.new(service_options)                 }
-    let(:klass)          {
+    subject     { klass.new(service_options) }
+    let(:klass) {
       Class.new do
         include Service
 
@@ -12,14 +12,14 @@ module Leadlight
         end
       end
     }
-    let(:connection)     { stub(:connection, get: response)           }
-    let(:representation) { stub(:representation)                      }
-    let(:response)       { stub(:response, env: env)                  }
-    let(:env)            { {leadlight_representation: representation} }
-    let(:service_options)        { {codec: codec}                     }
-    let(:codec)          { stub(:codec)                               }
-    let(:request)        { stub(:request).as_null_object              }
-    let(:request_class)  { stub(:request_class, new: request)         }
+    let(:connection)      { stub(:connection, get: response)           }
+    let(:representation)  { stub(:representation)                      }
+    let(:response)        { stub(:response, env: env)                  }
+    let(:env)             { {leadlight_representation: representation} }
+    let(:service_options) { {codec: codec}                             }
+    let(:codec)           { stub(:codec)                               }
+    let(:request)         { stub(:request).as_null_object              }
+    let(:request_class)   { stub(:request_class, new: request)         }
 
     before do
       subject.stub(connection: connection,
@@ -128,6 +128,20 @@ module Leadlight
           and_return(representation)
         subject.decode('CONTENT_TYPE', entity, {foo: 'bar'}).
           should equal(representation)
+      end
+    end
+
+    describe '#on_error' do
+      it 'returns itself' do
+        subject.on_error.should eq(subject)
+      end
+
+      it 'adds the handler to requests' do
+        called = :not_set
+        subject.on_error { called = true }
+        request.should_receive(:on_error).with(no_args).and_yield
+        subject.get '/'
+        called.should eq(true)
       end
     end
   end
