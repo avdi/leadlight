@@ -251,10 +251,10 @@ module Leadlight
 
       it "yields to the block when response is an error" do
         called = :not_set
-        block = proc{ called = true }
+        block = proc{ called = :set }
         faraday_response.should_receive(:success?).and_return(false)
         submit_and_complete.on_error(&block)
-        called.should be_true
+        called.should eq(:set)
       end
 
       it "does not yield to the block when response is sucess" do
