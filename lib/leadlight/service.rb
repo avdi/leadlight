@@ -9,9 +9,9 @@ module Leadlight
 
     attr_reader   :service_options
     attr_accessor :error_handler
-    fattr(:logger)  { service_options.fetch(:logger) { ::Logger.new($stderr) } }
-    fattr(:tints)   { self.class.tints }
-    fattr(:codec) { service_options.fetch(:codec) { Codec.new } }
+    fattr(:logger)   { service_options.fetch(:logger) { ::Logger.new($stderr) } }
+    fattr(:tints)    { self.class.tints }
+    fattr(:codec)    { service_options.fetch(:codec) { Codec.new } }
     fattr(:type_map) { TypeMap.new }
 
     def_delegators :codec, :encode, :decode

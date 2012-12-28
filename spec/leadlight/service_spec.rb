@@ -3,8 +3,8 @@ require 'leadlight/service'
 
 module Leadlight
   describe Service do
-    subject              { klass.new(service_options)                 }
-    let(:klass)          {
+    subject     { klass.new(service_options) }
+    let(:klass) {
       Class.new do
         include Service
 
@@ -12,14 +12,14 @@ module Leadlight
         end
       end
     }
-    let(:connection)     { stub(:connection, get: response)           }
-    let(:representation) { stub(:representation)                      }
-    let(:response)       { stub(:response, env: env)                  }
-    let(:env)            { {leadlight_representation: representation} }
-    let(:service_options)        { {codec: codec}                     }
-    let(:codec)          { stub(:codec)                               }
-    let(:request)        { stub(:request).as_null_object              }
-    let(:request_class)  { stub(:request_class, new: request)         }
+    let(:connection)      { stub(:connection, get: response)           }
+    let(:representation)  { stub(:representation)                      }
+    let(:response)        { stub(:response, env: env)                  }
+    let(:env)             { {leadlight_representation: representation} }
+    let(:service_options) { {codec: codec}                             }
+    let(:codec)           { stub(:codec)                               }
+    let(:request)         { stub(:request).as_null_object              }
+    let(:request_class)   { stub(:request_class, new: request)         }
 
     before do
       subject.stub(connection: connection,
