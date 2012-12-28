@@ -130,5 +130,19 @@ module Leadlight
           should equal(representation)
       end
     end
+
+    describe '#on_error' do
+      it 'returns itself' do
+        subject.on_error.should eq(subject)
+      end
+
+      it 'adds the handler to requests' do
+        called = :not_set
+        subject.on_error { called = true }
+        request.should_receive(:on_error).with(no_args).and_yield
+        subject.get '/'
+        called.should eq(true)
+      end
+    end
   end
 end
