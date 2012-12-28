@@ -16,7 +16,7 @@ require 'leadlight/basic_converter'
 
 module Leadlight
 
-  VERSION = '0.0.7'
+  VERSION = '0.1.0'
 
   def self.build_service(target=Class.new, &block)
     target.tap do
