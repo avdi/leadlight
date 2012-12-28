@@ -1,4 +1,6 @@
 require 'spec_helper_lite'
+require 'addressable/template'
+require 'addressable/uri'
 require 'leadlight/tint_helper'
 
 module Leadlight
@@ -131,6 +133,14 @@ module Leadlight
         object.should_not_receive(:baz)
         subject.exec_tint do
           match_status(301)
+          baz
+        end
+      end
+
+      it 'accepts pattern shortcuts' do
+        object.should_receive(:baz)
+        subject.exec_tint do
+          match_status(:any)
           baz
         end
       end

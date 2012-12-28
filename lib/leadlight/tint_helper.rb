@@ -1,3 +1,5 @@
+require 'addressable/template'
+require 'addressable/uri'
 require 'delegate'
 require 'mime/types'
 
@@ -78,7 +80,7 @@ module Leadlight
       patterns.inject([]) {|patterns, pattern|
         case pattern
         when :any
-          pattern << (100..599)
+          patterns << (100..599)
         when :user_error
           patterns << (400..499)
         when :server_error
